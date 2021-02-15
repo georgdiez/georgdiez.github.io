@@ -1,0 +1,28 @@
+{
+  "name": "own_website",
+  "version": "1.0.0",
+  "description": "## Dependencies - npm - tailwindcss - postcss-cli - autoprefixer - cross-env - @fullhuman/postcss-purgecss - cssnano - slick-carousel",
+  "main": "index.js",
+  "scripts": {
+    "build": "tailwindcss build src/styles.css -o public/styles.css",
+    "production": "cross-env NODE_ENV=production postcss css/tailwind.css -o build/tailwind.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gegabo/georgdiez.github.io.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gegabo/georgdiez.github.io/issues"
+  },
+  "homepage": "https://github.com/gegabo/georgdiez.github.io#readme",
+  "dependencies": {
+    "autoprefixer": "^10.2.4",
+    "jquery": "^3.5.1",
+    "postcss": "^8.2.6",
+    "tailwindcss": "^2.0.3",
+    "vuetrend": "^0.3.4"
+  }
+}
