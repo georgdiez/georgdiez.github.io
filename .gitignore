@@ -1,0 +1,8 @@
+*.log
+*.db
+*.pdf
+*.db-*
+/node_modules/*
+package-lock.json
+setting.json
+.vscode/settings.json
