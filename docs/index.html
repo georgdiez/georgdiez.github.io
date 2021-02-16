@@ -166,6 +166,24 @@
             width: 100%;
         }
 
+        body {
+          background: linear-gradient(-45deg, #696969, #a0a0a0, #c0c0c0, #404040, #202020);
+          background-size: 400% 400%;
+          animation: gradient 25s ease infinite;
+        }
+
+        @keyframes gradient {
+          0% {
+            background-position: 0% 50%;
+          }
+          50% {
+            background-position: 100% 50%;
+          }
+          100% {
+            background-position: 0% 50%;
+          }
+        }
+
     </style>
 
 </head>
@@ -173,7 +191,7 @@
 
     <div id="nav-placeholder"></div>
 
-    <div class="h-screen w-full bg-gradient-to-br from-gray-300 to-gray-600 p-4 md:p-24">
+    <div class="h-screen w-full bg-transparent p-4 md:p-24">
         <div class="text pt-24 pl-12 md:pl-32">
             <h2 class="title-large">Currently under construction.</h2>
             <p class="md:pl-64 font-serif text-2xl">Comming soon</p>
