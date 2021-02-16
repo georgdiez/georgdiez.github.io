@@ -19,7 +19,7 @@
     font-family: 'Playfair Display';
     font-style: normal;
     font-weight: 400;
-    src: url('../fonts/playfair-display-v21-latin-regular.eot'); /* IE9 Compat Modes */
+    src: url('../docs/fonts/playfair-display-v21-latin-regular.eot'); /* IE9 Compat Modes */
     src: local(''),
          url('../docs/fonts/playfair-display-v21-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
          url('../docs/fonts/playfair-display-v21-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
@@ -33,7 +33,7 @@
     font-family: 'Open Sans';
     font-style: normal;
     font-weight: 400;
-    src: url('../fonts/open-sans-v18-latin-regular.eot'); /* IE9 Compat Modes */
+    src: url('../docs/fonts/open-sans-v18-latin-regular.eot'); /* IE9 Compat Modes */
     src: local('Open Sans Regular'), local('OpenSans-Regular'),
          url('../docs/fonts/open-sans-v18-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
          url('../docs/fonts/open-sans-v18-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
