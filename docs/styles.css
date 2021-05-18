@@ -586,9 +586,8 @@ video {
 }
 
 .text {
-  font-size: 0.875rem;
-  line-height: 1.25rem;
-  text-align: justify;
+  font-size: 1.125rem;
+  line-height: 1.75rem;
   --tw-text-opacity: 1;
   color: rgba(17, 24, 39, var(--tw-text-opacity));
 }
