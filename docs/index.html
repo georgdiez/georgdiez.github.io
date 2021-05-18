@@ -1,9 +1,10 @@
 <!doctype html>
-<html>
+<html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="styles.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="./styles.css">
+    <title>Georg Diez</title>
 
     <!--
     <script
@@ -167,8 +168,8 @@
         }
 
         body {
-          background: linear-gradient(-45deg, #696969, #a0a0a0, #c0c0c0, #404040, #202020);
-          background-size: 400% 400%;
+          background: linear-gradient(-45deg, #696969, #a0a0a0, #c0c0c0, #404040);
+          background-size: 400% 300%;
           animation: gradient 25s ease infinite;
         }
 
@@ -187,26 +188,21 @@
     </style>
 
 </head>
-<body class="antialiased">
-
+<body class="antialiased min-w-screen">
     <div id="nav-placeholder"></div>
 
     <div class="h-screen w-full bg-transparent p-4 md:p-24">
-        <div class="text pt-24 pl-12 md:pl-32">
-            <h2 class="title-large">Currently under construction.</h2>
+        <div class="pt-24 md:pl-32 pb-10">
+            <h2 class="title-large text-red-900">Currently under construction.</h2>
             <p class="md:pl-64 font-serif text-2xl">Coming soon</p>
-            <!--
-            <p class="title-small">Hi there. I'm</p>
-            <h2 class="title-large">Georg Diez</h2>
-            -->
-
         </div>
-        <div id="muenster" class="flex flex-row">
-            <!--
-            <div class="title-small mt-auto md:m-auto">
-                Freiburg
+        <div id="muenster" class="md:flex md:flex-row">
+            <div class="title-small mt-auto md:m-auto md:w-1/3">
+                <p>Hi there. I'm Georg </p>
+                <div class="mt-4 text-xl font-serif">I am a PhD student in theoretical biophysics
+                    at the University of Freiburg.
+                </div>
             </div>
-            -->
             <div class="h-full md:w-2/3">
               <trend class="freiburgskyline"
                 :data="[0,0,0,0,0,0,0,1,-1,2,-2,3,-3,4,-4,5,-5,6,-6,5,3,10,-5,1,-7,60,79,60,30,30,30,30,30,30,37,30,30,30,-3,3,-2,2,-2,2,-1,1,-1,0,0,0,0]"

@@ -2,7 +2,7 @@
 @tailwind components;
 
 .text {
-    @apply text-gray-900 text-justify text-sm;
+    @apply text-gray-900 text-justify text-lg;
 }
 
 .title-small {
