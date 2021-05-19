@@ -13,7 +13,7 @@ module.exports = {
       keyframes: {
         bounce: {
           '0%, 100%': {
-            transform: 'translateY(-5%)',
+            transform: 'translateY(-12%)',
             animationTimingFunction: 'cubic-bezier(0.8,0,1,1)',
           },
           '50%': {
