@@ -168,7 +168,7 @@
         }
 
         body {
-          background: linear-gradient(-45deg, #696969, #a0a0a0, #c0c0c0, #404040);
+          background: linear-gradient(-30deg, #878787, #656565, #555555, #AAAAAA);
           background-size: 400% 300%;
           animation: gradient 25s ease infinite;
         }
@@ -189,9 +189,19 @@
 
 </head>
 <body class="antialiased min-w-screen">
-    <div id="nav-placeholder"></div>
 
-    <div class="h-screen w-full bg-transparent p-4 md:p-24">
+    <div class="h-screen w-screen bg-transparent flex flex-col" id="starter">
+        <div class="m-auto px-6 items-center">
+            <p class="text-6xl text-center md:text-9xl font-serif text-gray-200">Georg Diez</p>
+            <p class="italic font-serif text-lg md:text-xl text-gray-200 pt-6 text-center">PhD student in theoretical biophysics at  <a target="_blank" href="https://www.moldyn.uni-freiburg.de/" class="hover:text-blue-700"> Moldyn Freiburg</a>.</p>
+            <p class="italic font-serif text-lg md:text-xl text-gray-200 text-center pt-2"> I am working on stochastic models and dimensionality reduction methods <br>towards a better understanding of proteins functional dynamics.</p>
+            <svg class="mt-6 mx-auto animate-bounce w-10 h-10 md:w-16 md:h-16 text-gray-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+        </div>
+    </div>
+    <div class="content-center" id="nav-placeholder"></div>
+
+
+    <div class="h-screen w-full bg-gray-300 p-4 md:p-24">
         <div class="pt-24 md:pl-32 pb-10">
             <h2 class="title-large text-red-900">Currently under construction.</h2>
             <p class="md:pl-64 font-serif text-2xl">Coming soon</p>
@@ -203,8 +213,8 @@
                     at <a href="https://www.moldyn.uni-freiburg.de/" target="_blank" class="text-gray-800 hover:text-blue-800">Moldyn Freiburg</a>.
                 </div>
             </div>
-            <div class="h-full md:w-2/3">
-              <trend class="freiburgskyline"
+            <div class="h-full md:w-2/3" id="skyline">
+              <trend class=""
                 :data="[0,0,0,0,0,0,0,1,-1,2,-2,3,-3,4,-4,5,-5,6,-6,5,3,10,-5,1,-7,60,79,60,30,30,30,30,30,30,37,30,30,30,-3,3,-2,2,-2,2,-1,1,-1,0,0,0,0]"
                 :gradient="['#111', '#222', '#666']"
                 :auto-draw="true"
@@ -213,7 +223,7 @@
                 :radius="2">
               </trend>
             </div>
-       </div>
+        </div>
     </div>
 
    <script src="app.js"></script>
@@ -223,5 +233,24 @@
         $("#nav-placeholder").load("./nav.html");
       });
    </script>
+
+    <script>
+        window.onscroll = function() {myFunction()};
+        var header = document.getElementById("nav-placeholder");
+        var sticky = header.offsetTop;
+        function myFunction() {
+          if (window.pageYOffset > sticky) {
+            header.classList.add("sticky");
+          } else {
+            header.classList.remove("sticky");
+          }
+        }
+    </script>
+    <script>
+        document.getElementById("skyline").addEventListener("scroll", start);
+        function start() {
+            document.getElementById('skyline').ClassList.add("freiburgskyline");
+        }
+    </script>
 </body>
 </html>

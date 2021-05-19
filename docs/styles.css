@@ -588,6 +588,7 @@ video {
 .text {
   font-size: 1.125rem;
   line-height: 1.75rem;
+  text-align: justify;
   --tw-text-opacity: 1;
   color: rgba(17, 24, 39, var(--tw-text-opacity));
 }
@@ -31189,7 +31190,7 @@ video {
 
 @-webkit-keyframes bounce {
   0%, 100% {
-    transform: translateY(-25%);
+    transform: translateY(-5%);
     -webkit-animation-timing-function: cubic-bezier(0.8,0,1,1);
             animation-timing-function: cubic-bezier(0.8,0,1,1);
   }
@@ -31203,7 +31204,7 @@ video {
 
 @keyframes bounce {
   0%, 100% {
-    transform: translateY(-25%);
+    transform: translateY(-5%);
     -webkit-animation-timing-function: cubic-bezier(0.8,0,1,1);
             animation-timing-function: cubic-bezier(0.8,0,1,1);
   }
@@ -31236,8 +31237,8 @@ video {
 }
 
 .animate-bounce {
-  -webkit-animation: bounce 1s infinite;
-          animation: bounce 1s infinite;
+  -webkit-animation: bounce 1s linear infinite;
+          animation: bounce 1s linear infinite;
 }
 
 @media (min-width: 640px) {
@@ -61783,8 +61784,8 @@ video {
   }
 
   .sm\:animate-bounce {
-    -webkit-animation: bounce 1s infinite;
-            animation: bounce 1s infinite;
+    -webkit-animation: bounce 1s linear infinite;
+            animation: bounce 1s linear infinite;
   }
 }
 
@@ -92331,8 +92332,8 @@ video {
   }
 
   .md\:animate-bounce {
-    -webkit-animation: bounce 1s infinite;
-            animation: bounce 1s infinite;
+    -webkit-animation: bounce 1s linear infinite;
+            animation: bounce 1s linear infinite;
   }
 }
 
@@ -122879,8 +122880,8 @@ video {
   }
 
   .lg\:animate-bounce {
-    -webkit-animation: bounce 1s infinite;
-            animation: bounce 1s infinite;
+    -webkit-animation: bounce 1s linear infinite;
+            animation: bounce 1s linear infinite;
   }
 }
 
@@ -153427,8 +153428,8 @@ video {
   }
 
   .xl\:animate-bounce {
-    -webkit-animation: bounce 1s infinite;
-            animation: bounce 1s infinite;
+    -webkit-animation: bounce 1s linear infinite;
+            animation: bounce 1s linear infinite;
   }
 }
 
@@ -183975,7 +183976,7 @@ video {
   }
 
   .\32xl\:animate-bounce {
-    -webkit-animation: bounce 1s infinite;
-            animation: bounce 1s infinite;
+    -webkit-animation: bounce 1s linear infinite;
+            animation: bounce 1s linear infinite;
   }
 }
