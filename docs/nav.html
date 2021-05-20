@@ -71,19 +71,18 @@
 
         @media screen and (max-width: 768px) {
             .nav-container {
-                position: relative
+                position: relative;
             }
 
             .nav-menu {
                 display: grid;
                 grid-template-columns: auto;
                 background: var(--brightgray);
-                margin: 0;
+                margin-left: 0%;
                 width: 100%;
                 position: absolute;
-                top: 80px;
+                top: 70px;
                 left: -100%;
-                opacity: 0;
                 transition: all 0.5s ease;
             }
 
@@ -94,12 +93,14 @@
             .nav-menu.active {
                 background: var(--darkgray);
                 left: 0;
-                opacity: 1;
+                opacity: 0.95;
+                height: auto;
                 transition: all 0.5 ease;
             }
 
             .nav-links {
-                text-align: center;
+                text-align: left;
+                padding-left: 10%;
                 line-height: 60px;
                 width: 100%;
                 display: table;
@@ -108,7 +109,7 @@
             .nav-links:hover {
                 background-color: var(--brightgray);
                 color: #111;
-                transition: all 0.8s ease-out;
+                transition: all 0.5s ease-out;
             }
 
             .navbar {
@@ -151,11 +152,14 @@
 <body>
     <div class="nav-container">
         <nav class="navbar">
-            <p id="navbar-logo" class="title-small">Georg Diez</p>
-            <div class="menu-toggle" id="mobile-menu">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
+            <p id="navbar-logo" class="title-small"></p>
+            <div class="flex flex-row">
+                <p class="flex text-gray-200 pl-auto"></p>
+                <div class="menu-toggle" id="mobile-menu">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
             </div>
             <ul class="nav-menu">
                 <li><a href="#" class="nav-links title-small text-gray-100">Home</a></li>

@@ -650,6 +650,25 @@ video {
          url('./fonts/open-sans-v18-latin-regular.svg#OpenSans') format('svg'); /* Legacy iOS */
 }
 
+/* newsreader-regular - latin */
+
+@font-face {
+  font-family: 'Newsreader';
+
+  font-style: normal;
+
+  font-weight: 400;
+
+  src: url('./fonts/newsreader-v7-latin-regular.eot'); /* IE9 Compat Modes */
+
+  src: local(''),
+         url('./fonts/newsreader-v7-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('./fonts/newsreader-v7-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+         url('./fonts/newsreader-v7-latin-regular.woff') format('woff'), /* Modern Browsers */
+         url('./fonts/newsreader-v7-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+         url('./fonts/newsreader-v7-latin-regular.svg#Newsreader') format('svg'); /* Legacy iOS */
+}
+
 .space-y-0 > :not([hidden]) ~ :not([hidden]) {
   --tw-space-y-reverse: 0;
   margin-top: calc(0px * calc(1 - var(--tw-space-y-reverse)));
