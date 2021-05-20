@@ -48,6 +48,11 @@
             text-decoration: none;
         }
 
+        .nav-links-active {
+            color: #0da2ff;
+            text-decoration: none;
+        }
+
         .nav-menu.active {
             background: var(--darkgray);
             left:0;
@@ -146,7 +151,15 @@
             }
         }
     </style>
-  </script>
+    <script type="text/javascript">
+        $(function() {
+            $('ul.nav-menu li a').each(function() {
+                var isActive = this.pathname === location.pathname;
+                $(this).toggleClass('nav-links-active', isActive);
+            });
+        });
+    </script>
+
 
 </head>
 <body>
@@ -162,10 +175,10 @@
                 </div>
             </div>
             <ul class="nav-menu">
-                <li><a href="#" class="nav-links title-small text-gray-100">Home</a></li>
-                <li><a href="#" class="nav-links title-small text-gray-100">Gallery</a></li>
-                <li><a href="#" class="nav-links title-small text-gray-100">Contact</a></li>
-                <li><a href="#" class="nav-links title-small text-gray-100">Impressum</a></li>
+                <li><a href="./index.html" class="nav-links title-small text-gray-100">Home</a></li>
+                <li><a href="./publications.html" class="nav-links title-small text-gray-100">Publications</a></li>
+                <li><a href="./contact.html" class="nav-links title-small text-gray-100">Contact</a></li>
+                <li><a href="./impressum.html" class="nav-links title-small text-gray-100">Impressum</a></li>
             </ul>
         </nav>
     </div>
