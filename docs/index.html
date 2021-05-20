@@ -186,9 +186,37 @@
         }
 
     </style>
+    <script>
+        // get the element to animate
+        var element = document.getElementById('bskyline');
+        var elementHeight = element.clientHeight;
+
+        // listen for scroll event and call animate function
+        document.addEventListener('scroll', animate);
+
+        // check if element is in view
+        function inView() {
+          // get window height
+          var windowHeight = window.innerHeight;
+          // get number of pixels that the document is scrolled
+          var scrollY = window.scrollY || window.pageYOffset;
+        
+          // get current scroll position (distance from the top of the page to the bottom of the current viewport)
+          var scrollPosition = scrollY + windowHeight;
+          // get element position (distance from the top of the page to the bottom of the element)
+          var elementPosition = element.getBoundingClientRect().top + scrollY + elementHeight;
+        
+          // is scroll position greater than element position? (is element in view?)
+          if (scrollPosition > elementPosition) {
+            return true;
+          }
+
+          return false;
+        }
+    </script>
 
 </head>
-<body class="antialiased min-w-screen">
+<body class="antialiased min-w-screen overflow-x-hidden">
 
     <div class="h-screen w-screen bg-transparent flex flex-col" id="starter">
         <div class="m-auto px-6 items-center">
@@ -200,7 +228,7 @@
     <div class="content-center" id="nav-placeholder"></div>
 
 
-    <div class="h-screen w-full bg-gray-300 p-4 md:p-24">
+    <div class="h-screen w-full bg-gray-100 p-4 md:p-24">
         <div class="pt-24 md:pl-32 pb-10">
             <h2 class="title-large text-red-900">Currently under construction.</h2>
             <p class="md:pl-64 font-serif text-2xl">Coming soon</p>
@@ -227,14 +255,12 @@
         </div>
     </div>
 
-   <script src="trend.js"></script>
-   <script>
-      $(function(){
-        $("#nav-placeholder").load("./nav.html");
-      });
-   </script>
-
-
+    <script src="trend.js"></script>
+    <script>
+        $(function(){
+            $("#nav-placeholder").load("./nav.html");
+        });
+    </script>
     <script>
         window.onscroll = function() {myFunction()};
         var header = document.getElementById("nav-placeholder");
@@ -246,20 +272,6 @@
             header.classList.remove("sticky");
           }
         }
-    </script>
-    <script>
-        //declare event to run when div is visible
-        function isVisible(){
-           //do something
-        
-        }
-        //hookup the event
-        $('muenster').bind('isVisible', isVisible);
-
-        //show div and trigger custom event in callback when div is visible
-        $('freiburgskyline').show('slow', function(){
-            $(this).trigger('isVisible');
-        });
     </script>
 </body>
 </html>
