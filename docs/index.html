@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="./styles.css">
     <title>Georg Diez</title>
 
@@ -168,7 +168,7 @@
         }
 
         body {
-          background: linear-gradient(-30deg, #878787, #656565, #333333, #AAAAAA);
+          background: linear-gradient(-30deg, #009dff, #26abff, #1d8df9, #0da2ff);
           background-size: 400% 300%;
           animation: gradient 25s ease infinite;
         }
@@ -192,9 +192,8 @@
 
     <div class="h-screen w-screen bg-transparent flex flex-col" id="starter">
         <div class="m-auto px-6 items-center">
-            <p class="text-6xl text-center md:text-9xl font-serif text-gray-200">Georg Diez</p>
-            <p class="italic font-serif text-lg md:text-xl text-gray-200 pt-6 text-center">PhD student in theoretical biophysics at  <a target="_blank" href="https://www.moldyn.uni-freiburg.de/" class="hover:text-blue-700"> Moldyn Freiburg</a>.</p>
-            <p class="italic font-serif text-lg md:text-xl text-gray-200 text-center pt-2"> I am working on stochastic models and dimensionality reduction methods <br>towards a better understanding of proteins functional dynamics.</p>
+            <p class="text-6xl text-center md:text-9xl font-serif text-white">Georg Diez</p>
+            <p class="italic font-serif text-lg md:text-2xl text-gray-100 pt-6 text-center">PhD student in theoretical biophysics at  <a target="_blank" href="https://www.moldyn.uni-freiburg.de/" class="hover:text-blue-700"> Moldyn Freiburg</a>.</p>
             <svg class="mt-6 mx-auto animate-bounce w-10 h-10 md:w-16 md:h-16 text-gray-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
         </div>
     </div>
@@ -212,9 +211,11 @@
                 <div class="mt-4 text-xl font-serif">I am a PhD student in theoretical biophysics
                     at <a href="https://www.moldyn.uni-freiburg.de/" target="_blank" class="text-gray-800 hover:text-blue-800">Moldyn Freiburg</a>.
                 </div>
+
+            <p class="font-serif text-lg md:text-2xl text-gray-900 text-center pt-2"> I am working on stochastic models and dimensionality reduction methods <br>towards a better understanding of proteins functional dynamics.</p>
             </div>
-            <div class="h-full md:w-2/3" id="skyline">
-              <trend class=""
+            <div class="h-full md:w-2/3" >
+              <trend id="skyline" class="freiburgskyline"
                 :data="[0,0,0,0,0,0,0,1,-1,2,-2,3,-3,4,-4,5,-5,6,-6,5,3,10,-5,1,-7,60,79,60,30,30,30,30,30,30,37,30,30,30,-3,3,-2,2,-2,2,-1,1,-1,0,0,0,0]"
                 :gradient="['#111', '#222', '#666']"
                 :auto-draw="true"
@@ -226,13 +227,13 @@
         </div>
     </div>
 
-   <script src="app.js"></script>
    <script src="trend.js"></script>
    <script>
       $(function(){
         $("#nav-placeholder").load("./nav.html");
       });
    </script>
+
 
     <script>
         window.onscroll = function() {myFunction()};
@@ -247,10 +248,18 @@
         }
     </script>
     <script>
-        document.getElementById("skyline").addEventListener("scroll", start);
-        function start() {
-            document.getElementById('skyline').ClassList.add("freiburgskyline");
+        //declare event to run when div is visible
+        function isVisible(){
+           //do something
+        
         }
+        //hookup the event
+        $('muenster').bind('isVisible', isVisible);
+
+        //show div and trigger custom event in callback when div is visible
+        $('freiburgskyline').show('slow', function(){
+            $(this).trigger('isVisible');
+        });
     </script>
 </body>
 </html>
