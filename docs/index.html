@@ -79,11 +79,12 @@
         </div>
     </div>
 
-
-    <!--Load navigation bar and make it sticky-->
+    <div id="footer"></div>
+    <!--Load navigation bar and make it sticky/Load footer-->
     <script>
         $(function(){
             $("#nav-placeholder").load("./nav.html");
+            $("#footer").load("./footer.html");
         });
         window.onscroll = function() {myFunction()};
         var header = document.getElementById("nav-placeholder");
