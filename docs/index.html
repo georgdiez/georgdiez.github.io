@@ -4,348 +4,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="google-site-verification" content="XIqywoyA2JHvXI0vMGa6WvxD6rfIctTAgP7WIaVKBiU" />
-    <link rel="stylesheet" href="./styles.css">
     <title>Georg Diez</title>
     <meta name="description" content="Welcome to the personal website of Georg Diez.">
 
-    <!--
-    <script
-      src="./scripts/jquery-3.5.1.js"
-      type="text/javascript"
-      integrity="/LjQZzcpTzaYn7qWqRIWYC5l8FWEZ2bIHIz0D73Uzba4pShEcdLdZyZkI4Kv676E"
-      crossorigin="anonymous">
-    </script>
-    -->
+    <!--Load scripts-->
     <script
         src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"
         integrity="sha256-iaFenEC8axSAnyNu6M0+0epCOTwfbKVceFXNd5s/ki4="
         crossorigin="anonymous">
     </script>
-
     <script
         src="https://unpkg.com/vue@3.0.5/dist/vue.global.js"
         integrity="sha384-0k9//QJdpmfSdp5IK3oJjOYPfz42f2FE0goMLtK9Vq7aKllvc4Lnz7lHPHiFhvDP"
         crossorigin="anonymous">
     </script>
-    <script src="https://unpkg.com/vue"></script>
-    <script src="https://unpkg.com/vuetrend"></script>
 
-    <style>
-        :root {
-            --darkgray: #212329;
-            --brightgray: #828387;
-        }
-        .nav-container {
-            position: relative;
-            background-color: var(--darkgray);
-            width: 100%;
-        }
-        .navbar {
-            display: grid;
-            grid-template-columns: 0.2fr auto 1fr;
-            align-items: center;
-            height: 80px;
-            width: 90%;
-            margin: 0 auto;
-        }
-
-        #navbar-logo {
-            color: #fff;
-            justify-self: start;
-            margin-left: 20px;
-        }
-
-        .nav-menu {
-            display: grid;
-            grid-template-columns: repeat(4, auto);
-            list-style: none;
-            text-align: center;
-            width: 70%;
-            justify-self: end;
-        }
-
-        .nav-links {
-            color: #fff;
-            text-decoration: none;
-        }
-
-        .nav-menu.active {
-            background: var(--darkgray);
-            left:0;
-            opacity: 1;
-            transition: all 0.5s ease;
-        }
-
-        .nav-links {
-            text-align: center;
-            line-height: 60px;
-            display: table;
-        }
-
-        .menu-toggle .bar {
-            width: 25px;
-            height: 3px;
-            margin: 5px auto;
-            transition: all 0.3s ease-in-out;
-            background: #fff;
-        }
-
-        @media screen and (max-width: 768px) {
-            .nav-container {
-                position: relative
-            }
-
-            .nav-menu {
-                display: grid;
-                grid-template-columns: auto;
-                background: var(--brightgray);
-                margin: 0;
-                width: 100%;
-                position: absolute;
-                top: 80px;
-                left: -100%;
-                opacity: 0;
-                transition: all 0.5s ease;
-            }
-
-            #navbar-logo {
-                margin-left: 20px;
-            }
-
-            .nav-menu.active {
-                background: var(--darkgray);
-                left: 0;
-                opacity: 1;
-                transition: all 0.5 ease;
-            }
-
-            .nav-links {
-                text-align: center;
-                line-height: 60px;
-                width: 100%;
-                display: table;
-            }
-
-            .nav-links:hover {
-                background-color: var(--brightgray);
-                color: #111;
-                transition: all 0.8s ease-out;
-            }
-
-            .navbar {
-                width: 100%;
-            }
-
-            #mobile-menu {
-                position: absolute;
-                top: 20%;
-                right: 5%;
-                transform: translate(5%, 20%);
-            }
-
-            .menu-toggle .bar {
-                display: block;
-                cursor: pointer;
-                cursor: pointer;
-            }
-
-            .menu-toggle:hover {
-                cursor: pointer;
-            }
-
-            #mobile-menu.is-active .bar:nth-child(2) {
-                opacity: 0;
-            }
-
-            #mobile-menu.is-active .bar:nth-child(1) {
-                transform: translateY(8px) rotate(45deg);
-            }
-
-            #mobile-menu.is-active .bar:nth-child(3) {
-                transform: translateY(-8px) rotate(-45deg);
-            }
-        }
-        .freiburgskyline{
-            width: 100%;
-        }
-
-        body {
-          background: linear-gradient(-30deg, #009dff, #093c8f, #2a9df4, #0da2ff);
-          background-size: 400% 300%;
-          animation: gradient 10s ease infinite;
-        }
-        
-        @media screen and (max-width: 768px) {
-            body {
-              background: linear-gradient(-30deg, #009dff,  #062557, #093c8f, #2a9df4, #0da2ff);
-              background-size: 500% 200%;
-              animation: gradient 20s ease infinite;
-            }
-        }
-
-        @keyframes gradient {
-          0% {
-            background-position: 0% 50%;
-          }
-          50% {
-            background-position: 100% 50%;
-          }
-          100% {
-            background-position: 0% 50%;
-          }
-        }
-
-    </style>
-    <script>
-        var element = document.getElementById('skyline');
-        var elementHeight = element.clientHeight;
-        document.addEventListener('scroll', animate);
-        function inView() {
-          var windowHeight = window.innerHeight;
-          var scrollY = window.scrollY || window.pageYOffset;
-          var scrollPosition = scrollY + windowHeight;
-          var elementPosition = element.getBoundingClientRect().top + scrollY + elementHeight;
-          if (scrollPosition > elementPosition) {
-            return true;
-          }
-          return false;
-        }
+    <script 
+        src="https://unpkg.com/vue@2.6.12/dist/vue.js"
+        integrity="sha384-ma9ivURrHX5VOB4tNq+UiGNkJoANH4EAJmhxd1mmDq0gKOv88wkKZOfRDOpXynwh"
+        crossorigin="anonymous">
     </script>
-    <script>
-        $(function() {
-            $('a[href*=#]').on('click', function(e) {
-              e.preventDefault();
-              $('html, body').animate({ scrollTop: $($(this).attr('href')).offset().top}, 500, 'linear');
-            });
-        });
-        $(window).scroll(function() {
-            if ($(this).scrollTop()>70)
-            {
-                $('.scrolldown').fadeOut();
-            }
-            else
-            {
-                $('.scrolldown').fadeIn();
-            }
-        });
+    <script 
+        src="https://unpkg.com/vuetrend"
+        integrity="sha384-54EpGrzqCBOnNf3aOfEeSTukb0Se+M/F+Anprg8iqM8bpF9TMCT6FnDU7fVuxX8b"
+        crossorigin="anonymous">
     </script>
-    <style>
-        @import url(https://fonts.googleapis.com/css?family=Josefin+Sans:300,400);
-        section::after {
-          position: absolute;
-          bottom: 0;
-          left: 0;
-          content: '';
-          width: 100%;
-          height: 80%;
-          background: -webkit-linear-gradient(top,rgba(0,0,0,0) 0,rgba(0,0,0,.1) 10%,rgba(0,0,0,.6) 120%);
-          background: linear-gradient(to bottom,rgba(0,0,0,0) 0,rgba(0,0,0,.1) 10%,rgba(0,0,0,.6) 120%);
-        }
-        .scrolldown a {
-          position: fixed;
-          bottom: 20px;
-          left: 50%;
-          z-index: 2;
-          display: inline-block;
-          -webkit-transform: translate(0, -50%);
-          transform: translate(-50%, -50%);
-          color: #fff;
-          font : normal 400 22px/1 'Josefin Sans', sans-serif;
-          letter-spacing: .1em;
-          text-decoration: none;
-          transition: opacity .3s;
-        }
-        .scrolldown a:hover {
-          opacity: .5;
-        }
-        #scrolldown a {
-          padding-top: 70px;
-        }
-        #scrolldown a span {
-          position: absolute;
-          top: 0;
-          left: 50%;
-          width: 34px;
-          height: 34px;
-          margin-left: -19px;
-          border-left: 1px solid #fff;
-          border-bottom: 1px solid #fff;
-          -webkit-transform: rotate(-45deg);
-          transform: rotate(-45deg);
-          -webkit-animation: scrolldownbutton 1.5s infinite;
-          animation: scrolldownbutton 1.5s infinite;
-          box-sizing: border-box;
-        }
+    <script src="scripts/ownscripts.js"></script>
+    <script src="trend.js"></script>
 
-        @media screen and (max-width: 768px) {
-            .scrolldown a {
-              position: fixed;
-              bottom: 20px;
-              left: 50%;
-              z-index: 2;
-              display: inline-block;
-              -webkit-transform: translate(0, -50%);
-              transform: translate(-50%, -50%);
-              color: #fff;
-              font : normal 400 20px/1 'Josefin Sans', sans-serif;
-              letter-spacing: .1em;
-              text-decoration: none;
-              transition: opacity .3s;
-            }
-            .scrolldown a:hover {
-              opacity: .5;
-            }
-            #scrolldown a {
-              padding-top: 100px;
-            }
-            #scrolldown a span {
-              position: absolute;
-              top: 0;
-              left: 50%;
-              width: 20px;
-              height: 20px;
-              margin-left: -12px;
-              border-left: 1px solid #fff;
-              border-bottom: 1px solid #fff;
-              -webkit-transform: rotate(-45deg);
-              transform: rotate(-45deg);
-              -webkit-animation: scrolldownbutton 1.5s infinite;
-              animation: scrolldownbutton 1.5s infinite;
-              box-sizing: border-box;
-            }
-        }
-        @-webkit-keyframes scrolldownbutton {
-          0% {
-            -webkit-transform: rotate(-45deg) translate(0, 0);
-            opacity: 0;
-          }
-          50% {
-            opacity: 1;
-          }
-          100% {
-            -webkit-transform: rotate(-45deg) translate(-20px, 20px);
-            opacity: 0;
-          }
-        }
-        @keyframes scrolldownbutton {
-          0% {
-            transform: rotate(-45deg) translate(0, 0);
-            opacity: 0;
-          }
-          50% {
-            opacity: 1;
-          }
-          100% {
-            transform: rotate(-45deg) translate(-20px, 20px);
-            opacity: 0;
-          }
-        }
-        .noshadow{
-            position: relative;
-            z-index: 5;
-        }
-    </style>
-
+    <!--Load css-->
+    <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="./index.css">
 </head>
 <body class="antialiased min-w-screen overflow-x-hidden">
 
@@ -388,15 +77,14 @@
               </trend>
             </div>
         </div>
+        <div class="bg-green-500 w-screen h-screen"></div>
     </div>
 
-    <script src="trend.js"></script>
+    <!--Load navigation bar and make it sticky-->
     <script>
         $(function(){
             $("#nav-placeholder").load("./nav.html");
         });
-    </script>
-    <script>
         window.onscroll = function() {myFunction()};
         var header = document.getElementById("nav-placeholder");
         var sticky = header.offsetTop;
