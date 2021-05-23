@@ -7,7 +7,7 @@
 
     <style>
         :root {
-            --darkgray: #212329;
+            --background: #fff;
             --brightgray: #828387;
         }
         .sticky {
@@ -16,7 +16,7 @@
             width: 100%;
         }
         .nav-container {
-            background-color: var(--darkgray);
+            background-color: transparent;
             width: 100%;
         }
         .navbar {
@@ -54,7 +54,7 @@
         }
 
         .nav-menu.active {
-            background: var(--darkgray);
+            background: var(--background);
             left:0;
             opacity: 1;
             transition: all 0.5s ease;
@@ -87,7 +87,7 @@
                 width: 100%;
                 position: absolute;
                 top: 70px;
-                left: -100%;
+                right: -100%;
                 transition: all 0.5s ease;
             }
 
@@ -96,8 +96,8 @@
             }
 
             .nav-menu.active {
-                background: var(--darkgray);
-                left: 0;
+                background: var(--background);
+                left: 1;
                 opacity: 0.95;
                 height: auto;
                 transition: all 0.5 ease;
@@ -121,31 +121,27 @@
                 width: 100%;
             }
 
+            /* Three lines and their animation*/
             #mobile-menu {
                 position: absolute;
                 top: 20%;
                 right: 5%;
                 transform: translate(5%, 20%);
             }
-
             .menu-toggle .bar {
                 display: block;
                 cursor: pointer;
                 cursor: pointer;
             }
-
             .menu-toggle:hover {
                 cursor: pointer;
             }
-
             #mobile-menu.is-active .bar:nth-child(2) {
                 opacity: 0;
             }
-
             #mobile-menu.is-active .bar:nth-child(1) {
                 transform: translateY(8px) rotate(45deg);
             }
-
             #mobile-menu.is-active .bar:nth-child(3) {
                 transform: translateY(-8px) rotate(-45deg);
             }
@@ -177,7 +173,7 @@
             <ul class="nav-menu">
                 <li><a href="./index.html" class="nav-links title-small text-gray-100">Home</a></li>
                 <li><a href="./publications.html" class="nav-links title-small text-gray-100">Publications</a></li>
-                <li><a href="./contact.html" class="nav-links title-small text-gray-100">Contact</a></li>
+                <li><a href="./posts.html" class="nav-links title-small text-gray-100">Posts</a></li>
                 <li><a href="./impressum.html" class="nav-links title-small text-gray-100">Impressum</a></li>
             </ul>
         </nav>
