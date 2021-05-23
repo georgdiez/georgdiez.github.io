@@ -669,6 +669,25 @@ video {
          url('./fonts/newsreader-v7-latin-regular.svg#Newsreader') format('svg'); /* Legacy iOS */
 }
 
+/* raleway-regular - latin */
+
+@font-face {
+  font-family: 'Raleway';
+
+  font-style: normal;
+
+  font-weight: 400;
+
+  src: url('../fonts/raleway-v19-latin-regular.eot'); /* IE9 Compat Modes */
+
+  src: local(''),
+         url('../fonts/raleway-v19-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('../fonts/raleway-v19-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+         url('../fonts/raleway-v19-latin-regular.woff') format('woff'), /* Modern Browsers */
+         url('../fonts/raleway-v19-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+         url('../fonts/raleway-v19-latin-regular.svg#Raleway') format('svg'); /* Legacy iOS */
+}
+
 .space-y-0 > :not([hidden]) ~ :not([hidden]) {
   --tw-space-y-reverse: 0;
   margin-top: calc(0px * calc(1 - var(--tw-space-y-reverse)));
@@ -11309,6 +11328,10 @@ video {
 
 .font-mono {
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+.font-navfont {
+  font-family: Raleway;
 }
 
 .font-thin {
@@ -41937,6 +41960,10 @@ video {
     font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   }
 
+  .sm\:font-navfont {
+    font-family: Raleway;
+  }
+
   .sm\:font-thin {
     font-weight: 100;
   }
@@ -72483,6 +72510,10 @@ video {
 
   .md\:font-mono {
     font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  }
+
+  .md\:font-navfont {
+    font-family: Raleway;
   }
 
   .md\:font-thin {
@@ -103033,6 +103064,10 @@ video {
     font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   }
 
+  .lg\:font-navfont {
+    font-family: Raleway;
+  }
+
   .lg\:font-thin {
     font-weight: 100;
   }
@@ -133581,6 +133616,10 @@ video {
     font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   }
 
+  .xl\:font-navfont {
+    font-family: Raleway;
+  }
+
   .xl\:font-thin {
     font-weight: 100;
   }
@@ -164127,6 +164166,10 @@ video {
 
   .\32xl\:font-mono {
     font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  }
+
+  .\32xl\:font-navfont {
+    font-family: Raleway;
   }
 
   .\32xl\:font-thin {
