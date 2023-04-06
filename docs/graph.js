@@ -1,5 +1,5 @@
 (function() {
-    var width, height, largeHeader, canvas, ctx, points, target, numCircles, animateHeader = true;
+    var width, height, largeHeader, canvas, ctx, points, target, numCircles, neighbors, animateHeader = true;
     initHeader();
     initAnimation();
     addListeners();
@@ -12,8 +12,10 @@
         target = {x: width/2, y: height/2};
 		if (width > 768) {
 			numCircles = 20;
+            neighbors=5;
 		} else {
-			numCircles = 4;
+			numCircles = 6;
+            neighbors=2;
 		}
 
         largeHeader = document.getElementById('dynamicgraph');
