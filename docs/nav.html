@@ -88,14 +88,14 @@
                 grid-template-rows: 70px;
                 grid-auto-rows: 70px;
                 grid-template-columns: none;
-                background: #ff0000;
+                background: var(--background);
                 margin-right: 0%;
                 width: 100%;
                 top: 70px;
                 position: absolute;
                 right: -100%;
                 transition: all 0.5s ease;
-                height: 100vh;
+                height: 100%;
             }
 
             #navbar-logo {
@@ -112,7 +112,7 @@
             }
 
             .nav-links {
-                color: #646464;
+                color: #161616;
                 text-align: left;
                 padding-left: 10%;
                 padding-bottom: -20%;
@@ -120,17 +120,14 @@
                 width: 100%;
                 display: table;
             }
-
             .nav-links:hover {
                 background-color: var(--brightgray);
                 color: #111;
                 transition: all 0.5s ease-out;
             }
-
             .navbar {
                 width: 100%;
             }
-
             /* Three lines and their animation*/
             #mobile-menu {
                 position: absolute;
@@ -173,7 +170,7 @@
         <nav class="navbar">
             <p id="navbar-logo" class="title-small"></p>
             <div class="flex flex-row">
-                <p class="flex text-gray-200 pl-auto"></p>
+                <p class="flex pl-auto"></p>
                 <div class="menu-toggle" id="mobile-menu">
                     <span class="bar"></span>
                     <span class="bar"></span>
@@ -183,6 +180,7 @@
             <ul class="nav-menu">
                 <li><a href="./index.html" class="nav-links title-small">Home</a></li>
                 <li><a href="./publications.html" class="nav-links title-small">Publications</a></li>
+                <li><a href="./posts.html" class="nav-links title-small">Posts</a></li>
                 <li><a href="./posts.html" class="nav-links title-small">Posts</a></li>
                 <!-- <li><a href="./impressum.html" class="nav-links title-small text-gray-100">Impressum</a></li> -->
             </ul>
