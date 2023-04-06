@@ -35,20 +35,22 @@
 
     <script src="trend.js"></script>
 
-
     <!--Load css-->
     <link rel="stylesheet" href="./styles.css">
     <link rel="stylesheet" href="./index.css">
-
     <style>
-        body {
-            overflow-x: hidden;
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
         }
     </style>
 </head>
 
 
-<body class="antialiased min-w-screen overflow-x-hidden">
+<body class="antialiased min-w-screen overflow-hidden overflow-y-scroll">
     <div class="h-screen w-screen  flex flex-col-reverse md:flex-row px-2 md:px-10" id="dynamicgraph">
         <canvas class="absolute z-0" id="dynamicgraph-canvas"></canvas>
         <div class="w-full md:w-1/2  text-md md:text-2xl text-gray-100 text-justify m-auto mx-auto mt-4">
