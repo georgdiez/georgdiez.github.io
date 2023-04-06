@@ -39,21 +39,26 @@
     <!--Load css-->
     <link rel="stylesheet" href="./styles.css">
     <link rel="stylesheet" href="./index.css">
+
+    <style>
+        body {
+            overflow-x: hidden;
+        }
+    </style>
 </head>
 
 
 <body class="antialiased min-w-screen overflow-x-hidden">
-    <div class="h-screen w-screen  flex flex-col-reverse md:flex-row px-10" id="dynamicgraph">
+    <div class="h-screen w-screen  flex flex-col-reverse md:flex-row px-2 md:px-10" id="dynamicgraph">
         <canvas class="absolute z-0" id="dynamicgraph-canvas"></canvas>
-        <div class="w-full md:w-1/2 font-serif md:text-2xl text-gray-200 text-justify m-auto mx-auto">
-                In the last few decades, we've witnessed a mathematical
-                revolution in our understanding of the living world. The
-                biosciences are shifting from qualitative to quantitative,
-                thanks to cutting-edge experimental and computational techniques
-                that provide unprecedented amounts of data. From molecular
-                dynamics simulations to modern spectroscopy, we can now unlock
-                the mysteries of "living processes" at a deeper level than ever
-                before.<br>
+        <div class="w-full md:w-1/2  text-md md:text-2xl text-gray-100 text-justify m-auto mx-auto mt-4">
+                In the last few decades, we have witnessed a mathematical
+                revolution in our conception of the living world.
+                In particular, the biosciences are shifting from qualitative to
+                quantitative as where experimental and computational techniques
+                provide unprecedented amounts of data.
+                We can now investigate the mysteries of "living processes" at a
+                deeper level than ever before.<br>
                 But as the amount of data available in the biosciences continues
                 to grow, we face the exciting challenge of developing novel
                 mathematical and computational concepts to effectively analyze
@@ -63,7 +68,7 @@
         </div>
         <div class="md:w-1/2 w-full text-right flex-row mt-6 md:mt-20">
             <p class="text-5xl md:text-7xl font-serif text-white">Georg Diez</p>
-            <p class="italic font-serif text-lg md:text-2xl text-white pt-6">I
+            <p class="italic font-serif text-lg md:text-2xl text-white pt-6 text-justify">I
             am a PhD student in theoretical and computational biophysics at  <a
             target="_blank" href="https://www.moldyn.uni-freiburg.de/"
             class="hover:text-blue-300"> Moldyn Freiburg</a> concerned with the
