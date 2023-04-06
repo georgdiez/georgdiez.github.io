@@ -153,7 +153,16 @@
                 transform: translateY(-8px) rotate(-45deg);
             }
         }
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
     </style>
+
     <script type="text/javascript">
         $(function() {
             $('ul.nav-menu li a').each(function() {
