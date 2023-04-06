@@ -1,13 +1,20 @@
 (function() {
-    var width, height, largeHeader, canvas, ctx, points, target, animateHeader = true;
+    var width, height, largeHeader, canvas, ctx, points, target, numCircles, animateHeader = true;
     initHeader();
     initAnimation();
     addListeners();
+		// Set number of circles based on window dimensions
+
 
     function initHeader() {
         width = window.innerWidth;
         height = window.innerHeight;
         target = {x: width/2, y: height/2};
+		if (width > 768) {
+			numCircles = 20;
+		} else {
+			numCircles = 4;
+		}
 
         largeHeader = document.getElementById('dynamicgraph');
         largeHeader.style.height = height+'px';
@@ -15,11 +22,12 @@
         canvas.width = width;
         canvas.height = height;
         ctx = canvas.getContext('2d');
+
         points = [];
-        for(var x = 0; x < width; x = x + width/20) {
-            for(var y = 0; y < height; y = y + height/20) {
-                var px = x + Math.random()*width/20;
-                var py = y + Math.random()*height/20;
+        for(var x = 0; x < width; x = x + width/numCircles) {
+            for(var y = 0; y < height; y = y + height/numCircles) {
+                var px = x + Math.random()*width/numCircles;
+                var py = y + Math.random()*height/numCircles;
                 var p = {x: px, originX: px, y: py, originY: py };
                 points.push(p);
             }
