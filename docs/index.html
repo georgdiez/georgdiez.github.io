@@ -43,8 +43,8 @@
 
 
 <body class="antialiased min-w-screen overflow-x-hidden">
-
     <div class="relative h-screen w-screen bg-transparent flex flex-col" id="dynamicgraph">
+        <canvas class="absolute z-10" id="dynamicgraph-canvas"></canvas>
         <div class="m-auto px-6 items-center z-20">
             <p class="text-6xl text-center md:text-9xl font-serif text-white">Georg Diez</p>
             <p class="italic font-serif text-lg md:text-2xl text-gray-100 pt-6 text-center">PhD student in theoretical and computational biophysics at  <a target="_blank" href="https://www.moldyn.uni-freiburg.de/" class="hover:text-blue-700"> Moldyn Freiburg</a>.</p>
@@ -52,7 +52,6 @@
                 <a href="#nav-placeholder"><span></span><p class="-mt-6 md:mt-0 md:pt-8">Scroll</p></a>
             </section>
         </div>
-        <canvas class="absolute z-10" id="dynamicgraph-canvas"></canvas>
     </div>
     <div class="content-center" id="nav-placeholder"></div>
 
