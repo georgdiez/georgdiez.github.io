@@ -41,7 +41,7 @@
                 var p2 = points[j]
                 if(!(p1 == p2)) {
                     var placed = false;
-                    for(var k = 0; k < 4; k++) {
+                    for(var k = 0; k < neighbors; k++) {
                         if(!placed) {
                             if(closest[k] == undefined) {
                                 closest[k] = p2;
@@ -50,7 +50,7 @@
                         }
                     }
 
-                    for(var k = 0; k < 4; k++) {
+                    for(var k = 0; k < neighbors; k++) {
                         if(!placed) {
                             if(getDistance(p1, p2) < getDistance(p1, closest[k])) {
                                 closest[k] = p2;
@@ -111,8 +111,8 @@
             for(var i in points) {
                 // detect points in range
                 if(Math.abs(getDistance(target, points[i])) < 4000) {
-                    points[i].active = 0.3;
-                    points[i].circle.active = 0.6;
+                    points[i].active = 0.5;
+                    points[i].circle.active = 1.6;
                 } else if(Math.abs(getDistance(target, points[i])) < 20000) {
                     points[i].active = 0.1;
                     points[i].circle.active = 0.3;
@@ -143,7 +143,7 @@
             ctx.beginPath();
             ctx.moveTo(p.x, p.y);
             ctx.lineTo(p.closest[i].x, p.closest[i].y);
-            ctx.strokeStyle = 'rgba(156,217,249,'+ p.active+')';
+            ctx.strokeStyle = 'rgba(255,255,255,'+ p.active+')';
             ctx.stroke();
         }
     }
