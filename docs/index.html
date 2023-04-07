@@ -32,7 +32,6 @@
     <script src="scripts/ownscripts.js"></script>
     <script src="scripts/EasePack.min.js"></script>
     <script src="scripts/TweenLite.min.js"></script>
-
     <script src="trend.js"></script>
 
     <!--Load css-->
@@ -41,7 +40,7 @@
 </head>
 
 
-<body class="antialiased min-w-screen w-screen">
+<body class="antialiased min-w-screen overflow-x-hidden w-screen">
     <div class="h-screen w-screen flex flex-col md:px-10" id="dynamicgraph">
         <canvas class="absolute z-0" id="dynamicgraph-canvas"></canvas>
         <div class="w-full md:w-1/2 text-md md:text-xl text-gray-100 text-justify mt-10 px-4">
@@ -61,7 +60,7 @@
             <div class="md:w-1/2 md:flex-col z-10">
                 <p class="text-5xl md:text-7xl text-right font-serif text-white px-4">Georg Diez</p>
                 <p class="italic font-serif text-lg md:text-2xl text-white pt-2 text-justify px-12 md:px-4">
-                I am a PhD student in theoretical and computational biophysics at  <a class="font-bold"
+                I am a PhD student in theoretical and computational biophysics at  <a class="font-bold text-blue-200"
                 target="_blank" style="white-space: nowrap" href="https://www.moldyn.uni-freiburg.de/"
                 class="hover:text-blue-300 hover:font-extrabold" > Moldyn Freiburg</a> concerned with the
                 modeling of Protein Dynamics.</p>
@@ -84,7 +83,7 @@
                 <p class="font-serif text-lg md:text-2xl text-gray-900 text-center pt-2"> I am working on stochastic models and dimensionality reduction methods <br>towards a better understanding of proteins functional dynamics.</p>
             </div>
             -->
-            <div class="h-full md:w-2/3 z-20" >
+            <div class="h-full md:w-2/3 z-10" >
               <trend id="skyline" class="freiburgskyline"
                 :data="[0, 0, 0, 0, -1, 1, -1, 2, -2, 2, -2, 3, -3, 30, 30, 30, 37, 30, 30, 30, 30, 30, 30, 60, 83, 60, -7, 1, -5, 10, 3, 5, -6, 6, -5, 5, -4, 4, -3, 3, -2, 2, -1, 1, 0, 0, 0, 0, 0, 0, 0]"
                 :gradient="['#111', '#222', '#666']"
