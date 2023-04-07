@@ -52,7 +52,7 @@
 <body class="antialiased min-w-screen overflow-x-hidden w-screen">
     <div class="h-screen w-screen flex flex-col md:px-10" id="dynamicgraph">
         <canvas class="absolute z-0" id="dynamicgraph-canvas"></canvas>
-        <div class="flex flex-row">
+        <div class="flex flex-col-reverse md:flex-row">
             <div class="w-full md:w-1/2 text-md md:text-xl text-gray-100 text-justify mt-10 px-4">
                 Over the last few decades, the biosciences have undergone a
                 mathematical revolution, shifting from qualitative to quantitative
@@ -65,7 +65,7 @@
                 and deepen our understanding of the complex processes underlying
                 life.
             </div>
-            <div class="md:w-1/2 mt-10 z-30" id="footer"></div>
+            <div class="md:w-1/2 mt-10 z-30 pr-4 md:pr-0" id="footer"></div>
         </div>
         <div class="w-full flex flex-row pt-20 md:pt-0">
             <div class="md:w-1/2">
@@ -115,11 +115,13 @@
             $("#footer").load("./footer.html");
             var header = document.getElementById("nav-placeholder");
             header.classList.remove("cd-primary-nav")
+            window.onscroll = function() {dynamicNav()};
+            dynamicNav();
         });
-        window.onscroll = function() {myFunction()};
+        window.onscroll = function() {dynamicNav()};
         var header = document.getElementById("nav-placeholder");
         var sticky = header.offsetTop - header.offsetTop / 2;
-        function myFunction() {
+        function dynamicNav() {
           if (window.pageYOffset < sticky) {
             header.classList.add("cd-primary-nav");
           } else {
