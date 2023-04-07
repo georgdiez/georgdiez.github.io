@@ -83,7 +83,7 @@
                 <p class="font-serif text-lg md:text-2xl text-gray-900 text-center pt-2"> I am working on stochastic models and dimensionality reduction methods <br>towards a better understanding of proteins functional dynamics.</p>
             </div>
             -->
-            <div class="h-full md:w-2/3 z-10" >
+            <div class="h-full md:w-2/3 z-0" >
               <trend id="skyline" class="freiburgskyline"
                 :data="[0, 0, 0, 0, -1, 1, -1, 2, -2, 2, -2, 3, -3, 30, 30, 30, 37, 30, 30, 30, 30, 30, 30, 60, 83, 60, -7, 1, -5, 10, 3, 5, -6, 6, -5, 5, -4, 4, -3, 3, -2, 2, -1, 1, 0, 0, 0, 0, 0, 0, 0]"
                 :gradient="['#111', '#222', '#666']"
@@ -107,10 +107,10 @@
         var header = document.getElementById("nav-placeholder");
         var sticky = header.offsetTop;
         function myFunction() {
-          if (window.pageYOffset > sticky) {
-            header.classList.add("sticky");
+          if (window.pageYOffset < sticky) {
+            header.classList.add("cd-primary-nav");
           } else {
-            header.classList.remove("sticky");
+            header.classList.remove("cd-primary-nav");
           }
         }
     </script>
