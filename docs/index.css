@@ -120,15 +120,13 @@ body {
   background: linear-gradient(-30deg, #009dff,  #062557, #093c8f, #2a9df4, #0da2ff);
   background-size: 400% 300%;
   animation: gradient 10s ease infinite;
-}
-body > * {
-  background: white;
+  background-clip: content-box;
 }
 
 @media screen and (max-width: 768px) {
     body {
       background: linear-gradient(-33deg, #009dff,  #062557, #093c8f, #2a9df4, #0da2ff);
-      background-size: 100% 100%;
+      background-size: 0% 50%;
       animation: gradient 2s ease infinite;
     }
 }
@@ -257,4 +255,7 @@ section::after {
 .noshadow{
     position: relative;
     z-index: 5;
+}
+.flex {
+  background: none !important;
 }
