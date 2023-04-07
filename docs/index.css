@@ -6,14 +6,14 @@ freiburgskyline{
     width: 100%;
 }
 body {
-  background: linear-gradient(-30deg, #009dff,  #062557, #093c8f, #2a9df4, #0da2ff);
-  animation: gradient 140s linear infinite;
+  background: linear-gradient(-30deg, #0487d9,  #08429f, #08347a, #066cba, #0da2ff);
+  animation: gradient 140s ease infinite;
   background-clip: content-box;
 }
 @media screen and (max-width: 768px) {
     body {
-      background: linear-gradient(-33deg, #009dff,  #062557, #093c8f, #2a9df4, #0da2ff);
-      animation: gradient 20s linear infinite;
+      background: linear-gradient(-30deg, #0487d9,  #08429f, #08347a, #066cba, #0da2ff);
+      animation: gradient 20s ease infinite;
     }
 }
 @keyframes gradient {
