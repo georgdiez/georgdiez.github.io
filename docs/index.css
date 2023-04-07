@@ -7,16 +7,13 @@ freiburgskyline{
 }
 body {
   background: linear-gradient(-30deg, #009dff,  #062557, #093c8f, #2a9df4, #0da2ff);
-  background-size: 400% 300%;
-  animation: gradient 10s ease infinite;
+  animation: gradient 140s linear infinite;
   background-clip: content-box;
 }
-
 @media screen and (max-width: 768px) {
     body {
       background: linear-gradient(-33deg, #009dff,  #062557, #093c8f, #2a9df4, #0da2ff);
-      background-size: 0% 50%;
-      animation: gradient 2s ease infinite;
+      animation: gradient 20s linear infinite;
     }
 }
 @keyframes gradient {
