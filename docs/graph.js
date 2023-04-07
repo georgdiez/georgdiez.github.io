@@ -11,7 +11,7 @@
         height = window.innerHeight;
         target = {x: width/2, y: height/2};
 		if (width > 768) {
-			numCircles = 20;
+			numCircles = 30;
             neighbors=5;
 		} else {
 			numCircles = 6;
