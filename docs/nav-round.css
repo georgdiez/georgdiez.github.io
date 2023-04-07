@@ -1,3 +1,11 @@
+.hidden-nav {
+  display: none;
+}
+
+/* Define the CSS class for the visible navigation bar */
+.visible-nav {
+  display: block;
+}
 /* --------------------------------
 
 Primary style
@@ -206,7 +214,6 @@ Primary style
     -o-transform: translateY(0) rotate(-45deg);
     transform: translateY(0) rotate(-45deg);
   }
-
   .cd-primary-nav {
     /* by default it's hidden */
     position: fixed;

@@ -37,26 +37,39 @@
     <!--Load css-->
     <link rel="stylesheet" href="./styles.css">
     <link rel="stylesheet" href="./index.css">
+
+    <style>
+        .hidden-nav{
+            display: none;
+        }
+        .visible-nav{
+            display: block;
+        }
+    </style>
 </head>
 
 
 <body class="antialiased min-w-screen overflow-x-hidden w-screen">
     <div class="h-screen w-screen flex flex-col md:px-10" id="dynamicgraph">
         <canvas class="absolute z-0" id="dynamicgraph-canvas"></canvas>
-        <div class="w-full md:w-1/2 text-md md:text-xl text-gray-100 text-justify mt-10 px-4">
-            Over the last few decades, the biosciences have undergone a
-            mathematical revolution, shifting from qualitative to quantitative
-            approaches as experimental and computational techniques generate
-            unprecedented amounts of data. This has enabled us to investigate
-            the mysteries of "living processes" at a deeper level, with the goal
-            of eventually basing them on first principles physical laws. By
-            developing novel theoretical and computational concepts to analyze
-            and interpret this wealth of information, we can unlock new insights
-            and deepen our understanding of the complex processes underlying
-            life.
+        <div class="flex flex-row">
+            <div class="w-full md:w-1/2 text-md md:text-xl text-gray-100 text-justify mt-10 px-4">
+                Over the last few decades, the biosciences have undergone a
+                mathematical revolution, shifting from qualitative to quantitative
+                approaches as experimental and computational techniques generate
+                unprecedented amounts of data. This has enabled us to investigate
+                the mysteries of "living processes" at a deeper level, with the goal
+                of eventually basing them on first principles physical laws. By
+                developing novel theoretical and computational concepts to analyze
+                and interpret this wealth of information, we can unlock new insights
+                and deepen our understanding of the complex processes underlying
+                life.
+            </div>
+            <div class="md:w-1/2 mt-10 z-30" id="footer"></div>
         </div>
         <div class="w-full flex flex-row pt-20 md:pt-0">
-            <div class="md:w-1/2"></div>
+            <div class="md:w-1/2">
+            </div>
             <div class="md:w-1/2 md:flex-col z-10">
                 <p class="text-5xl md:text-7xl text-right font-serif text-white px-4">Georg Diez</p>
                 <p class="italic font-serif text-lg md:text-2xl text-white pt-2 text-justify px-12 md:px-4">
@@ -71,18 +84,17 @@
         </section>
     </div>
 
-    <div class="content-center" id="nav-placeholder"></div>
+    <div id="nav-placeholder"></div>
     <div class="h-screen w-full bg-gray-100 p-4 md:p-24">
         <div class="pt-24 md:pl-32 pb-10">
-            <h2 class="text-5xl md:htext-7xl font-serif text-red-900">Currently under construction.</h2>
-            <p class="md:pl-64 pt-6 md:pt-2 font-serif text-3xl md:text-5xl">Coming soon&trade;</p>
+            <h2 class="text-5xl md:htext-7xl font-serif text-red-900">
+                Currently under construction.
+            </h2>
+            <p class="md:pl-64 pt-6 md:pt-2 font-serif text-3xl md:text-5xl">
+                Coming soon&trade;
+            </p>
         </div>
         <div id="muenster" class="md:flex md:flex-row">
-            <!--
-            <div class="title-small mt-auto md:m-auto md:w-1/3">
-                <p class="font-serif text-lg md:text-2xl text-gray-900 text-center pt-2"> I am working on stochastic models and dimensionality reduction methods <br>towards a better understanding of proteins functional dynamics.</p>
-            </div>
-            -->
             <div class="h-full md:w-2/3 z-0" >
               <trend id="skyline" class="freiburgskyline"
                 :data="[0, 0, 0, 0, -1, 1, -1, 2, -2, 2, -2, 3, -3, 30, 30, 30, 37, 30, 30, 30, 30, 30, 30, 60, 83, 60, -7, 1, -5, 10, 3, 5, -6, 6, -5, 5, -4, 4, -3, 3, -2, 2, -1, 1, 0, 0, 0, 0, 0, 0, 0]"
@@ -95,17 +107,18 @@
             </div>
         </div>
     </div>
-    <div id="footer"></div>
 
     <!--Load navigation bar and make it sticky/Load footer-->
     <script>
         $(function(){
             $("#nav-placeholder").load("./nav.html");
             $("#footer").load("./footer.html");
+            var header = document.getElementById("nav-placeholder");
+            header.classList.remove("cd-primary-nav")
         });
         window.onscroll = function() {myFunction()};
         var header = document.getElementById("nav-placeholder");
-        var sticky = header.offsetTop;
+        var sticky = header.offsetTop - header.offsetTop / 2;
         function myFunction() {
           if (window.pageYOffset < sticky) {
             header.classList.add("cd-primary-nav");
@@ -114,7 +127,7 @@
           }
         }
     </script>
-    <script src="graph.js"></script>
+    <script src="./scripts/graph.js"></script>
 
 </body>
 </html>
