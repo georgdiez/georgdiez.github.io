@@ -38,46 +38,37 @@
     <!--Load css-->
     <link rel="stylesheet" href="./styles.css">
     <link rel="stylesheet" href="./index.css">
-    <style>
-        .scrollbar-hide::-webkit-scrollbar {
-            display: none;
-        }
-        .scrollbar-hide {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-        }
-    </style>
 </head>
 
 
 <body class="antialiased min-w-screen overflow-hidden w-screen">
-    <div class="h-screen w-screen flex flex-col-reverse md:flex-row md:px-10" id="dynamicgraph">
+    <div class="noshadow h-screen w-screen flex flex-col md:px-10" id="dynamicgraph">
         <canvas class="absolute z-0" id="dynamicgraph-canvas"></canvas>
-        <div class="w-full md:w-1/2 text-md md:text-2xl text-gray-100 text-justify m-auto mx-auto mt-4 px-2">
-                In the last few decades, we have witnessed a mathematical
-                revolution in our conception of the living world.
-                In particular, the biosciences are shifting from qualitative to
-                quantitative as where experimental and computational techniques
-                provide unprecedented amounts of data.
-                We can now investigate the mysteries of "living processes" at a
-                deeper level than ever before.<br>
-                But as the amount of data available in the biosciences continues
-                to grow, we face the exciting challenge of developing novel
-                mathematical and computational concepts to effectively analyze
-                and interpret this vast wealth of information.
-                By rising to this challenge, we can unlock new insights and
-                deepen our understanding of the complex processes underlying life.
+        <div class="w-full md:w-1/2 text-md md:text-xl text-gray-100 text-justify mt-10 px-2">
+            Over the last few decades, the biosciences have undergone a
+            mathematical revolution, shifting from qualitative to quantitative
+            approaches as experimental and computational techniques generate
+            unprecedented amounts of data. This has enabled us to investigate
+            the mysteries of "living processes" at a deeper level, with the goal
+            of eventually basing them on first principles physical laws. By
+            developing novel theoretical and computational concepts to analyze
+            and interpret this wealth of information, we can unlock new insights
+            and deepen our understanding of the complex processes underlying
+            life.
         </div>
-        <div class="md:w-1/2 w-full text-right flex-row mt-6 md:mt-20">
-            <p class="text-5xl md:text-7xl font-serif text-white px-2">Georg Diez</p>
-            <p class="italic font-serif text-lg md:text-2xl text-white pt-2 md:pt-6 text-justify px-2">
-            I am a PhD student in theoretical and computational biophysics at  <a
-            target="_blank" href="https://www.moldyn.uni-freiburg.de/"
-            class="hover:text-blue-300"> Moldyn Freiburg</a> concerned with the
-            modeling of Protein Dynamics.</p>
+        <div class="w-full flex flex-row">
+            <div class="md:w-1/2"></div>
+            <div class="md:w-1/2 flex-col">
+                <p class="italic font-serif text-lg md:text-2xl text-white pt-2 text-justify px-4">
+                I am a PhD student in theoretical and computational biophysics at  <a
+                target="_blank" href="https://www.moldyn.uni-freiburg.de/"
+                class="hover:text-blue-300"> Moldyn Freiburg</a> concerned with the
+                modeling of Protein Dynamics.</p>
+                <p class="text-5xl md:text-7xl font-serif text-white px-2">Georg Diez</p>
+            </div>
         </div>
         <section id="scrolldown" class="scrolldown">
-            <a href="#nav-placeholder"><span></span><p class="-mt-10 md:mt-0 md:pt-8">Scroll</p></a>
+            <a href="#nav-placeholder"><span></span><p class="pb-12 md:mt-0">Scroll</p></a>
         </section>
     </div>
 
@@ -105,8 +96,8 @@
             </div>
         </div>
     </div>
-
     <div id="footer"></div>
+
     <!--Load navigation bar and make it sticky/Load footer-->
     <script>
         $(function(){
