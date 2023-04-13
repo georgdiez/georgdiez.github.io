@@ -8,6 +8,7 @@ freiburgskyline{
 body {
   background: linear-gradient(20deg, #1820C6, #022a6b, #08347a);
   animation: gradient 140s linear infinite;
+  background-clip: content-box;
 }
 @keyframes gradient {
   0% {
