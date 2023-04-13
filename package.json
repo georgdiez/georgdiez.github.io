@@ -4,7 +4,7 @@
   "description": "## Dependencies - npm - tailwindcss - postcss-cli - autoprefixer - cross-env - @fullhuman/postcss-purgecss - cssnano - slick-carousel",
   "main": "index.js",
   "scripts": {
-    "build": "tailwindcss build src/styles.css -o docs/styles.css",
+    "build": "tailwindcss build -i src/styles.css -o docs/styles.css",
     "production": "cross-env NODE_ENV=production postcss src/styles.css -o docs/styles.css"
   },
   "repository": {
