@@ -1,17 +1,23 @@
+const purgecss = require('@fullhuman/postcss-purgecss')({
+    // Specify the paths to all of the template files in your project
+    content: [
+        './docs/*.html',
+        './docs/*.vue',
+        './docs/*.js',
+        './docs/**/*.html',
+        './docs/**/*.vue',
+        './docs/**/*.js',
+        // etc.
+    ],
+    // Include any special characters you're using in your CSS
+    defaultExtractor: content => content.match(/[\w-/:]+(?<!:)/g) || [],
+});
+
 module.exports = {
     plugins: [
         require('tailwindcss'),
         require('autoprefixer'),
-        process.env.NODE_ENV === 'production' && require('@fullhuman/postcss-purgecss')({
-            content: [
-                './*.html',
-                './docs/*.html',
-                './docs/*.js',
-            ],
-            defaultExtractor: content => content.match(/[A-Za-z0-9-_:/]+/g) || []
-        }),
-        process.env.NODE_ENV === 'production' && require('cssnano')({
-            preset: 'default',
-        }),
-    ]
-}
+        // Add @fullhuman/postcss-purgecss here
+        ...(process.env.NODE_ENV === 'production' ? [purgecss] : []),
+    ],
+};
