@@ -6,26 +6,37 @@ freiburgskyline{
     width: 100%;
 }
 body {
-  background: linear-gradient(120deg, #021533 60%, #022a6b 15%, #08347a 35%, #08429f 65%, #08347a 85%, #0842d9 100%);
+  background: linear-gradient(20deg, #1820C6, #022a6b, #08347a);
   animation: gradient 140s linear infinite;
-  background-clip: content-box;
-}
-@media screen and (max-width: 768px) {
-    body {
-      background: linear-gradient(120deg, #021533 60%, #022a6b 15%, #08347a 35%, #08429f 65%, #08347a 85%, #0842d9 100%);
-      animation: gradient 20s ease infinite;
-      background-clip: content-box;
-    }
 }
 @keyframes gradient {
   0% {
-    background-position: 20% 20%;
+    background-position: 10% 10%;
   }
   50% {
-    background-position: 40% 40%;
+    background-position: 20% 20%;
   }
   100% {
-    background-position: 20% 20%;
+    background-position: 10% 10%;
+  }
+}
+@media screen and (max-width: 768px) {
+    body {
+      background: linear-gradient(20deg, #1820C6, #022a6b, #08347a, #ff00ff);
+      /* background: linear-gradient(120deg, #021533 60%, #022a6b 15%, #08347a 35%, #08429f 65%, #08347a 85%, #0842d9 100%); */
+      animation: gradient 200s ease infinite;
+      background-clip: content-box;
+    }
+  @keyframes gradient {
+    0% {
+      background-position: 30% 30%;
+    }
+    50% {
+      background-position: 20% 20%;
+    }
+    100% {
+      background-position: 30% 30%;
+    }
   }
 }
 
@@ -44,7 +55,7 @@ section::after {
   position: fixed;
   bottom:  -80px;
   left: 50%;
-  z-index: 2;
+  z-index: 20;
   display: inline-block;
   -webkit-transform: translate(0, -50%);
   transform: translate(-50%, -50%);
