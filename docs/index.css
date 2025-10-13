@@ -23,7 +23,7 @@ body {
 }
 @media screen and (max-width: 768px) {
     body {
-      background: linear-gradient(20deg, #1820C6, #022a6b, #08347a, #ff00ff);
+      background: linear-gradient(20deg, #1820C6, #022a6b, #08347a);
       /* background: linear-gradient(120deg, #021533 60%, #022a6b 15%, #08347a 35%, #08429f 65%, #08347a 85%, #0842d9 100%); */
       animation: gradient 200s ease infinite;
       background-clip: content-box;
