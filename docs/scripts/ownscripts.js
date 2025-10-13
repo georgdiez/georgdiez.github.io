@@ -1,8 +1,14 @@
 // Smooth scrolling
 $(function() {
-    $('a[href*=#]').on('click', function(e) {
-      e.preventDefault();
-      $('html, body').animate({ scrollTop: $($(this).attr('href')).offset().top}, 500, 'linear');
+    // Match anchors with a hash (use quoted attribute value to avoid selector errors)
+    $('a[href*="#"]').on('click', function(e) {
+      var target = $(this).attr('href');
+      // If it's just a hash and the target element exists on the page, do smooth scroll
+      if (target && target.indexOf('#') === 0 && $(target).length) {
+        e.preventDefault();
+        $('html, body').animate({ scrollTop: $($(this).attr('href')).offset().top}, 500, 'linear');
+      }
+      // otherwise let the browser handle it (external links or missing targets)
     });
 });
 $(window).scroll(function() {
