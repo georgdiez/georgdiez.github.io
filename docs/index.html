@@ -18,7 +18,6 @@
         integrity="sha384-0k9//QJdpmfSdp5IK3oJjOYPfz42f2FE0goMLtK9Vq7aKllvc4Lnz7lHPHiFhvDP"
         crossorigin="anonymous">
     </script>
-
     <script
         src="https://unpkg.com/vue@2.6.12/dist/vue.js"
         integrity="sha384-ma9ivURrHX5VOB4tNq+UiGNkJoANH4EAJmhxd1mmDq0gKOv88wkKZOfRDOpXynwh"
@@ -26,7 +25,7 @@
     </script>
     <script
         src="https://unpkg.com/vuetrend"
-        integrity="sha384-54EpGrzqCBOnNf3aOfEeSTukb0Se+M/F+Anprg8iqM8bpF9TMCT6FnDU7fVuxX8b"
+        integrity="sha384-54EpGrzqCBOnNf3aOfEeSTukb0Se+M/F+Anprg8bpF9TMCT6FnDU7fVuxX8b"
         crossorigin="anonymous">
     </script>
     <script src="scripts/ownscripts.js"></script>
@@ -48,12 +47,32 @@
     </style>
 </head>
 
-
 <body class="antialiased min-w-screen overflow-x-hidden w-screen">
-    <div class="h-screen w-screen flex flex-col md:px-10" id="dynamicgraph">
-        <canvas class="absolute z-0" id="dynamicgraph-canvas"></canvas>
-        <div class="flex flex-col-reverse md:flex-row">
-            <div class="w-full md:w-1/2 text-md md:text-xl text-gray-100 text-justify mt-10 px-4">
+    
+    <div id="footer" class="fixed top-4 right-4 z-50 md:top-10 md:pr-4 mb-2"></div>
+
+    <div class="min-h-screen w-screen flex flex-col md:px-10 relative pb-24" id="dynamicgraph">
+        <canvas class="absolute z-0 inset-0" id="dynamicgraph-canvas"></canvas>
+        
+        <div class="w-full flex flex-row pt-10 md:pt-20 order-1 md:order-2 relative z-10">
+            <div class="md:w-1/2"></div>
+            <div class="md:w-1/2 md:flex-col">
+                <p class="text-5xl md:text-7xl text-left md:text-right font-serif text-white px-4 pt-12 md:pt-0">
+                    Georg Diez
+                </p>
+                <p class="italic font-serif text-lg md:text-2xl text-white pt-2 text-justify px-4 md:px-4 mt-6">
+                    I completed my PhD in Physics at <a class="font-bold text-blue-200"
+                    target="_blank" style="white-space: nowrap" href="https://www.moldyn.uni-freiburg.de/"
+                    class="hover:text-blue-300 hover:font-extrabold">Moldyn Freiburg</a>, where I worked at the 
+                    interface of physics and biology, combining machine learning with physics-informed modeling to understand
+                    protein dynamics.
+                </p>
+            </div>
+        </div>
+        
+
+        <div class="flex flex-col-reverse md:flex-row order-2 md:order-1 relative z-10">
+            <div class="w-full md:w-1/2 text-md md:text-xl text-gray-100 text-justify mt-2 md:mt-32 px-4">
                 Over the last few decades, the biosciences have undergone a
                 mathematical revolution, shifting from qualitative to quantitative
                 approaches as experimental and computational techniques generate
@@ -65,23 +84,11 @@
                 and deepen our understanding of the complex processes underlying
                 life.
             </div>
-            <div class="md:w-1/2 mt-10 z-30 pr-4 md:pr-0" id="footer"></div>
+            <div class="md:w-1/2"></div>
         </div>
-        <div class="w-full flex flex-row pt-20 md:pt-0">
-            <div class="md:w-1/2">
-            </div>
-            <div class="md:w-1/2 md:flex-col z-10">
-                <p class="text-5xl md:text-7xl text-right font-serif text-white px-4">Georg Diez</p>
-                <p class="italic font-serif text-lg md:text-2xl text-white pt-2 text-justify px-12 md:px-4 pt-12">
-                I completed my PhD in theoretical and computational biophysics at  <a class="font-bold text-blue-200"
-                target="_blank" style="white-space: nowrap" href="https://www.moldyn.uni-freiburg.de/"
-                class="hover:text-blue-300 hover:font-extrabold" > Moldyn Freiburg</a>, where I worked at the 
-                interface of physics and biology, combining machine learning with physics-informed modeling to understand
-                protein dynamics.</p>
-            </div>
-        </div>
-        <section id="scrolldown" class="scrolldown">
-            <a href="#nav-placeholder"><span></span><p class="pb-12 md:mt-0">Scroll</p></a>
+        
+        <section id="scrolldown" class="scrolldown absolute bottom-4 left-1/2 transform -translate-x-1/2 z-20">
+            <a href="#nav-placeholder"><span></span><p class="pb-4 md:pb-12">Scroll</p></a>
         </section>
     </div>
 
@@ -138,9 +145,7 @@
             if (!a || !target) return;
             a.addEventListener('click', function(e){
               e.preventDefault();
-              // smooth scroll to the loaded nav placeholder
               target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-              // fallback: also set hash so link still shows in URL
               history.replaceState(null, '', '#nav-placeholder');
             });
         })();

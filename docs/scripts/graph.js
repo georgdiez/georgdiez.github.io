@@ -3,23 +3,43 @@
     initHeader();
     initAnimation();
     addListeners();
-		// Set number of circles based on window dimensions
-
 
     function initHeader() {
         width = window.innerWidth;
+        
+        largeHeader = document.getElementById('dynamicgraph');
+        
+        // Remove any existing height constraint
+        largeHeader.style.height = 'auto';
+        
+        // Let browser calculate layout, then measure
+        setTimeout(function() {
+            var viewport_height = window.innerHeight;
+            var content_height = largeHeader.scrollHeight;
+            
+            // Use whichever is larger
+            height = Math.max(viewport_height, content_height);
+            
+            console.log('viewport:', viewport_height, 'content:', content_height, 'using:', height);
+            
+            // Now set the height and update canvas
+            largeHeader.style.height = height + 'px';
+            canvas.height = height;
+            canvas.style.height = height + 'px';
+        }, 50);
+        
+        // Use viewport height temporarily for initial setup
         height = window.innerHeight;
         target = {x: width/2, y: height/2};
-		if (width > 768) {
-			numCircles = 30;
-            neighbors=5;
-		} else {
-			numCircles = 6;
-            neighbors=2;
-		}
-
-        largeHeader = document.getElementById('dynamicgraph');
-        largeHeader.style.height = height+'px';
+        
+        if (width > 768) {
+            numCircles = 15;
+            neighbors = 4;
+        } else {
+            numCircles = 6;
+            neighbors = 2;
+        }
+        
         canvas = document.getElementById('dynamicgraph-canvas');
         canvas.width = width;
         canvas.height = height;
@@ -67,6 +87,7 @@
             points[i].circle = c;
         }
     }
+    
     // Event handling
     function addListeners() {
         if(!('ontouchstart' in window)) {
@@ -75,6 +96,7 @@
         window.addEventListener('scroll', scrollCheck);
         window.addEventListener('resize', resize);
     }
+    
     function mouseMove(e) {
         var posx = posy = 0;
         if (e.pageX || e.pageY) {
@@ -88,23 +110,36 @@
         target.x = posx;
         target.y = posy;
     }
+    
     function scrollCheck() {
         if(document.body.scrollTop > height) animateHeader = false;
         else animateHeader = true;
     }
+    
     function resize() {
         width = window.innerWidth;
-        height = window.innerHeight;
-        largeHeader.style.height = height+'px';
-        canvas.width = width;
-        canvas.height = height;
+        
+        largeHeader.style.height = 'auto';
+        
+        setTimeout(function() {
+            var viewport_height = window.innerHeight;
+            var content_height = largeHeader.scrollHeight;
+            height = Math.max(viewport_height, content_height);
+            
+            largeHeader.style.height = height + 'px';
+            canvas.width = width;
+            canvas.height = height;
+            canvas.style.height = height + 'px';
+        }, 50);
     }
+    
     function initAnimation() {
         animate();
         for(var i in points) {
             shiftPoint(points[i]);
         }
     }
+    
     function animate() {
         if(animateHeader) {
             ctx.clearRect(0,0,width,height);
@@ -129,6 +164,7 @@
         }
         requestAnimationFrame(animate);
     }
+    
     function shiftPoint(p) {
         TweenLite.to(p, 1+1*Math.random(), {x:p.originX-50+Math.random()*100,
             y: p.originY-50+Math.random()*100, ease:Circ.easeInOut,
@@ -136,6 +172,7 @@
                 shiftPoint(p);
             }});
     }
+    
     // Canvas manipulation
     function drawLines(p) {
         if(!p.active) return;
@@ -147,6 +184,7 @@
             ctx.stroke();
         }
     }
+    
     function Circle(pos,rad,color) {
         var _this = this;
         // constructor
@@ -163,6 +201,7 @@
             ctx.fill();
         };
     }
+    
     // Util
     function getDistance(p1, p2) {
         return Math.pow(p1.x - p2.x, 2) + Math.pow(p1.y - p2.y, 2);
