@@ -1,34 +1,181 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <script
-    src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"
-    integrity="sha256-iaFenEC8axSAnyNu6M0+0epCOTwfbKVceFXNd5s/ki4="
-    crossorigin="anonymous">
-  </script>
-  <link rel="stylesheet" href="./styles.css">
-  <title>Georg Diez - Publications</title>
-  <script>
-    $(function(){
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script
+      src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"
+      integrity="sha256-iaFenEC8axSAnyNu6M0+0epCOTwfbKVceFXNd5s/ki4="
+      crossorigin="anonymous">
+    </script>
+    <link rel="stylesheet" href="./styles.css">
+    <title>Georg Diez - Publications</title>
+    <script>
+      $(function(){
         $("#nav").load("./nav.html");
-    });
-  </script>
-  <style>
-    .flex {
-      background: none !important;
-    }
-  </style>
-</head>
+      });
+    </script>
+    <style>
+      .flex {
+        background: none !important;
+      }
+    </style>
+  </head>
 
-<body class="antialiased w-screen h-screen min-w-screen overflow-x-hidden flex">
-  <div id="nav"></div>
-  <div class="items-center m-auto h-screen flex-col bg-gray-100 flex">
-      <div class="content-center text-6xl md:text-9xl m-auto font-serif text-center text-gray-700">
-        Under construction.
+  <body class="antialiased w-screen h-screen min-w-screen overflow-x-hidden flex">
+    <div id="nav"></div>
+    <div class="items-center m-auto h-screen flex-col bg-gray-100 flex">
+      <div class="max-w-6xl mx-auto px-4 py-32">
+        <!-- Page Header -->
+        <div class="mb-12">
+          <h1 class="text-5xl md:text-7xl font-serif text-gray-800 mb-4">Publications</h1>
+          <p class="text-xl text-gray-600 max-w-3xl">
+            Relevant publications that I have authored or co-authored during my PhD.
+          </p>
+        </div>
+
+        <!-- PhD Thesis Section -->
+        <section class="mb-16">
+          <h2 class="text-3xl font-serif text-gray-800 mb-6 border-b-2 border-gray-300 pb-2">
+            Doctoral Thesis
+          </h2>
+          <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+            <h3 class="text-2xl font-semibold text-gray-800 mb-2">
+              From Complexity to Clarity: Dimensionality Reduction of Protein Dynamics
+            </h3>
+            <p class="text-gray-600 mb-3">
+              <span class="font-medium">Georg Gabriel Diez</span> (2025)
+            </p>
+            <p class="text-gray-700 mb-4">
+              PhD Thesis, University of Freiburg, Faculty of Mathematics and Physics
+            </p>
+            <div class="flex gap-4">
+              <a
+                href="https://freidok.uni-freiburg.de/data/271694"
+                target="_blank"
+                rel="noopener"
+                class="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition-colors"
+              >
+                View Thesis
+              </a>
+            </div>
+          </div>
+        </section>
+
+<section class="mb-16">
+  <h2 class="text-3xl font-serif text-gray-800 mb-6 border-b-2 border-gray-300 pb-2">
+    Journal Articles
+  </h2>
+  <div class="space-y-6">
+    
+    <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+      <h3 class="text-xl font-semibold text-gray-800 mb-2">
+        Recovering Hidden Degrees of Freedom Using Gaussian Processes
+      </h3>
+      <p class="text-gray-600 mb-3">
+        <span class="font-medium">Georg Diez, Nele Dethloff, Gerhard Stock</span>
+      </p>
+      <p class="text-gray-700 mb-2">
+        <em>The Journal of Chemical Physics</em>, 163, 124105 (2025)
+      </p>
+      <div class="flex gap-4 mt-4">
+        <a href="https://doi.org/10.1063/5.0282147" 
+           target="_blank" 
+           rel="noopener"
+           class="text-white px-6 py-2 bg-blue-600 rounded hover:bg-blue-700 transition-colors font-medium">Article</a>
+        <a href="https://github.com/moldyn/GP-TEMPEST" 
+           target="_blank" 
+           rel="noopener"
+           class="text-blue-600 hover:text-blue-800 font-medium py-2">Software</a>
+        <a href="https://arxiv.org/abs/2505.18072" 
+           target="_blank" 
+           rel="noopener"
+           class="text-blue-600 hover:text-blue-800 font-medium py-2">arXiv</a>
       </div>
-  </div>
+    </div>
 
-</body>
+    <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+      <h3 class="text-xl font-semibold text-gray-800 mb-2">
+        Correlation-Based Feature Selection to Identify Functional Dynamics in Proteins
+      </h3>
+      <p class="text-gray-600 mb-3">
+        <span class="font-medium">Georg Diez, Daniel Nagel, Gerhard Stock</span>
+      </p>
+      <p class="text-gray-700 mb-2">
+        <em>Journal of Chemical Theory and Computation</em>, 18(8), 5079-5088 (2022)
+      </p>
+      <div class="flex gap-4 mt-4">
+        <a href="https://doi.org/10.1021/acs.jctc.2c00337" 
+           target="_blank" 
+           rel="noopener"
+           class="text-white px-6 py-2 bg-blue-600 rounded hover:bg-blue-700 transition-colors font-medium">Article</a>
+        <a href="https://github.com/moldyn/MoSAIC" 
+           target="_blank" 
+           rel="noopener"
+           class="text-blue-600 hover:text-blue-800 font-medium py-2">Software</a>
+        <a href="https://arxiv.org/abs/2204.02770" 
+           target="_blank" 
+           rel="noopener"
+           class="text-blue-600 hover:text-blue-800 font-medium py-2">arXiv</a>
+      </div>
+    </div>
+    
+    <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+      <h3 class="text-xl font-semibold text-gray-800 mb-2">
+        Accurate estimation of the normalized mutual information of multidimensional data
+      </h3>
+      <p class="text-gray-600 mb-3">
+        <span class="font-medium">Daniel Nagel, Georg Diez, Gerhard Stock</span>
+      </p>
+      <p class="text-gray-700 mb-2">
+        <em>Journal of Chemical Physics</em> 161, 054108 (2024)
+      </p>
+      <div class="flex gap-4 mt-4">
+        <a href="https://doi.org/10.1063/5.0217960" 
+           target="_blank" 
+           rel="noopener"
+           class="text-white px-6 py-2 bg-blue-600 rounded hover:bg-blue-700 transition-colors font-medium">Article</a>
+        <a href="https://github.com/moldyn/normi" 
+           target="_blank" 
+           rel="noopener"
+           class="text-blue-600 hover:text-blue-800 font-medium py-2">Software</a>
+        <a href="https://arxiv.org/abs/2405.04980" 
+           target="_blank" 
+           rel="noopener"
+           class="text-blue-600 hover:text-blue-800 font-medium py-2">arXiv</a>
+      </div>
+    </div>
+
+
+    <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+      <h3 class="text-xl font-semibold text-gray-800 mb-2">
+        Cooperative Protein Allosteric Transition Mediated by a Fluctuating Transmission Network
+      </h3>
+      <p class="text-gray-600 mb-3">
+        <span class="font-medium">Matthias Post, Benjamin Lickert, Georg Diez, Steffen Wolf, Gerhard Stock</span>
+      </p>
+      <p class="text-gray-700 mb-2">
+        <em>Journal of Molecular Biology</em>, 434(17), 167679 (2022)
+      </p>
+      <p class="text-sm text-gray-600 italic">21 citations</p>
+      <div class="flex gap-4 mt-4">
+        <a href="https://doi.org/10.1016/j.jmb.2022.167679" 
+           target="_blank" 
+           rel="noopener"
+           class="text-white px-6 py-2 bg-blue-600 rounded hover:bg-blue-700 transition-colors font-medium">Article</a>
+        <a href="https://www.biorxiv.org/content/10.1101/2021.11.17.468836v2.full" 
+           target="_blank" 
+           rel="noopener"
+           class="text-blue-600 hover:text-blue-800 font-medium py-2">biorXiv</a>
+      </div>
+    </div>
+
+
+  </div>
+</section>
+
+      </div>
+    </div>
+
+  </body>
 </html>
