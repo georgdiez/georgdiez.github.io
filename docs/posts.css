@@ -1,0 +1,342 @@
+/* Posts Page Styles */
+
+.post-card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    height: 650px;
+    display: flex;
+    flex-direction: column;
+}
+
+.post-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.post-card.expanded {
+    position: fixed;
+    top: 2rem;
+    left: 2rem;
+    right: 2rem;
+    bottom: 2rem;
+    z-index: 1000;
+    overflow-y: auto;
+    transform: none;
+    cursor: default;
+    margin: 0;
+    height: auto !important; /* Override any fixed height */
+    display: flex;
+    flex-direction: column;
+}
+
+.post-card.expanded:hover {
+    transform: none;
+}
+
+.post-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    transition: all 0.3s ease;
+}
+
+/* Default expanded layout - landscape images stay at top */
+.post-card.expanded .post-image {
+    height: 300px;
+    flex-shrink: 0; /* Prevent image from shrinking */
+}
+
+/* Ensure content area takes remaining space in default layout */
+.post-card.expanded .post-content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Portrait layout - image moves to side */
+.post-card.expanded.portrait-layout {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: flex-start;
+    gap: 2rem;
+}
+
+.post-card.expanded.portrait-layout .post-image {
+    width: 450px; /* Increased from 350px */
+    height: calc(100vh - 8rem); /* Use almost full viewport height minus margins */
+    max-height: 700px; /* Set a reasonable max height */
+    flex-shrink: 0;
+    margin-right: 0; /* Remove margin since we use gap */
+    margin-bottom: 0;
+    border-radius: 8px;
+}
+
+.post-card.expanded.portrait-layout .post-content {
+    flex: 1;
+    height: 100%;
+    overflow-y: auto;
+    padding: 0; /* Remove padding since parent has gap */
+    display: flex;
+    flex-direction: column;
+}
+
+/* Mobile responsiveness for portrait layout */
+@media (max-width: 1024px) {
+    .post-card.expanded.portrait-layout {
+        flex-direction: column;
+    }
+    
+    .post-card.expanded.portrait-layout .post-image {
+        width: 100%;
+        height: 300px;
+        margin-right: 0;
+        margin-bottom: 1rem;
+    }
+}
+
+.post-content {
+    padding: 1.5rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+}
+
+/* Override for expanded cards - allow content to scroll properly */
+.post-card.expanded .post-content {
+    overflow: visible; /* Allow content to flow properly */
+}
+
+.post-content > div:first-of-type {
+    flex: 1;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.post-meta {
+    color: #6b7280;
+    font-size: 0.875rem;
+    margin-bottom: 0.5rem;
+}
+
+.post-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 1rem;
+    line-height: 1.4;
+}
+
+.post-card.expanded .post-title {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+.post-excerpt {
+    color: #4b5563;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    flex: 1;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 4; /* Limit to 4 lines */
+    line-clamp: 4; /* Standard property */
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+}
+
+.post-card-footer {
+    margin-top: auto;
+    padding-top: 1rem;
+    flex-shrink: 0; /* Prevent footer from shrinking */
+}
+
+.post-full-content {
+    display: none;
+    color: #374151;
+    line-height: 1.7;
+    font-size: 1.1rem;
+}
+
+.post-card.expanded .post-full-content {
+    display: block;
+    flex: 1;
+    overflow-y: auto;
+    margin-top: 1rem;
+}
+
+.post-card.expanded .post-excerpt {
+    display: none;
+}
+
+.post-card.expanded .post-card-footer {
+    display: none; /* Hide footer in expanded view since we show full content */
+}
+
+/* Ensure the content wrapper in expanded view flows properly */
+.post-card.expanded .post-content > div:first-of-type {
+    flex: 1;
+    overflow: visible;
+    display: block; /* Change from flex to block for better text flow */
+}
+
+.read-more {
+    color: #3b82f6;
+    font-weight: 500;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.read-more:hover {
+    color: #1d4ed8;
+}
+
+.post-card.expanded .read-more {
+    display: none;
+}
+
+.close-btn {
+    display: none;
+    position: sticky;
+    top: 1rem;
+    right: 1rem;
+    background: #ef4444;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    z-index: 1001;
+    margin-left: auto;
+    margin-bottom: 1rem;
+}
+
+.post-card.expanded .close-btn {
+    display: block;
+}
+
+/* Adjust close button for portrait layout */
+.post-card.expanded.portrait-layout .close-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    margin: 0;
+}
+
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+}
+
+.overlay.active {
+    display: block;
+}
+
+/* Grid Layout Styles - Now handled dynamically by JavaScript */
+.posts-container {
+    max-width: none !important;
+    width: 100% !important;
+}
+
+.posts-grid {
+    display: grid;
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    align-items: start;
+    grid-template-columns: repeat(3, 1fr) !important;
+    width: 100%;
+}
+
+/* Force single row on larger screens */
+@media (min-width: 900px) {
+    .posts-grid {
+        grid-template-columns: repeat(3, 1fr) !important;
+        max-width: 1200px;
+        width: 100%;
+    }
+    
+    .posts-grid-override {
+        grid-template-columns: repeat(3, 1fr) !important;
+    }
+    
+    #posts-grid-debug {
+        grid-template-columns: repeat(3, 1fr) !important;
+    }
+}
+
+/* Responsive for smaller screens */
+@media (max-width: 899px) {
+    .posts-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+    
+    .posts-grid-override {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+    
+    #posts-grid-debug {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+}
+
+@media (max-width: 640px) {
+    .posts-grid {
+        grid-template-columns: 1fr !important;
+    }
+    
+    .posts-grid-override {
+        grid-template-columns: 1fr !important;
+    }
+    
+    #posts-grid-debug {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .post-card.expanded {
+        top: 1rem;
+        left: 1rem;
+        right: 1rem;
+        bottom: 1rem;
+    }
+}
+
+/* Typography for expanded posts */
+.post-full-content h3 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+.post-full-content p {
+    margin-bottom: 1rem;
+}
+
+.post-full-content ul {
+    margin: 1rem 0;
+    padding-left: 1.5rem;
+}
+
+.post-full-content li {
+    margin-bottom: 0.5rem;
+}
