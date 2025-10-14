@@ -3,202 +3,273 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="./styles.css">
-    <title>Georg Diez - Posts</title>
-
-    <!--
-    <script
-      src="./scripts/jquery-3.5.1.js"
-      type="text/javascript"
-      integrity="/LjQZzcpTzaYn7qWqRIWYC5l8FWEZ2bIHIz0D73Uzba4pShEcdLdZyZkI4Kv676E"
-      crossorigin="anonymous">
-    </script>
-    -->
     <script
         src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"
         integrity="sha256-iaFenEC8axSAnyNu6M0+0epCOTwfbKVceFXNd5s/ki4="
         crossorigin="anonymous">
     </script>
-    <script src="https://unpkg.com/vue"></script>
-    <script src="https://unpkg.com/vuetrend"></script>
-
-    <style>
-        :root {
-            --darkgray: #212329;
-            --brightgray: #828387;
-        }
-        .nav-container {
-            position: relative;
-            background-color: var(--darkgray);
-            width: 100%;
-        }
-        .navbar {
-            display: grid;
-            grid-template-columns: 0.2fr auto 1fr;
-            align-items: center;
-            height: 80px;
-            width: 90%;
-            margin: 0 auto;
-        }
-
-        #navbar-logo {
-            color: #fff;
-            justify-self: start;
-            margin-left: 20px;
-        }
-
-        .nav-menu {
-            display: grid;
-            grid-template-columns: repeat(4, auto);
-            list-style: none;
-            text-align: center;
-            width: 70%;
-            justify-self: end;
-        }
-
-        .nav-links {
-            color: #fff;
-            text-decoration: none;
-        }
-
-        .nav-menu.active {
-            background: var(--darkgray);
-            left:0;
-            opacity: 1;
-            transition: all 0.5s ease;
-        }
-
-        .nav-links {
-            text-align: center;
-            line-height: 60px;
-            display: table;
-        }
-
-        .menu-toggle .bar {
-            width: 25px;
-            height: 3px;
-            margin: 5px auto;
-            transition: all 0.3s ease-in-out;
-            background: #fff;
-        }
-
-        @media screen and (max-width: 768px) {
-            .nav-container {
-                position: relative
-            }
-
-            .nav-menu {
-                display: grid;
-                grid-template-columns: auto;
-                background: var(--brightgray);
-                margin: 0;
-                width: 100%;
-                position: absolute;
-                top: 80px;
-                left: -100%;
-                opacity: 0;
-                transition: all 0.5s ease;
-            }
-
-            #navbar-logo {
-                margin-left: 20px;
-            }
-
-            .nav-menu.active {
-                background: var(--darkgray);
-                left: 0;
-                opacity: 1;
-                transition: all 0.5 ease;
-            }
-
-            .nav-links {
-                text-align: center;
-                line-height: 60px;
-                width: 100%;
-                display: table;
-            }
-
-            .nav-links:hover {
-                background-color: var(--brightgray);
-                color: #111;
-                transition: all 0.8s ease-out;
-            }
-
-            .navbar {
-                width: 100%;
-            }
-
-            #mobile-menu {
-                position: absolute;
-                top: 20%;
-                right: 5%;
-                transform: translate(5%, 20%);
-            }
-
-            .menu-toggle .bar {
-                display: block;
-                cursor: pointer;
-                cursor: pointer;
-            }
-
-            .menu-toggle:hover {
-                cursor: pointer;
-            }
-
-            #mobile-menu.is-active .bar:nth-child(2) {
-                opacity: 0;
-            }
-
-            #mobile-menu.is-active .bar:nth-child(1) {
-                transform: translateY(8px) rotate(45deg);
-            }
-
-            #mobile-menu.is-active .bar:nth-child(3) {
-                transform: translateY(-8px) rotate(-45deg);
-            }
-        }
-        .freiburgskyline{
-            width: 100%;
-        }
-
-        @keyframes gradient {
-          0% {
-            background-position: 0% 50%;
-          }
-          50% {
-            background-position: 100% 50%;
-          }
-          100% {
-            background-position: 0% 50%;
-          }
-        }
-
-    </style>
-
+    <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="./nav-round.css">
+    <link rel="stylesheet" href="./posts.css">
+    <title>Georg Diez - Posts</title>
 </head>
-<body class="antialiased min-w-screen overflow-hidden bg-gray-100">
+</head>
 
-    <div class="items-center m-auto h-screen flex flex-col">
-        <div class="content-center w-screen" id="nav-placeholder"></div>
-        <div class=" text-6xl md:text-7xl m-auto flex font-serif text-center text-gray-700">Coming soon.</div>
+<body class="antialiased min-w-screen overflow-x-hidden bg-gray-50">
+    <div id="nav-placeholder"></div>
+    
+    <div class="overlay" id="overlay"></div>
+    
+    <div class="min-h-screen w-full p-4 md:p-8 lg:p-12">
+        <div style="max-width: 1400px; margin: 0 auto; padding: 0 2rem;">
+            <div class="mb-12 text-center">
+                <h1 class="text-5xl md:text-7xl font-serif text-gray-800 mb-4">Posts</h1>
+            </div>
+
+            <div id="posts-container" style="margin: 0 auto;">
+            </div>
+        </div>
     </div>
+
+    <div id="copyright-footer"></div>
 
     <script>
         $(function(){
             $("#nav-placeholder").load("./nav.html");
+            $("#copyright-footer").load("./copyright-footer.html");
+            
+            // Create dynamic grid based on screen width
+            createDynamicGrid();
         });
-    </script>
-    <script>
-        window.onscroll = function() {myFunction()};
-        var header = document.getElementById("nav-placeholder");
-        var sticky = header.offsetTop;
-        function myFunction() {
-          if (window.pageYOffset > sticky) {
-            header.classList.add("sticky");
-          } else {
-            header.classList.remove("sticky");
-          }
+
+        function createDynamicGrid() {
+            const container = document.getElementById('posts-container');
+            const posts = [
+                {
+                    id: 1,
+                    image: "../img/defense.JPG",
+                    imageX: 50, // X position in percentage (0-100)
+                    imageY: 10, // Y position in percentage (0-100) - 20% from top to focus on upper part
+                    alt: "Defense Celebration",
+                    date: "January 15, 2024",
+                    readTime: "2 min read",
+                    title: "PhD Defense Done!",
+                    excerpt: "On September 9th, 2025, I successfully defended my PhD thesis!",
+                    isPortrait: true,
+                    fullContent: `<p>After years of research, countless experiments, and many late nights in the lab, 
+                        I'm thrilled to announce that I successfully defended my PhD thesis on September 9th, 2025!</p>
+                        <p>The defense was both challenging and rewarding, with great questions from the committee 
+                        that really pushed me to think deeply about my research contributions.</p>
+                        <p>This journey has taught me so much about persistence, critical thinking, and the 
+                        importance of collaboration in scientific research.</p>`
+                },
+                {
+                    id: 2,
+                    image: "../img/defense.JPG",
+                    imageX: 50, // X position in percentage (0-100)
+                    imageY: 10, // Y position in percentage (0-100) - 20% from top to focus on upper part
+                    alt: "Defense Celebration",
+                    date: "January 15, 2024",
+                    readTime: "2 min read",
+                    title: "PhD Defense Done!",
+                    excerpt: "On September 9th, 2025, I successfully defended my PhD thesis!",
+                    isPortrait: false,
+                    fullContent: `
+                        <p>After years of research, countless experiments, and many late nights in the lab, 
+                        I'm thrilled to announce that I successfully defended my PhD thesis on September 9th, 2025!</p>
+                        <p>The defense was both challenging and rewarding, with great questions from the committee 
+                        that really pushed me to think deeply about my research contributions.</p>
+                        <p>This journey has taught me so much about persistence, critical thinking, and the 
+                        importance of collaboration in scientific research.</p>`
+                },
+                {
+                    id: 3,
+                    image: "../img/defense.JPG",
+                    imageX: 50, // X position in percentage (0-100)
+                    imageY: 10, // Y position in percentage (0-100) - 20% from top to focus on upper part
+                    alt: "Defense Celebration",
+                    date: "January 15, 2024",
+                    readTime: "2 min read",
+                    title: "PhD Defense Done!",
+                    excerpt: "On September 9th, 2025, I successfully defended my PhD thesis!",
+                    isPortrait: true,
+                    fullContent: `
+                        <p>nothing here yet</p>`
+                },
+            ];
+
+            // Calculate optimal layout
+            const layout = calculateOptimalLayout(posts.length);
+            console.log("=== DYNAMIC GRID DEBUG ===");
+            console.log("Screen width:", window.innerWidth);
+            console.log("Container width:", layout.containerWidth);
+            console.log("Columns:", layout.columns);
+            console.log("Card width:", layout.cardWidth);
+            console.log("Gap:", layout.gap);
+
+            // Create grid container with calculated dimensions
+            container.style.width = layout.containerWidth + 'px';
+            container.style.display = 'grid';
+            container.style.gridTemplateColumns = `repeat(${layout.columns}, ${layout.cardWidth}px)`;
+            container.style.gap = layout.gap + 'px';
+            container.style.gridTemplateRows = 'auto';
+
+            // Clear any existing content
+            container.innerHTML = '';
+
+            // Create and position cards
+            posts.forEach((post, index) => {
+                const cardElement = createPostCard(post);
+                
+                // Calculate position
+                const row = Math.floor(index / layout.columns) + 1;
+                const col = (index % layout.columns) + 1;
+                
+                // Explicitly set grid position
+                cardElement.style.gridColumn = col;
+                cardElement.style.gridRow = row;
+                
+                console.log(`Card ${post.id}: Row ${row}, Column ${col}`);
+                
+                container.appendChild(cardElement);
+            });
         }
+
+        function calculateOptimalLayout(numPosts) {
+            const screenWidth = window.innerWidth;
+            const maxContainerWidth = Math.min(screenWidth - 100, 1400); // Leave some margin
+            
+            let columns, cardWidth, gap, containerWidth;
+            
+            if (screenWidth >= 1200) {
+                // Large screens: Try to fit 3 columns
+                columns = Math.min(3, numPosts);
+                gap = 32;
+                cardWidth = Math.floor((maxContainerWidth - (gap * (columns - 1))) / columns);
+                containerWidth = (cardWidth * columns) + (gap * (columns - 1));
+            } else if (screenWidth >= 768) {
+                // Medium screens: 2 columns
+                columns = Math.min(2, numPosts);
+                gap = 24;
+                cardWidth = Math.floor((maxContainerWidth - (gap * (columns - 1))) / columns);
+                containerWidth = (cardWidth * columns) + (gap * (columns - 1));
+            } else {
+                // Small screens: 1 column
+                columns = 1;
+                gap = 16;
+                cardWidth = Math.min(400, maxContainerWidth);
+                containerWidth = cardWidth;
+            }
+            
+            return { columns, cardWidth, gap, containerWidth };
+        }
+
+        function createPostCard(post) {
+            const article = document.createElement('article');
+            article.className = 'post-card';
+            article.setAttribute('data-post', post.id);
+            article.style.height = '510px';
+            
+            // Set object-position based on imageX and imageY parameters
+            const imageX = post.imageX !== undefined ? post.imageX : 50; // Default to center (50%)
+            const imageY = post.imageY !== undefined ? post.imageY : 50; // Default to center (50%)
+            const objectPosition = `${imageX}% ${imageY}%`;
+            
+            article.innerHTML = `
+                <img src="${post.image}" 
+                     alt="${post.alt}" 
+                     class="post-image"
+                     style="object-position: ${objectPosition};">
+                <div class="post-content">
+                    <button class="close-btn" onclick="closePost(event)">&times;</button>
+                    <div>
+                        <div class="post-meta">${post.date} • ${post.readTime}</div>
+                        <h2 class="post-title">${post.title}</h2>
+                        <div class="post-excerpt">
+                            <p>${post.excerpt}</p>
+                        </div>
+                    </div>
+                    <div class="post-card-footer">
+                        <a href="#" class="read-more" onclick="expandPost(event, ${post.id}, ${post.isPortrait || false})">Read more →</a>
+                    </div>
+                    <div class="post-full-content">
+                        ${post.fullContent}
+                    </div>
+                </div>
+            `;
+            
+            return article;
+        }
+
+        // Recalculate layout on window resize
+        window.addEventListener('resize', function() {
+            createDynamicGrid();
+        });
+
+        function expandPost(event, postId, isPortrait = false) {
+            event.preventDefault();
+            event.stopPropagation();
+            
+            const postCard = document.querySelector(`[data-post="${postId}"]`);
+            const overlay = document.getElementById('overlay');
+            
+            // Add expanded class
+            postCard.classList.add('expanded');
+            
+            // Add portrait layout class if specified
+            if (isPortrait) {
+                postCard.classList.add('portrait-layout');
+            }
+            
+            overlay.classList.add('active');
+            
+            // Prevent body scroll
+            document.body.style.overflow = 'hidden';
+            
+            // Scroll to top of expanded post
+            postCard.scrollTop = 0;
+        }
+
+        function closePost(event) {
+            event.preventDefault();
+            event.stopPropagation();
+            
+            const postCard = event.target.closest('.post-card');
+            const overlay = document.getElementById('overlay');
+            
+            // Remove expanded and portrait-layout classes
+            postCard.classList.remove('expanded', 'portrait-layout');
+            overlay.classList.remove('active');
+            
+            // Restore body scroll
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close post when clicking overlay
+        document.getElementById('overlay').addEventListener('click', function() {
+            const expandedPost = document.querySelector('.post-card.expanded');
+            if (expandedPost) {
+                closePost({ target: expandedPost, preventDefault: () => {}, stopPropagation: () => {} });
+            }
+        });
+
+        // Close post with Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                const expandedPost = document.querySelector('.post-card.expanded');
+                if (expandedPost) {
+                    closePost({ target: expandedPost, preventDefault: () => {}, stopPropagation: () => {} });
+                }
+            }
+        });
+
+        // Prevent clicks inside expanded post from closing it
+        document.addEventListener('click', function(event) {
+            const expandedPost = document.querySelector('.post-card.expanded');
+            if (expandedPost && !expandedPost.contains(event.target) && !event.target.classList.contains('overlay')) {
+                return;
+            }
+        });
     </script>
 </body>
 </html>
