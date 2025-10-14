@@ -2,40 +2,49 @@
     --darkgray: #212329;
     --brightgray: #828387;
 }
-freiburgskyline{
-    width: 100%;
-}
 body {
-  background: linear-gradient(20deg, #0f1685, #011840, #041f4d);
-  animation: gradient 140s linear infinite;
-  background-clip: content-box;
+  background-image: linear-gradient(
+    30deg, 
+    #070255, 
+    rgb(0, 18, 122),
+    rgb(15, 0, 218)
+  ) !important;
+  background-size: 280% 280% !important;
+  background-clip: content-box !important;
+  animation: gradient 20s ease infinite !important;
 }
 @keyframes gradient {
   0% {
-    background-position: 10% 10%;
+    background-position: 0% 0%;
   }
   50% {
-    background-position: 20% 20%;
+    background-position: 100% 10%;
   }
   100% {
-    background-position: 10% 10%;
+    background-position: 0% 0%;
   }
 }
 @media screen and (max-width: 768px) {
     body {
-      background: linear-gradient(20deg, #0f1685, #011840, #041f4d);
-      animation: gradient 200s ease infinite;
-      background-clip: content-box;
+      background-image: linear-gradient(
+        20deg, 
+        #070255, 
+        rgb(0, 18, 122),
+        rgb(12, 0, 179)
+      ) !important;
+      background-size: 400% 400% !important;
+      background-clip: content-box !important;
+      animation: gradientMobile 20s ease infinite !important;
     }
-  @keyframes gradient {
+  @keyframes gradientMobile {
     0% {
-      background-position: 30% 30%;
-    }
+      background-position: 100% 0%;
+    } 
     50% {
-      background-position: 20% 20%;
+      background-position: 0% 100%;
     }
     100% {
-      background-position: 30% 30%;
+      background-position: 100% 0%;
     }
   }
 }
