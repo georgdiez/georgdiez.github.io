@@ -58,18 +58,23 @@
                     It is a major step forward in interpreting time-trace data, such as molecular dynamics simulations and can be used 
                     to discover hidden or unobserved degrees of freedom.`,
                     isPortrait: true,
-                    fullContent: `<p>After roughly four years of research and countless cups of coffee (classic PhD humor, I know), 
-                        I'm thrilled to announce that I successfully defended my PhD thesis on September 9th, 2025!</p>
-                        <p>My committee consisted of Prof. Gerhard Stock, Prof. Günter Reiter and Prof. Joachim Dzubiella.
-                        You can find my thesis <a href="https://freidok.uni-freiburg.de/data/271694" class="text-blue-700 hover:text-blue-300">here</a>.</p>
-                        <p>I am extremely grateful and happy for all the support I have received during this journey,
-                        especially from my supervisor Gerhard, who somehow managed to keep me on track and had 
-                        a lot of patience during my more ambitious research ideas,
-                        and my dear colleagues on the 10th floor of the Physics high-rise
-                        (also for preparing this awesome doctoral hat).
-                        Huge thanks to the friends and family who showed up and supported me on this special day. 
-                        Afterwards we enjoyed nice finger food and drinks on the rooftop.</p>
-                        <img src="img/defense2.JPG" alt="Celebration afterwards" style="width: 100%; max-width: 800px; height: auto; margin: 1.5rem auto; display: block; border-radius: 8px;">
+                    fullContent: `<p> You can imagine analyising a molecular dynamics simulation of a protein like working with a flipbook.
+                        Each page shows a snapshot of the protein at that given time and its now up to you to figure out what is causing 
+                        the changes you see from page to page. In reality, this is quite challenging, as there are up tp millions of snapshots 
+                        and each one tracks thousands of atoms.
+                        Thus, a medium-sized protein can easily have several thousand degrees of freedom, making it nearly impossible
+                        to directly interpret what's happening.</p>
+
+                        <p> In order to deal with this vast amount of data, scientists typically rely on dimensionality reduction techniques
+                            to extract the key information. Standard dimensionality reduction methods aim to extract the relevant information
+                            by treating each snapshot (or page of the flipbook) independently - just as if someone shuffled the pages
+                            randomly. This greatly simplifies the analysis, but 
+
+                        <p> Find more information here:
+                        <ul>
+                            <li><a href="https://doi.org/10.1063/5.0282147" class="text-blue-700 hover:text-blue-300">Paper: Recovering Hidden Degrees of Freedom Using Gaussian Processes</a></li>
+                            <li><a href="https://github.com/moldyn/GP-TEMPEST" class="text-blue-700 hover:text-blue-300">Github Code</a></li>
+                        </ul>    
                         `
                 },
                 {
@@ -96,39 +101,6 @@
                         Afterwards we enjoyed nice finger food and drinks on the rooftop.</p>
                         <img src="img/defense2.JPG" alt="Celebration afterwards" style="width: 100%; max-width: 800px; height: auto; margin: 1.5rem auto; display: block; border-radius: 8px;">
                         `
-                },
-                {
-                    id: 2,
-                    image: "img/defense.JPG",
-                    imageX: 50, 
-                    imageY: 10, 
-                    alt: "Defense Celebration",
-                    date: "January 15, 2024",
-                    readTime: "2 min read",
-                    title: "PhD Defense Done!",
-                    excerpt: "On September 9th, 2025, I successfully defended my PhD thesis!",
-                    isPortrait: false,
-                    fullContent: `
-                        <p>After years of research, countless experiments, and many late nights in the lab, 
-                        I'm thrilled to announce that I successfully defended my PhD thesis on September 9th, 2025!</p>
-                        <p>The defense was both challenging and rewarding, with great questions from the committee 
-                        that really pushed me to think deeply about my research contributions.</p>
-                        <p>This journey has taught me so much about persistence, critical thinking, and the 
-                        importance of collaboration in scientific research.</p>`
-                },
-                {
-                    id: 3,
-                    image: "img/defense.JPG",
-                    imageX: 50, // X position in percentage (0-100)
-                    imageY: 10, // Y position in percentage (0-100) - 20% from top to focus on upper part
-                    alt: "Defense Celebration",
-                    date: "January 15, 2024",
-                    readTime: "2 min read",
-                    title: "PhD Defense Done!",
-                    excerpt: "On September 9th, 2025, I successfully defended my PhD thesis!",
-                    isPortrait: true,
-                    fullContent: `
-                        <p>nothing here yet</p>`
                 },
             ];
 
