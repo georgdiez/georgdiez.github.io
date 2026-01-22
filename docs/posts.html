@@ -63,14 +63,27 @@
                         the changes you see from page to page. In reality, this is quite challenging, as there are up tp millions of snapshots 
                         and each one tracks thousands of atoms.
                         Thus, a medium-sized protein can easily have several thousand degrees of freedom, making it nearly impossible
-                        to directly interpret what's happening.</p>
+                        to directly interpret what's happening.
+                        In order to deal with this vast amount of data, scientists typically rely on dimensionality reduction techniques
+                        to extract the key information. Standard dimensionality reduction methods aim to extract the relevant information
+                        by treating each snapshot (or page of the flipbook) independently - just as if someone shuffled the pages
+                        randomly. This greatly simplifies the analysis, but contradicts the sequential nature of the data, where
+                        each snapshot is connected to the previous one via Newton's laws of motion.
+                        </p>
+                        <p><strong> Our Solution</strong></p>
 
-                        <p> In order to deal with this vast amount of data, scientists typically rely on dimensionality reduction techniques
-                            to extract the key information. Standard dimensionality reduction methods aim to extract the relevant information
-                            by treating each snapshot (or page of the flipbook) independently - just as if someone shuffled the pages
-                            randomly. This greatly simplifies the analysis, but 
+                        <p> We developed a new machine learning method that respects and leverages the sequential nature of time-trace data
+                        by explicitly modeling the temporal correlations using Gaussian processes. This means that our method 
+                        tracks how each snapshot relates to what came before and after it, preserving the natural flow of the 
+                        molecular dynamics simulation data. Frames or snapshots that look geometrically indistuinguishable can play
+                        out very differently in the full dynamical picture - allowing us to discover entirely new processes in the data!</p>
 
-                        <p> Find more information here:
+                        <p><strong> What we found</strong></p>
+
+                        <p> </p>
+                        
+
+                        <p> <strong>Find more information here:</strong></p>
                         <ul>
                             <li><a href="https://doi.org/10.1063/5.0282147" class="text-blue-700 hover:text-blue-300">Paper: Recovering Hidden Degrees of Freedom Using Gaussian Processes</a></li>
                             <li><a href="https://github.com/moldyn/GP-TEMPEST" class="text-blue-700 hover:text-blue-300">Github Code</a></li>
