@@ -53,7 +53,7 @@
                     Georg Diez, PhD
                 </p>
                 <p class="italic font-serif text-lg md:text-2xl text-white text-justify px-4 md:px-4">
-                    I completed my PhD in Physics at the 
+                    I completed my PhD in theoretical Physics at the 
                     <a class="font-bold text-blue-200 hover:text-blue-300 hover:font-extrabold"
                     target="_blank" style="white-space: nowrap" href="https://uni-freiburg.de/">University of Freiburg</a>
                     in the group of <a class="font-bold text-blue-200 hover:text-blue-300 hover:font-extrabold"
@@ -77,7 +77,7 @@
         </div>
         
         <section id="scrolldown" class="scrolldown absolute bottom-4 left-1/2 transform -translate-x-1/2 z-20 mb-12 md:mb-4">
-            <a href="#nav-placeholder"><span></span><p class="pb-4 md:pb-12">Scroll</p></a>
+            <a href="#"><span></span><span class="block pb-4 md:pb-12">Scroll</span></a>
         </section>
     </div>
 
@@ -174,16 +174,10 @@
     </script>
     <script src="./scripts/graph.js"></script>
     <script>
-        (function(){
-            var a = document.querySelector('#scrolldown a');
-            var target = document.getElementById('nav-placeholder');
-            if (!a || !target) return;
-            a.addEventListener('click', function(e){
-              e.preventDefault();
-              target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-              history.replaceState(null, '', '#nav-placeholder');
-            });
-        })();
+        document.querySelector('#scrolldown a').addEventListener('click', function(e) {
+            e.preventDefault();
+            (document.scrollingElement || document.documentElement).scrollBy({ top: window.innerHeight, behavior: 'smooth' });
+        });
     </script>
     <script>
         (function() {

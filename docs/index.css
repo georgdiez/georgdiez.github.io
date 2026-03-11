@@ -80,7 +80,7 @@ section::after {
 #scrolldown a {
   padding-top: 70px;
 }
-#scrolldown a span {
+#scrolldown a span:first-child {
   position: absolute;
   top: 0;
   left: 50%;
@@ -117,7 +117,7 @@ section::after {
     #scrolldown a {
       padding-top: 70px;
     }
-    #scrolldown a span {
+    #scrolldown a span:first-child {
       position: absolute;
       top: 0;
       left: 50%;
