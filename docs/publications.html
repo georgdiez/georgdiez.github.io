@@ -11,23 +11,6 @@
     <link rel="stylesheet" href="./styles.css">
     <link rel="stylesheet" href="./nav-round.css">
     <title>Georg Diez - Publications</title>
-    <script>
-      $(function(){
-        $("#nav-placeholder").load("./nav.html", function() {
-          // Prevent multiple script loading
-          if (!window.navScriptLoaded) {
-            window.navScriptLoaded = true;
-            $.getScript("./scripts/jquery-3.5.1.js", function() {
-              $.getScript("./scripts/velocity_navround.min.js", function() {
-                $.getScript("./scripts/nav-round.js", function() {
-                  $.getScript("./scripts/modernizr.min.js");
-                });
-              });
-            });
-          }
-        });
-      });
-    </script>
     <style>
       .flex {
         background: none !important;
