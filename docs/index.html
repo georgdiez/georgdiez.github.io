@@ -13,25 +13,9 @@
         integrity="sha256-iaFenEC8axSAnyNu6M0+0epCOTwfbKVceFXNd5s/ki4="
         crossorigin="anonymous">
     </script>
-    <script
-        src="https://unpkg.com/vue@3.0.5/dist/vue.global.js"
-        integrity="sha384-0k9//QJdpmfSdp5IK3oJjOYPfz42f2FE0goMLtK9Vq7aKllvc4Lnz7lHPHiFhvDP"
-        crossorigin="anonymous">
-    </script>
-    <script
-        src="https://unpkg.com/vue@2.6.12/dist/vue.js"
-        integrity="sha384-ma9ivURrHX5VOB4tNq+UiGNkJoANH4EAJmhxd1mmDq0gKOv88wkKZOfRDOpXynwh"
-        crossorigin="anonymous">
-    </script>
-    <script
-        src="https://unpkg.com/vuetrend"
-        integrity="sha384-54EpGrzqCBOnNf3aOfEeSTukb0Se+M/F+Anprg8bpF9TMCT6FnDU7fVuxX8b"
-        crossorigin="anonymous">
-    </script>
     <script src="scripts/ownscripts.js"></script>
     <script src="scripts/EasePack.min.js"></script>
     <script src="scripts/TweenLite.min.js"></script>
-    <script src="trend.js"></script>
 
     <!--Load css-->
     <link rel="stylesheet" href="./styles.css">
@@ -70,12 +54,10 @@
                 </p>
                 <p class="italic font-serif text-lg md:text-2xl text-white text-justify px-4 md:px-4">
                     I completed my PhD in Physics at the 
-                    <a class="font-bold text-blue-200"
-                    target="_blank" style="white-space: nowrap" href="https://uni-freiburg.de/"
-                    class="hover:text-blue-300 hover:font-extrabold">University of Freiburg</a>
-                    in the group of <a class="font-bold text-blue-200"
-                    target="_blank" style="white-space: nowrap" href="https://www.moldyn.uni-freiburg.de/"
-                    class="hover:text-blue-300 hover:font-extrabold">Prof. Gerhard Stock</a>, where I worked at the 
+                    <a class="font-bold text-blue-200 hover:text-blue-300 hover:font-extrabold"
+                    target="_blank" style="white-space: nowrap" href="https://uni-freiburg.de/">University of Freiburg</a>
+                    in the group of <a class="font-bold text-blue-200 hover:text-blue-300 hover:font-extrabold"
+                    target="_blank" style="white-space: nowrap" href="https://www.moldyn.uni-freiburg.de/">Prof. Gerhard Stock</a>, where I worked at the 
                     interface of physics and biology, combining machine learning with physics-informed modeling to understand
                     protein dynamics.
                 </p>
@@ -180,7 +162,6 @@
             window.onscroll = function() {dynamicNav()};
             dynamicNav();
         });
-        window.onscroll = function() {dynamicNav()};
         var header = document.getElementById("nav-placeholder");
         var sticky = header.offsetTop - header.offsetTop / 2;
         function dynamicNav() {
