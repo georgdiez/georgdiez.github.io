@@ -1,7 +1,10 @@
-# Georg Diez personal website
+# Georg Diez — Personal Website
+
+Source code for [georgdiez.github.io](https://georgdiez.github.io).
 
 ## Dependencies
-- npm
+
+- Node.js / npm
 - tailwindcss
 - postcss-cli
 - autoprefixer
@@ -10,18 +13,25 @@
 - cssnano
 - slick-carousel
 
-## How to build website
+## Setup
 
-# Pull git repository
-git clone git@github.com:gegabo/georgdiez.git
+```bash
+# Clone the repository
+git clone git@github.com:georgdiez/georgdiez.github.io.git
+cd georgdiez.github.io
 
-# Go to folder and install dependencies
-- npm install tailwindcss postcss-cli autoprefixer
-- npm install cross-env @fullhuman/postcss-purgecss cssnano
-- npm install slick-carousel
-# Build (for building)
+# Install dependencies
+npm install tailwindcss postcss-cli autoprefixer
+npm install cross-env @fullhuman/postcss-purgecss cssnano
+npm install slick-carousel
+```
+
+## Build
+
+```bash
+# Development build
 npm run build
 
-# Build for production (smaller css file)
+# Production build (minified CSS)
 npm run production
-
+```
