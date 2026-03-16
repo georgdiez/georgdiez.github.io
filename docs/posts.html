@@ -54,40 +54,44 @@
                     date: "September 22, 2025",
                     readTime: "5 min read",
                     title: "GP-VAE out!",
-                    excerpt: `Happy to share that our latest work on Gaussian processes variational autoencoders (GP-VAEs) is out in JCP. 
-                    It is a major step forward in interpreting time-trace data, such as molecular dynamics simulations and can be used 
-                    to discover hidden or unobserved degrees of freedom.`,
+                    excerpt: `Our paper on GP-VAEs just came out in JCP. Most methods for analyzing molecular dynamics simulations
+                    treat each snapshot as if it exists in isolation — ignoring that the data has a natural time ordering.
+                    We show that bringing time back into the picture reveals protein states that are simply invisible to standard approaches.`,
                     isPortrait: true,
-                    fullContent: `<p> You can imagine analyising a molecular dynamics simulation of a protein like working with a flipbook.
-                        Each page shows a snapshot of the protein at that given time and its now up to you to figure out what is causing 
-                        the changes you see from page to page. In reality, this is quite challenging, as there are up tp millions of snapshots 
-                        and each one tracks thousands of atoms.
-                        Thus, a medium-sized protein can easily have several thousand degrees of freedom, making it nearly impossible
-                        to directly interpret what's happening.
-                        In order to deal with this vast amount of data, scientists typically rely on dimensionality reduction techniques
-                        to extract the key information. Standard dimensionality reduction methods aim to extract the relevant information
-                        by treating each snapshot (or page of the flipbook) independently - just as if someone shuffled the pages
-                        randomly. This greatly simplifies the analysis, but contradicts the sequential nature of the data, where
-                        each snapshot is connected to the previous one via Newton's laws of motion.
-                        </p>
-                        <p><strong> Our Solution</strong></p>
+                    fullContent: `<p>Imagine trying to understand how a protein moves by watching a flipbook. Each page shows the protein
+                        at a single moment in time — thousands of atoms, all in slightly different positions from the page before.
+                        To make sense of all this data, researchers typically compress it down to a few key variables. But here's
+                        the catch: most methods shuffle the pages before doing that compression. They treat each snapshot as independent,
+                        ignoring the fact that each frame follows directly from the one before it via Newton's laws of motion.</p>
 
-                        <p> We developed a new machine learning method that respects and leverages the sequential nature of time-trace data
-                        by explicitly modeling the temporal correlations using Gaussian processes. This means that our method 
-                        tracks how each snapshot relates to what came before and after it, preserving the natural flow of the 
-                        molecular dynamics simulation data. Frames or snapshots that look geometrically indistuinguishable can play
-                        out very differently in the full dynamical picture - allowing us to discover entirely new processes in the data!</p>
+                        <p>That's the problem we wanted to fix.</p>
 
-                        <p><strong> What we found</strong></p>
+                        <p><strong>Our approach</strong></p>
 
-                        <p> </p>
-                        
+                        <p>We combined variational autoencoders — a type of neural network for compressing high-dimensional data — with
+                        Gaussian processes, a statistical tool that naturally captures how things evolve over time. The result is a
+                        method that reduces protein simulation data to a handful of meaningful variables while explicitly respecting
+                        the time ordering of the data.</p>
 
-                        <p> <strong>Find more information here:</strong></p>
+                        <p><strong>What we found</strong></p>
+
+                        <p>We tested this on T4 lysozyme, a well-studied enzyme that performs a simple open ↔ closed motion — think
+                        Pac-Man. Numerous previous analyses of a 50 μs simulation of this protein found two main states: open and closed.</p>
+
+                        <p>Our method found three. The open state actually contains two dynamically distinct sub-states that look
+                        structurally identical. One of them transitions normally to the closed state. The other is kinetically isolated —
+                        it never directly converts to closed, even though it is geometrically indistinguishable from the first.</p>
+
+                        <p>Even more surprising: this hidden sub-state turned out to be linked to a completely different region of the
+                        protein, one with no obvious structural connection to the opening motion. The link only becomes visible when you
+                        account for the timing of events. The open ↔ closed transition only happens when that other region is in a
+                        specific configuration — a functional dependency that purely structural methods simply cannot detect.</p>
+
+                        <p><strong>Find more information here:</strong></p>
                         <ul>
                             <li><a href="https://doi.org/10.1063/5.0282147" class="text-blue-700 hover:text-blue-300">Paper: Recovering Hidden Degrees of Freedom Using Gaussian Processes</a></li>
                             <li><a href="https://github.com/moldyn/GP-TEMPEST" class="text-blue-700 hover:text-blue-300">Github Code</a></li>
-                        </ul>    
+                        </ul>
                         `
                 },
                 {
