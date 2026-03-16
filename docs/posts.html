@@ -95,6 +95,54 @@
                         `
                 },
                 {
+                    id: 3,
+                    image: "img/mosaic.png",
+                    imageX: 50,
+                    imageY: 50,
+                    alt: "MoSAIC correlation clustering",
+                    date: "August 1, 2022",
+                    readTime: "4 min read",
+                    title: "MoSAIC: detecting correlated motion in proteins",
+                    excerpt: `Protein simulations produce data for thousands of atomic coordinates, most of which are noise.
+                    MoSAIC identifies which ones actually matter by grouping coordinates that move together — separating
+                    genuine collective motions from irrelevant fluctuations.`,
+                    isPortrait: false,
+                    fullContent: `<p>A typical protein simulation generates data for thousands of atomic coordinates. Most of them are
+                        functually irrelevant — thermal noise, local fluctuations that don't tell you anything about how the protein
+                        actually functions. If you feed all of that into a standard analysis, the noise drowns out the signal.</p>
+
+                        <p>The usual fix is to manually pick which coordinates to look at. But that requires <em>a priori</em> knowledge of what matters
+                        beforehand, which you often don't — especially if you're trying to discover something new.</p>
+
+                        <p><strong>What MoSAIC does</strong></p>
+
+                        <p>MoSAIC computes correlations between all pairs of coordinates in the simulation and uses a community
+                        detection algorithm to group them into clusters of tightly correlated motion. Each cluster represents a
+                        genuine collective process — coordinates that move together because they're part of the same functional
+                        mechanism. Weakly correlated or isolated coordinates get flagged as noise and set aside.</p>
+
+                        <p>The key idea is simple: correlation structure tells you a lot about what's physically meaningful, even
+                        before you do any dimensionality reduction. Running MoSAIC first gives you a much cleaner starting point
+                        for everything that follows.</p>
+
+                        <p><strong>What we found</strong></p>
+
+                        <p>Applied to T4 lysozyme, MoSAIC cleanly separates the open ↔ closed motion from other, unrelated
+                        conformational changes happening elsewhere in the protein — without any prior knowledge of what to look
+                        for. For villin headpiece, a small protein that folds on a microsecond timescale, it identifies the
+                        contacts that actually drive the folding process.</p>
+
+                        <p>Since then, MoSAIC has become a standard first step in our analyses and has been adopted
+                        by other groups as a general-purpose feature selection tool for molecular dynamics data.</p>
+
+                        <p><strong>Find more information here:</strong></p>
+                        <ul>
+                            <li><a href="https://doi.org/10.1021/acs.jctc.2c00337" class="text-blue-700 hover:text-blue-300">Paper: Correlation-based feature selection to identify functional dynamics in proteins</a></li>
+                            <li><a href="https://github.com/moldyn/MoSAIC" class="text-blue-700 hover:text-blue-300">Github Code</a></li>
+                        </ul>
+                        `
+                },
+                {
                     id: 4,
                     image: "img/defense.JPG",
                     imageX: 50, 
