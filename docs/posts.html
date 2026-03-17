@@ -120,6 +120,60 @@
                         `
                 },
                 {
+                    id: 2,
+                    image: "img/normi.png",
+                    imageX: 50,
+                    imageY: 50,
+                    alt: " Normalized Mutual Information",
+                    date: "August 2, 2024",
+                    readTime: "4 min read",
+                    title: "A correlation for the 21st century: Normalized Mutual Information",
+                    excerpt: `Mutual information is a powerful way to measure correlations — but unlike the Pearson coefficient,
+                    it has no upper bound, making it hard to interpret. We developed a normalization that fixes this
+                    for data of any dimensionality, including multidimensional features such as 3D atomic coordinates.`,
+                    isPortrait: true,
+                    fullContent: `<p>Correlation is one of the most fundamental quantities in data analysis. 
+                        In structural biology, you constantly want to know: do these two parts of the protein move together? 
+                        Due to its simplicity and interpretability, the go-to tool is the Pearson correlation coefficient, which is bounded between -1 and 1.
+                        </p>
+
+                        <p>The problem is that Pearson is defined for scalar variables. Protein coordinates are three-dimensional,
+                        and when you try to apply Pearson to 3D Cartesian coordinates, you get spurious patterns that depend
+                        on the relative orientation of the coordinates rather than the actual physical motion or correlation. 
+                        </p>
+
+                        <p>Mutual information (MI), on the other hand, doesn't suffer from this problem — it makes no assumptions about the shape of
+                        the data and handles multidimensional variables naturally. But MI has its own issue: it's unbounded.
+                        A value of 0.4 could mean strong correlation in one context and weak correlation in another. Without
+                        a proper normalization, it's hard to compare results across different systems or variables.</p>
+
+                        <p><strong>Our approach</strong></p>
+
+                        <p>We derived a normalization for MI that is invariant under variable transformations — meaning
+                        it gives consistent results regardless of how you parametrize or rotate your coordinates. The key
+                        ingredient is replacing the standard differential entropy with the relative entropy introduced by
+                        Jaynes, which we estimate efficiently using k-nearest-neighbor statistics. The result is a
+                        normalized MI that is bounded between 0 and 1, at essentially no extra computational cost compared
+                        to the unnormalized version.</p>
+
+                        <p><strong>What we found</strong></p>
+
+                        <p>Applied to T4 lysozyme, the normalized MI correctly recovers the known allosteric coupling between
+                        the hinge and mouth regions of the protein, and agrees well with the contact-based MoSAIC analysis.
+                        We also showed that the arguably most widely used alternative normalization — the Gel'fand-Yaglom formula —
+                        systematically overestimates correlations, assigning values around 0.7 to residue pairs that actually have hardly
+                        any dynamic coupling at all.
+                        And the standard Pearson coefficient, applied to Cartesian coordinates,
+                        produces artifacts that have nothing to do with the actual dynamics.</p>
+
+                        <p><strong>Find more information and the code here:</strong></p>
+                        <ul>
+                            <li><a href="https://doi.org/10.1063/5.0217960" class="text-blue-700 hover:text-blue-300">Paper: Accurate estimation of the normalized mutual information of multidimensional data</a></li>
+                            <li><a href="https://github.com/moldyn/normi" class="text-blue-700 hover:text-blue-300">Github Code</a></li>
+                        </ul>
+                        `
+                },
+                {
                     id: 3,
                     image: "img/mosaic.png",
                     imageX: 50,
