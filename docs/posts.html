@@ -46,6 +46,56 @@
             const container = document.getElementById('posts-container');
             const posts = [
                 {
+                    id: 6,
+                    image: "img/hp35_network.svg",
+                    imageX: 50,
+                    imageY: 50,
+                    alt: "HP35 folding kinetic network",
+                    date: "February 24, 2026",
+                    readTime: "5 min read",
+                    title: "A simple preprocessing step that changes what you see",
+                    excerpt: `Standard dimensionality reduction can erase conformational states before you even start analyzing them.
+                    We show that a simple Gaussian filter applied to the input coordinates — before any clustering — recovers
+                    states that are genuinely there but cannot be resolved by conventional pipelines.`,
+                    isPortrait: true,
+                    fullContent: `<p>When you run a long molecular dynamics simulation, you end up with a trajectory of millions of
+                        snapshots. Making sense of that data usually means reducing it to a handful of collective variables —
+                        principal components, contact distances, dihedral angles — and then clustering those to find the distinct
+                        conformational states.</p>
+
+                        <p>The problem is that this reduction can lead to projection artifacts which can actively mask the 
+                            information you're looking for. 
+                            That is, important states that genuinely exist in the original high-dimensional input data
+                            can be blurred with other states and therefore disappear as distinct functional (intermediate)
+                            coformations of the protein.
+                            You end up confidently finding the states that survived projection — with no indication that others ever existed.</p>
+
+                        <p><strong>What we tried</strong></p>
+
+                        <p>The fix, it turns out, is remarkably simple. Before projecting the trajectory onto collective
+                        variables, apply a Gaussian filter along the time axis. This is a low-pass filter: it smooths out fast
+                        local fluctuations while leaving the slower, larger-scale motions intact. The result is that transient
+                        states — which previously blurred into the background — become distinct, stable clusters that standard
+                        methods can actually find.</p>
+
+                        <p>The key advantage over existing approaches is that filtering acts <em>before</em> state definition. 
+                            Other methods, like coring, can only refine the states you already found---they can't recover states 
+                            that were erased by projection.</p>
+
+                        <p><strong>What we found</strong></p>
+
+                        <p>We tested this on the villin headpiece HP35, a small protein that folds on a microsecond timescale.
+                        Without filtering, the standard pipeline finds around 32 microstates. With Gaussian filtering applied
+                        first, the number of well-defined microstates jumps to several hundred — revealing a much richer picture
+                        of the folding funnel than previously seen for this system.</p>
+
+                        <p><strong>Find more information here:</strong></p>
+                        <ul>
+                            <li><a href="https://arxiv.org/abs/2602.21006" class="text-blue-700 hover:text-blue-300">Preprint: Lost in Projection? Gaussian Filtering Recovers Hidden Conformational States</a></li>
+                        </ul>
+                        `
+                },
+                {
                     id: 5,
                     image: "img/gp_vae.png",
                     imageX: 50, 
@@ -218,6 +268,52 @@
                         <ul>
                             <li><a href="https://doi.org/10.1021/acs.jctc.2c00337" class="text-blue-700 hover:text-blue-300">Paper: Correlation-based feature selection to identify functional dynamics in proteins</a></li>
                             <li><a href="https://github.com/moldyn/MoSAIC" class="text-blue-700 hover:text-blue-300">Github Code</a></li>
+                        </ul>
+                        `
+                },
+                {
+                    id: 1,
+                    image: "img/t4l_mechanism.jpeg",
+                    imageX: 50,
+                    imageY: 50,
+                    alt: "T4 lysozyme allosteric contacts",
+                    date: "June 8, 2022",
+                    readTime: "4 min read",
+                    title: "How T4 lysozyme communicates across its entire structure",
+                    excerpt: `Allostery — where an event at one site in a protein triggers a response at a distant site — is
+                    fundamental to how proteins function. We traced exactly how this signal travels through T4 lysozyme and
+                    identified the network of contacts that makes the whole transition cooperative.`,
+                    isPortrait: true,
+                    fullContent: `<p>T4 lysozyme is one of the most studied proteins in structural biology.
+                        Just like a Pac-Man, the two domains of the enzyme hinge relative to each other
+                        and perform the open ↔ closed motion of the protein, which is essential to the 
+                        its function.
+                        However, the structural mechanism behind the transition had remained surprisingly unclear. 
+                        How does a local motion at the hinge propagate all the way to
+                        the distant mouth region?</p>
+
+                        <p><strong>Finding the transmission network</strong></p>
+
+                        <p>We used MoSAIC to systematically scan all pairwise contact distances in a long T4 lysozyme
+                        simulation and identify which ones move in concert. The result was a network of 85 correlated
+                        contacts spanning the protein from the hinge to the mouth — a continuous chain of residues that
+                        collectively undergo a coordinated rearrangement whenever the protein switches between states.</p>
+
+                        <p>At the heart of this network is a hydrophobic core formed by four residues: Phe4, Phe67,
+                        Leu7, and Phe104. These residues sit at the interface between the two lobes and act like
+                        interlocking cogwheels — a small rotation on one side produces a coupled displacement on the other.
+                        It is this mechanical linkage that transmits the hinge motion to the mouth region.</p>
+
+                        <p><strong>Cooperativity</strong></p>
+
+                        <p>What makes the transition remarkable is that it's cooperative: all 85 contacts switch
+                        simultaneously rather than sequentially. This all-or-nothing character is the hallmark of a
+                        genuine allosteric mechanism, and it explains why the protein doesn't get trapped in partially
+                        open or misfolded intermediate conformations on its way between states.</p>
+
+                        <p><strong>Find more information here:</strong></p>
+                        <ul>
+                            <li><a href="https://doi.org/10.1016/j.jmb.2022.167679" class="text-blue-700 hover:text-blue-300">Paper: Cooperative Protein Allosteric Transition Mediated by a Fluctuating Transmission Network</a></li>
                         </ul>
                         `
                 },
