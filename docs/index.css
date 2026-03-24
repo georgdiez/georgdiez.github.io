@@ -166,3 +166,9 @@ section::after {
 .flex {
   background: none !important;
 }
+@media screen and (max-width: 767px) {
+  .hero-portrait {
+    width: 42vw;
+    height: 42vw;
+  }
+}
