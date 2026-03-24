@@ -13,7 +13,6 @@
     <link rel="stylesheet" href="./posts.css">
     <title>Georg Diez - Posts</title>
 </head>
-</head>
 
 <body class="antialiased min-w-screen overflow-x-hidden bg-gray-50">
     <div id="nav-placeholder"></div>
@@ -319,15 +318,6 @@
                 },
             ];
 
-            // Calculate optimal layout
-            const layout = calculateOptimalLayout(posts.length);
-            console.log("=== DYNAMIC GRID DEBUG ===");
-            console.log("Screen width:", window.innerWidth);
-            console.log("Container width:", layout.containerWidth);
-            console.log("Columns:", layout.columns);
-            console.log("Card width:", layout.cardWidth);
-            console.log("Gap:", layout.gap);
-
             // Create grid container with calculated dimensions
             container.style.width = layout.containerWidth + 'px';
             container.style.display = 'grid';
@@ -350,7 +340,6 @@
                 cardElement.style.gridColumn = col;
                 cardElement.style.gridRow = row;
                 
-                console.log(`Card ${post.id}: Row ${row}, Column ${col}`);
                 
                 container.appendChild(cardElement);
             });
