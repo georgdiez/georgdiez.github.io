@@ -39,20 +39,32 @@
     <div class="min-h-screen w-screen flex flex-col md:px-10 relative pb-24" id="dynamicgraph">
         <canvas class="absolute z-0 inset-0" id="dynamicgraph-canvas"></canvas>
         
-        <div class="w-full flex flex-row pt-10 md:pt-20 order-1 md:order-2 relative z-10">
-            <div class="flex w-auto md:w-1/2 items-start justify-center px-4">
-                <!-- Add your image here - replace with your image path -->
+        <div class="w-full flex flex-col md:flex-row pt-16 md:pt-20 order-1 md:order-2 relative z-10">
+            <!-- MOBILE ONLY: circle + name in a row -->
+            <div class="md:hidden flex flex-row items-center px-4 mb-4">
                 <img
                     src="img/cv_img.jpg"
                     alt="Georg Diez"
-                    class="w-32 h-32 md:w-64 md:h-64 rounded-full object-cover"
+                    class="hero-portrait rounded-full object-cover flex-shrink-0"
                 />
-            </div>
-            <div class="flex-1 md:w-1/2 flex flex-col">
-                <p class="text-4xl md:text-7xl text-right font-serif text-white px-4 pt-10 pb-6 md:pt-0">
+                <p class="flex-1 text-right text-3xl font-serif text-white pl-4">
                     Georg Diez, PhD
                 </p>
-                <p class="italic font-serif text-lg md:text-2xl text-white text-justify px-4 md:px-4">
+            </div>
+            <!-- DESKTOP ONLY: large circle in left half -->
+            <div class="hidden md:flex md:w-1/2 items-center justify-center px-4">
+                <img
+                    src="img/cv_img.jpg"
+                    alt="Georg Diez"
+                    class="w-64 h-64 rounded-full object-cover"
+                />
+            </div>
+            <!-- BOTH: bio text. On mobile: full width below. On desktop: right half -->
+            <div class="flex flex-col px-4 md:w-1/2">
+                <p class="hidden md:block text-7xl text-right font-serif text-white pb-6">
+                    Georg Diez, PhD
+                </p>
+                <p class="italic font-serif text-sm md:text-2xl text-white text-justify">
                     I completed my PhD in theoretical Physics at the
                     <a class="font-bold text-blue-200 hover:text-blue-300 hover:font-extrabold"
                     target="_blank" style="white-space: nowrap" href="https://uni-freiburg.de/">University of Freiburg</a>
@@ -61,7 +73,7 @@
                     interface of physics and biology, combining machine learning with physics-informed modeling to understand
                     protein dynamics.
                 </p>
-                <p class="md:hidden italic font-serif text-lg text-white text-justify px-4 mt-4">
+                <p class="md:hidden text-sm text-gray-100 text-justify mt-4">
                     My expertise lies in translating complex problems into actionable insights through
                     data-driven analysis.
                     I develop predictive models that uncover hidden patterns in high-dimensional
@@ -71,8 +83,8 @@
         </div>
 
 
-        <div class="hidden md:flex md:flex-row order-2 md:order-1 relative z-10">
-            <div class="w-full md:w-1/2 text-md md:text-xl text-gray-100 text-justify mt-8 md:mt-32 px-4">
+        <div class="flex flex-col-reverse md:flex-row order-2 md:order-1 relative z-10">
+            <div class="hidden md:block w-full md:w-1/2 text-md md:text-xl text-gray-100 text-justify mt-8 md:mt-32 px-4">
                 My expertise lies in translating complex problems into actionable insights through
                 data-driven analysis.
                 I develop predictive models that uncover hidden patterns in high-dimensional
