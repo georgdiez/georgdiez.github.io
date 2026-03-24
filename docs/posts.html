@@ -318,6 +318,9 @@
                 },
             ];
 
+            // Calculate optimal layout
+            const layout = calculateOptimalLayout(posts.length);
+
             // Create grid container with calculated dimensions
             container.style.width = layout.containerWidth + 'px';
             container.style.display = 'grid';
