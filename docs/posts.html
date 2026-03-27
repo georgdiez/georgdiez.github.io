@@ -8,7 +8,10 @@
         integrity="sha256-iaFenEC8axSAnyNu6M0+0epCOTwfbKVceFXNd5s/ki4="
         crossorigin="anonymous">
     </script>
+    <script src="scripts/EasePack.min.js"></script>
+    <script src="scripts/TweenLite.min.js"></script>
     <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="./index.css">
     <link rel="stylesheet" href="./nav-round.css">
     <link rel="stylesheet" href="./posts.css">
     <link rel="icon" type="image/svg+xml" href="img/favicon.svg">
@@ -20,19 +23,29 @@
     <meta property="og:url" content="https://georgdiez.github.io/posts.html">
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary_large_image">
+    <style>
+        section::after { display: none; }
+        .cd-nav-trigger.over-banner {
+            border-radius: 50%;
+            box-shadow: 0 0 20px 12px rgba(255, 255, 255, 0.45);
+        }
+    </style>
 </head>
 
-<body class="antialiased min-w-screen overflow-x-hidden bg-gray-50">
+<body class="antialiased min-w-screen overflow-x-hidden">
     <div id="nav-placeholder"></div>
-    
+
+    <div id="dynamicgraph" data-banner style="height: 86px; overflow: hidden; position: relative;">
+        <canvas id="dynamicgraph-canvas" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></canvas>
+    </div>
+
     <div class="overlay" id="overlay"></div>
-    
-    <div class="min-h-screen w-full p-4 md:p-8 lg:p-12">
+
+    <div class="w-full bg-gray-50 p-4 md:p-8 lg:p-12">
         <div style="max-width: 1400px; margin: 0 auto; padding: 0 2rem;">
-            <div class="mb-12 text-center">
+            <div class="mb-12">
                 <h1 class="text-5xl md:text-7xl font-serif text-gray-800 mb-4">Posts</h1>
             </div>
-
             <div id="posts-container" style="margin: 0 auto;">
             </div>
         </div>
@@ -42,8 +55,21 @@
 
     <script>
         $(function(){
-            $("#nav-placeholder").load("./nav.html");
+            $("#nav-placeholder").load("./nav.html", function() {
+                function updateNavBorder() {
+                    var trigger = document.querySelector('.cd-nav-trigger');
+                    if (!trigger) return;
+                    if ((window.pageYOffset || 0) < 150) {
+                        trigger.classList.add('over-banner');
+                    } else {
+                        trigger.classList.remove('over-banner');
+                    }
+                }
+                window.addEventListener('scroll', updateNavBorder);
+                updateNavBorder();
+            });
             $("#copyright-footer").load("./copyright-footer.html");
+
             
             // Create dynamic grid based on screen width
             createDynamicGrid();
@@ -492,5 +518,6 @@
             }
         });
     </script>
+    <script src="./scripts/graph.js?v=2"></script>
 </body>
 </html>
