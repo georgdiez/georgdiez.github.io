@@ -1,45 +1,61 @@
 (function() {
     var width, height, largeHeader, canvas, ctx, points, target, numCircles, neighbors, animateHeader = true;
+    var isBanner = false;
     initHeader();
     initAnimation();
     addListeners();
 
     function initHeader() {
         width = window.innerWidth;
-        
+
         largeHeader = document.getElementById('dynamicgraph');
-        
-        // Remove any existing height constraint
-        largeHeader.style.height = 'auto';
-        
-        // Let browser calculate layout, then measure
-        setTimeout(function() {
-            var viewport_height = window.innerHeight;
-            var content_height = largeHeader.scrollHeight;
-            
-            // Use whichever is larger
-            height = Math.max(viewport_height, content_height);
-            
-            console.log('viewport:', viewport_height, 'content:', content_height, 'using:', height);
-            
-            // Now set the height and update canvas
-            largeHeader.style.height = height + 'px';
-            canvas.height = height;
-            canvas.style.height = height + 'px';
-        }, 50);
-        
-        // Use viewport height temporarily for initial setup
-        height = window.innerHeight;
-        target = {x: width/2, y: height/2};
-        
-        if (width > 768) {
-            numCircles = 15;
-            neighbors = 4;
+        isBanner = largeHeader.hasAttribute('data-banner');
+
+        if (isBanner) {
+            // Height is CSS-controlled — never override it
+            height = largeHeader.offsetHeight || 86;
+            // Fixed target at ~70% width
+            target = {x: width * 0.7, y: height / 2};
+            if (width > 768) {
+                numCircles = 5;
+                neighbors = 3;
+            } else {
+                numCircles = 3;
+                neighbors = 2;
+            }
         } else {
-            numCircles = 6;
-            neighbors = 2;
+            // Remove any existing height constraint
+            largeHeader.style.height = 'auto';
+
+            // Let browser calculate layout, then measure
+            setTimeout(function() {
+                var viewport_height = window.innerHeight;
+                var content_height = largeHeader.scrollHeight;
+
+                // Use whichever is larger
+                height = Math.max(viewport_height, content_height);
+
+                console.log('viewport:', viewport_height, 'content:', content_height, 'using:', height);
+
+                // Now set the height and update canvas
+                largeHeader.style.height = height + 'px';
+                canvas.height = height;
+                canvas.style.height = height + 'px';
+            }, 50);
+
+            // Use viewport height temporarily for initial setup
+            height = window.innerHeight;
+            target = {x: width/2, y: height/2};
+
+            if (width > 768) {
+                numCircles = 15;
+                neighbors = 4;
+            } else {
+                numCircles = 6;
+                neighbors = 2;
+            }
         }
-        
+
         canvas = document.getElementById('dynamicgraph-canvas');
         canvas.width = width;
         canvas.height = height;
@@ -87,7 +103,7 @@
             points[i].circle = c;
         }
     }
-    
+
     // Event handling
     function addListeners() {
         if(!('ontouchstart' in window)) {
@@ -96,8 +112,9 @@
         window.addEventListener('scroll', scrollCheck);
         window.addEventListener('resize', resize);
     }
-    
+
     function mouseMove(e) {
+        if (isBanner) return; // Fixed target — ignore mouse for banner
         var posx = posy = 0;
         if (e.pageX || e.pageY) {
             posx = e.pageX;
@@ -110,36 +127,42 @@
         target.x = posx;
         target.y = posy;
     }
-    
+
     function scrollCheck() {
+        if (isBanner) return; // Always animate the banner
         if(document.body.scrollTop > height) animateHeader = false;
         else animateHeader = true;
     }
-    
+
     function resize() {
         width = window.innerWidth;
-        
-        largeHeader.style.height = 'auto';
-        
-        setTimeout(function() {
-            var viewport_height = window.innerHeight;
-            var content_height = largeHeader.scrollHeight;
-            height = Math.max(viewport_height, content_height);
-            
-            largeHeader.style.height = height + 'px';
+
+        if (isBanner) {
             canvas.width = width;
-            canvas.height = height;
-            canvas.style.height = height + 'px';
-        }, 50);
+            target.x = width * 0.7;
+        } else {
+            largeHeader.style.height = 'auto';
+
+            setTimeout(function() {
+                var viewport_height = window.innerHeight;
+                var content_height = largeHeader.scrollHeight;
+                height = Math.max(viewport_height, content_height);
+
+                largeHeader.style.height = height + 'px';
+                canvas.width = width;
+                canvas.height = height;
+                canvas.style.height = height + 'px';
+            }, 50);
+        }
     }
-    
+
     function initAnimation() {
         animate();
         for(var i in points) {
             shiftPoint(points[i]);
         }
     }
-    
+
     function animate() {
         if(animateHeader) {
             ctx.clearRect(0,0,width,height);
@@ -164,15 +187,16 @@
         }
         requestAnimationFrame(animate);
     }
-    
+
     function shiftPoint(p) {
-        TweenLite.to(p, 1+1*Math.random(), {x:p.originX-50+Math.random()*100,
+        var duration = isBanner ? 2+2*Math.random() : 1+1*Math.random();
+        TweenLite.to(p, duration, {x:p.originX-50+Math.random()*100,
             y: p.originY-50+Math.random()*100, ease:Circ.easeInOut,
             onComplete: function() {
                 shiftPoint(p);
             }});
     }
-    
+
     // Canvas manipulation
     function drawLines(p) {
         if(!p.active) return;
@@ -184,7 +208,7 @@
             ctx.stroke();
         }
     }
-    
+
     function Circle(pos,rad,color) {
         var _this = this;
         // constructor
@@ -201,7 +225,7 @@
             ctx.fill();
         };
     }
-    
+
     // Util
     function getDistance(p1, p2) {
         return Math.pow(p1.x - p2.x, 2) + Math.pow(p1.y - p2.y, 2);
