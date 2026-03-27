@@ -8,7 +8,10 @@
       integrity="sha256-iaFenEC8axSAnyNu6M0+0epCOTwfbKVceFXNd5s/ki4="
       crossorigin="anonymous">
     </script>
+    <script src="scripts/EasePack.min.js"></script>
+    <script src="scripts/TweenLite.min.js"></script>
     <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="./index.css">
     <link rel="stylesheet" href="./nav-round.css">
     <link rel="icon" type="image/svg+xml" href="img/favicon.svg">
     <title>Georg Diez - Publications</title>
@@ -20,16 +23,42 @@
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary_large_image">
     <style>
-      .flex {
-        background: none !important;
-      }
+        section::after { display: none; }
+        .cd-nav-trigger.over-banner {
+            border-radius: 50%;
+            box-shadow: 0 0 20px 12px rgba(255, 255, 255, 0.45);
+        }
+        .banner-name {
+            position: absolute;
+            z-index: 10;
+            left: 2rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: white;
+            font-family: "Open Sans", sans-serif;
+            font-size: 1.15rem;
+            font-weight: 400;
+            letter-spacing: 0.04em;
+            text-decoration: none;
+            opacity: 0.9;
+        }
+        @media (min-width: 768px) {
+            .banner-name { left: 7rem; }
+        }
     </style>
   </head>
 
   <body class="antialiased min-w-screen overflow-x-hidden">
     <div id="nav-placeholder"></div>
-    <div class="min-h-screen w-full bg-gray-100 p-4 md:p-24">
-      <div class="max-w-6xl mx-auto px-4 py-20">
+
+    <div id="dynamicgraph" data-banner style="height: 86px; overflow: hidden; position: relative;">
+        <div style="position: absolute; inset: 0; background: rgba(0, 0, 20, 0.5); z-index: 0;"></div>
+        <canvas id="dynamicgraph-canvas" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1;"></canvas>
+        <a href="./index.html" class="banner-name">Georg Diez</a>
+    </div>
+
+    <div class="w-full bg-gray-100 p-4 md:p-24">
+      <div class="max-w-6xl mx-auto px-4 py-12">
         <div class="mb-12">
           <h1 class="text-5xl md:text-7xl font-serif text-gray-800 mb-4">Publications</h1>
           <p class="text-xl text-gray-600 max-w-3xl">
@@ -289,10 +318,23 @@
 
     <script>
       $(function(){
-        $("#nav-placeholder").load("./nav.html");
+        $("#nav-placeholder").load("./nav.html", function() {
+            function updateNavBorder() {
+                var trigger = document.querySelector('.cd-nav-trigger');
+                if (!trigger) return;
+                if ((window.pageYOffset || 0) < 150) {
+                    trigger.classList.add('over-banner');
+                } else {
+                    trigger.classList.remove('over-banner');
+                }
+            }
+            window.addEventListener('scroll', updateNavBorder);
+            updateNavBorder();
+        });
         $("#copyright-footer").load("./copyright-footer.html");
       });
     </script>
+    <script src="./scripts/graph.js?v=2"></script>
 
   </body>
 </html>
