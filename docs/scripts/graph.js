@@ -45,12 +45,12 @@
 
             // Use viewport height temporarily for initial setup
             height = window.innerHeight;
-            target = {x: width/2, y: height/2};
-
             if (width > 768) {
+                target = {x: width/2, y: height/2};
                 numCircles = 15;
                 neighbors = 4;
             } else {
+                target = {x: width * 0.85, y: height * 0.8};
                 numCircles = 6;
                 neighbors = 2;
             }
