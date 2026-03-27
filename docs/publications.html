@@ -79,10 +79,26 @@
               <p class="text-gray-600 mb-3">
                 <span class="font-medium">Sofia Sartore, Daniel Nagel, Georg Diez, Gerhard Stock</span>
               </p>
-              <p class="text-gray-700 mb-2">
+              <p class="text-gray-700 mb-4">
                 arXiv:2602.21006 (2026)
               </p>
-              <div class="flex gap-4 mt-4">
+              <p class="text-gray-800 mb-4 text-sm leading-relaxed">
+                Compressing complex, high-dimensional data into a simpler
+                summary is one of the most common operations in data analysis —
+                but it almost always loses information, and sometimes entire
+                structures in the data disappear entirely. 
+                In this paper we show that for dynamical and stochastic systems,
+                fast, random fluctuations blur the boundaries between distinct 
+                states before any compression happens. 
+                The fix is straightforward: apply a smoothing filter to
+                the high-dimensional data first, separating the slow
+                and meaningful trends from the fast noise — a classical
+                signal-processing idea applied in an unusual place. 
+                On a protein folding dataset, this
+                simple preprocessing step recovered ten times more distinct,
+                well-separated states compared to the standard approach.
+              </p>
+              <div class="flex gap-4">
                 <a href="https://arxiv.org/abs/2602.21006"
                    target="_blank"
                    rel="noopener"
@@ -99,7 +115,7 @@
             Journal Articles
           </h2>
           <div class="space-y-6">
-            
+
             <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
               <h3 class="text-xl font-semibold text-gray-800 mb-2">
                 Recovering Hidden Degrees of Freedom Using Gaussian Processes
@@ -107,20 +123,79 @@
               <p class="text-gray-600 mb-3">
                 <span class="font-medium">Georg Diez, Nele Dethloff, Gerhard Stock</span>
               </p>
-              <p class="text-gray-700 mb-2">
+              <p class="text-gray-700 mb-4">
                 <em>The Journal of Chemical Physics</em>, 163, 124105 (2025)
               </p>
-              <div class="flex gap-4 mt-4">
-                <a href="https://doi.org/10.1063/5.0282147" 
-                   target="_blank" 
+              <p class="text-gray-800 mb-4 text-sm leading-relaxed">
+                Most machine learning methods for compressing high-dimensional
+                data treat observations as independent, ignoring the order in
+                which they were collected. For time-series data, this throws
+                away valuable information: not just what the system looks like 
+                at each moment, but how quickly it is changing. 
+                In this paper, we address this problem by embedding a 
+                probabilistic model of temporal structure directly into our 
+                neural network architecture, so the compressed representation
+                is aware of dynamics instead of just snapshots. 
+                As a proof of concept, we first show on an analytical example
+                that we are able to perfectly separate two geometrically
+                indistinguishable states that differ only in their dynamics.
+                Applied to a protein that switches between two known shapes, the
+                method succeeds in identifying a third, previously unknown state
+                with a distinct biological function — one that every
+                conventional approach had missed entirely.
+              </p>
+              <div class="flex gap-4">
+                <a href="https://doi.org/10.1063/5.0282147"
+                   target="_blank"
                    rel="noopener"
                    class="text-white px-6 py-2 bg-blue-600 rounded hover:bg-blue-700 transition-colors font-medium">Article</a>
-                <a href="https://github.com/moldyn/GP-TEMPEST" 
-                   target="_blank" 
+                <a href="https://github.com/moldyn/GP-TEMPEST"
+                   target="_blank"
                    rel="noopener"
                    class="text-blue-600 hover:text-blue-800 font-medium py-2">Software</a>
-                <a href="https://arxiv.org/abs/2505.18072" 
-                   target="_blank" 
+                <a href="https://arxiv.org/abs/2505.18072"
+                   target="_blank"
+                   rel="noopener"
+                   class="text-blue-600 hover:text-blue-800 font-medium py-2">arXiv</a>
+              </div>
+            </div>
+
+            <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+              <h3 class="text-xl font-semibold text-gray-800 mb-2">
+                Accurate estimation of the normalized mutual information of multidimensional data
+              </h3>
+              <p class="text-gray-600 mb-3">
+                <span class="font-medium">Daniel Nagel, Georg Diez, Gerhard Stock</span>
+              </p>
+              <p class="text-gray-700 mb-4">
+                <em>Journal of Chemical Physics</em> 161, 054108 (2024)
+              </p>
+              <p class="text-gray-800 mb-4 text-sm leading-relaxed">
+                The standard way to measure whether two variables are related
+                only works well for simple, linear relationships. Real-world
+                data is often messier: variables can be multidimensional and
+                their dependencies nonlinear. Mutual information is a more
+                general, model-free alternative, but it comes with a catch:
+                without normalisation, its values have no natural scale —
+                they are hard to interpret and impossible to compare across
+                datasets.
+                This paper introduces a nonparametric estimator based on
+                local k-nearest-neighbour statistics that fixes this by
+                normalising the result in a principled way, so comparisons
+                are meaningful regardless of the data's shape or
+                dimensionality.
+              </p>
+              <div class="flex gap-4">
+                <a href="https://doi.org/10.1063/5.0217960"
+                   target="_blank"
+                   rel="noopener"
+                   class="text-white px-6 py-2 bg-blue-600 rounded hover:bg-blue-700 transition-colors font-medium">Article</a>
+                <a href="https://github.com/moldyn/normi"
+                   target="_blank"
+                   rel="noopener"
+                   class="text-blue-600 hover:text-blue-800 font-medium py-2">Software</a>
+                <a href="https://arxiv.org/abs/2405.04980"
+                   target="_blank"
                    rel="noopener"
                    class="text-blue-600 hover:text-blue-800 font-medium py-2">arXiv</a>
               </div>
@@ -133,46 +208,36 @@
               <p class="text-gray-600 mb-3">
                 <span class="font-medium">Georg Diez, Daniel Nagel, Gerhard Stock</span>
               </p>
-              <p class="text-gray-700 mb-2">
+              <p class="text-gray-700 mb-4">
                 <em>Journal of Chemical Theory and Computation</em>, 18(8), 5079-5088 (2022)
               </p>
-              <div class="flex gap-4 mt-4">
-                <a href="https://doi.org/10.1021/acs.jctc.2c00337" 
-                   target="_blank" 
+              <p class="text-gray-800 mb-4 text-sm leading-relaxed">
+                When a dataset has thousands of variables, most of them capture
+                noise rather than the phenomenon of interest. Before any
+                modelling can begin, you need to know which variables actually
+                matter — a problem known as feature selection. Here, we
+                introduce MoSAIC, a method that solves this automatically: it
+                measures pairwise correlations across all variables, then uses a
+                community-detection algorithm to group the ones that genuinely
+                move together, discarding the rest. The result is a clean,
+                interpretable subset of variables that reflects real structure
+                in the data and allows you to focus on the processes that
+                really matter.
+                The method has a single tunable parameter, scales
+                to large datasets, and is released as an open-source Python
+                package with a scikit-learn–compatible API.
+              </p>
+              <div class="flex gap-4">
+                <a href="https://doi.org/10.1021/acs.jctc.2c00337"
+                   target="_blank"
                    rel="noopener"
                    class="text-white px-6 py-2 bg-blue-600 rounded hover:bg-blue-700 transition-colors font-medium">Article</a>
-                <a href="https://github.com/moldyn/MoSAIC" 
-                   target="_blank" 
+                <a href="https://github.com/moldyn/MoSAIC"
+                   target="_blank"
                    rel="noopener"
                    class="text-blue-600 hover:text-blue-800 font-medium py-2">Software</a>
-                <a href="https://arxiv.org/abs/2204.02770" 
-                   target="_blank" 
-                   rel="noopener"
-                   class="text-blue-600 hover:text-blue-800 font-medium py-2">arXiv</a>
-              </div>
-            </div>
-            
-            <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
-              <h3 class="text-xl font-semibold text-gray-800 mb-2">
-                Accurate estimation of the normalized mutual information of multidimensional data
-              </h3>
-              <p class="text-gray-600 mb-3">
-                <span class="font-medium">Daniel Nagel, Georg Diez, Gerhard Stock</span>
-              </p>
-              <p class="text-gray-700 mb-2">
-                <em>Journal of Chemical Physics</em> 161, 054108 (2024)
-              </p>
-              <div class="flex gap-4 mt-4">
-                <a href="https://doi.org/10.1063/5.0217960" 
-                   target="_blank" 
-                   rel="noopener"
-                   class="text-white px-6 py-2 bg-blue-600 rounded hover:bg-blue-700 transition-colors font-medium">Article</a>
-                <a href="https://github.com/moldyn/normi" 
-                   target="_blank" 
-                   rel="noopener"
-                   class="text-blue-600 hover:text-blue-800 font-medium py-2">Software</a>
-                <a href="https://arxiv.org/abs/2405.04980" 
-                   target="_blank" 
+                <a href="https://arxiv.org/abs/2204.02770"
+                   target="_blank"
                    rel="noopener"
                    class="text-blue-600 hover:text-blue-800 font-medium py-2">arXiv</a>
               </div>
@@ -185,21 +250,33 @@
               <p class="text-gray-600 mb-3">
                 <span class="font-medium">Matthias Post, Benjamin Lickert, Georg Diez, Steffen Wolf, Gerhard Stock</span>
               </p>
-              <p class="text-gray-700 mb-2">
+              <p class="text-gray-700 mb-4">
                 <em>Journal of Molecular Biology</em>, 434(17), 167679 (2022)
               </p>
-              <div class="flex gap-4 mt-4">
-                <a href="https://doi.org/10.1016/j.jmb.2022.167679" 
-                   target="_blank" 
+              <p class="text-gray-800 mb-4 text-sm leading-relaxed">
+                Proteins regulate their activity by transmitting signals across
+                their structure — a small local change at one site triggers a
+                large rearrangement far away, much like a mechanical switch.
+                Using large-scale computer simulations and data-driven
+                correlation analysis, we mapped exactly how this signal travels
+                and identified which internal components participate. The key
+                finding is that the switch is all-or-nothing: an entire network
+                of contacts must change simultaneously, driven by random thermal
+                fluctuations. This provides a concrete picture of how rare,
+                large-scale events emerge from local noise — a pattern that
+                appears across many complex systems beyond biology.
+              </p>
+              <div class="flex gap-4">
+                <a href="https://doi.org/10.1016/j.jmb.2022.167679"
+                   target="_blank"
                    rel="noopener"
                    class="text-white px-6 py-2 bg-blue-600 rounded hover:bg-blue-700 transition-colors font-medium">Article</a>
-                <a href="https://www.biorxiv.org/content/10.1101/2021.11.17.468836v2.full" 
-                   target="_blank" 
+                <a href="https://www.biorxiv.org/content/10.1101/2021.11.17.468836v2.full"
+                   target="_blank"
                    rel="noopener"
                    class="text-blue-600 hover:text-blue-800 font-medium py-2">biorXiv</a>
               </div>
             </div>
-
 
           </div>
         </section>
