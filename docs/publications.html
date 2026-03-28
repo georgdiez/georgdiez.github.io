@@ -34,6 +34,11 @@
             left: 2rem;
             top: 50%;
             transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+        .banner-name a {
             color: white;
             font-family: "Open Sans", sans-serif;
             font-size: 1.15rem;
@@ -41,6 +46,12 @@
             letter-spacing: 0.04em;
             text-decoration: none;
             opacity: 0.9;
+        }
+        .banner-subtitle {
+            color: rgba(156, 217, 249, 0.85);
+            font-family: "Open Sans", sans-serif;
+            font-size: 0.7rem;
+            letter-spacing: 0.06em;
         }
         @media (min-width: 768px) {
             .banner-name { left: 7rem; }
@@ -54,7 +65,10 @@
     <div id="dynamicgraph" data-banner style="height: 86px; overflow: hidden; position: relative;">
         <div style="position: absolute; inset: 0; background: rgba(0, 0, 20, 0.5); z-index: 0;"></div>
         <canvas id="dynamicgraph-canvas" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1;"></canvas>
-        <a href="./index.html" class="banner-name">Georg Diez</a>
+        <div class="banner-name">
+            <a href="./index.html">Georg Diez</a>
+            <span class="banner-subtitle">Data Scientist &amp; Computational Physicist</span>
+        </div>
     </div>
 
     <div class="w-full bg-gray-100 p-4 md:p-24">

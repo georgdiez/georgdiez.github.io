@@ -54,9 +54,10 @@
                     alt="Georg Diez"
                     class="hero-portrait rounded-full object-cover flex-shrink-0"
                 />
-                <p class="flex-1 text-right text-3xl font-serif text-white pl-4">
-                    Dr. Georg Diez
-                </p>
+                <div class="flex-1 text-right pl-4">
+                    <p class="text-3xl font-serif text-white">Dr. Georg Diez</p>
+                    <p class="text-sm font-sans text-blue-200 mt-1">Data Scientist &amp; Computational Physicist</p>
+                </div>
             </div>
             <!-- DESKTOP ONLY: large circle in left half -->
             <div class="hidden md:flex md:w-1/2 items-center justify-center px-4">
@@ -68,9 +69,10 @@
             </div>
             <!-- BOTH: bio text. On mobile: full width below. On desktop: right half -->
             <div class="flex flex-col px-4 md:w-1/2">
-                <p class="hidden md:block text-7xl text-right font-serif text-white pb-6">
-                    Dr. Georg Diez
-                </p>
+                <div class="hidden md:block text-right pb-6">
+                    <p class="text-7xl font-serif text-white">Dr. Georg Diez</p>
+                    <p class="text-xl font-sans text-blue-200 mt-2">Data Scientist &amp; Computational Physicist</p>
+                </div>
                 <p class="italic font-serif text-sm md:text-2xl text-white text-justify">
                     I completed my PhD in theoretical Physics at the
                     <a class="font-bold text-blue-200 hover:text-blue-300 hover:font-extrabold"
@@ -207,7 +209,7 @@
           }
         }
     </script>
-    <script src="./scripts/graph.js"></script>
+    <script src="./scripts/graph.js?v=3"></script>
     <script>
         document.querySelector('#scrolldown a').addEventListener('click', function(e) {
             e.preventDefault();
