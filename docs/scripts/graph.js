@@ -99,7 +99,7 @@
             p1.closest = closest;
         }
         for(var i in points) {
-            var c = new Circle(points[i], 2+Math.random()*2, 'rgba(255,255,255,0.3)');
+            var c = new Circle(points[i], 3+Math.random()*2, 'rgba(0,220,255,0.3)');
             points[i].circle = c;
         }
     }
@@ -204,7 +204,8 @@
             ctx.beginPath();
             ctx.moveTo(p.x, p.y);
             ctx.lineTo(p.closest[i].x, p.closest[i].y);
-            ctx.strokeStyle = 'rgba(255,255,255,'+ p.active+')';
+            ctx.strokeStyle = 'rgba(0,220,255,'+ p.active+')';
+            ctx.lineWidth = 1.5;
             ctx.stroke();
         }
     }
@@ -221,7 +222,7 @@
             if(!_this.active) return;
             ctx.beginPath();
             ctx.arc(_this.pos.x, _this.pos.y, _this.radius, 0, 2 * Math.PI, false);
-            ctx.fillStyle = 'rgba(156,217,249,'+ _this.active+')';
+            ctx.fillStyle = 'rgba(0,220,255,'+ _this.active+')';
             ctx.fill();
         };
     }
