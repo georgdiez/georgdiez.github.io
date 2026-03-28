@@ -14,11 +14,11 @@
         if (isBanner) {
             // Height is CSS-controlled — never override it
             height = largeHeader.offsetHeight || 86;
-            // Fixed target at ~70% width
-            target = {x: width * 0.7, y: height / 2};
+            // Fixed target to the left of the nav button
+            target = {x: width * 0.75, y: height / 2};
             if (width > 768) {
-                numCircles = 5;
-                neighbors = 3;
+                numCircles = 4;
+                neighbors = 2;
             } else {
                 numCircles = 3;
                 neighbors = 2;
@@ -47,11 +47,11 @@
             height = window.innerHeight;
             if (width > 768) {
                 target = {x: width/2, y: height/2};
-                numCircles = 15;
-                neighbors = 4;
+                numCircles = 8;
+                neighbors = 5;
             } else {
                 target = {x: width * 0.85, y: height * 0.8};
-                numCircles = 6;
+                numCircles = 4;
                 neighbors = 2;
             }
         }
@@ -99,7 +99,7 @@
             p1.closest = closest;
         }
         for(var i in points) {
-            var c = new Circle(points[i], 3+Math.random()*2, 'rgba(0,220,255,0.3)');
+            var c = new Circle(points[i], 4+Math.random()*3, 'rgba(0,220,255,0.3)');
             points[i].circle = c;
         }
     }
@@ -166,17 +166,18 @@
     function animate() {
         if(animateHeader) {
             ctx.clearRect(0,0,width,height);
+            var dm = isBanner ? 4 : 1;
             for(var i in points) {
                 // detect points in range
-                if(Math.abs(getDistance(target, points[i])) < 4000) {
-                    points[i].active = 0.5;
-                    points[i].circle.active = 1.6;
-                } else if(Math.abs(getDistance(target, points[i])) < 20000) {
-                    points[i].active = 0.1;
-                    points[i].circle.active = 0.3;
-                } else if(Math.abs(getDistance(target, points[i])) < 40000) {
-                    points[i].active = 0.02;
-                    points[i].circle.active = 0.1;
+                if(Math.abs(getDistance(target, points[i])) < 4000 * dm) {
+                    points[i].active = isBanner ? 0.8 : 0.5;
+                    points[i].circle.active = isBanner ? 2.0 : 1.6;
+                } else if(Math.abs(getDistance(target, points[i])) < 20000 * dm) {
+                    points[i].active = isBanner ? 0.3 : 0.1;
+                    points[i].circle.active = isBanner ? 0.7 : 0.3;
+                } else if(Math.abs(getDistance(target, points[i])) < 40000 * dm) {
+                    points[i].active = isBanner ? 0.05 : 0.02;
+                    points[i].circle.active = isBanner ? 0.15 : 0.1;
                 } else {
                     points[i].active = 0;
                     points[i].circle.active = 0;
@@ -201,6 +202,7 @@
     function drawLines(p) {
         if(!p.active) return;
         for(var i in p.closest) {
+            if(!p.closest[i].active) continue;
             ctx.beginPath();
             ctx.moveTo(p.x, p.y);
             ctx.lineTo(p.closest[i].x, p.closest[i].y);
