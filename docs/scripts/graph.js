@@ -1,5 +1,5 @@
 (function() {
-    var width, height, largeHeader, canvas, ctx, points, target, numCircles, neighbors, animateHeader = true;
+    var width, height, drawWidth, graphColor, largeHeader, canvas, ctx, points, target, numCircles, neighbors, animateHeader = true;
     var isBanner = false;
     initHeader();
     initAnimation();
@@ -14,16 +14,21 @@
         if (isBanner) {
             // Height is CSS-controlled — never override it
             height = largeHeader.offsetHeight || 86;
-            // Fixed target to the left of the nav button
-            target = {x: width * 0.75, y: height / 2};
             if (width > 768) {
+                drawWidth = width;
+                graphColor = '0,220,255';
+                target = {x: width * 0.75, y: height / 2};
                 numCircles = 4;
                 neighbors = 2;
             } else {
+                drawWidth = Math.round(width * 0.55);
+                graphColor = '255,255,255';
+                target = {x: drawWidth * 0.6, y: height / 2};
                 numCircles = 3;
                 neighbors = 2;
             }
         } else {
+            graphColor = '0,220,255';
             // Remove any existing height constraint
             largeHeader.style.height = 'auto';
 
@@ -51,20 +56,26 @@
                 neighbors = 5;
             } else {
                 target = {x: width * 0.85, y: height * 0.8};
-                numCircles = 4;
-                neighbors = 2;
+                numCircles = 5;
+                neighbors = 3;
             }
         }
 
         canvas = document.getElementById('dynamicgraph-canvas');
-        canvas.width = width;
+        if (isBanner && width <= 768) {
+            canvas.style.left = '45%';
+            canvas.style.width = '55%';
+            canvas.style.maskImage = 'linear-gradient(to right, transparent, black 25%)';
+        }
+        canvas.width = drawWidth || width;
         canvas.height = height;
         ctx = canvas.getContext('2d');
 
         points = [];
-        for(var x = 0; x < width; x = x + width/numCircles) {
+        var dw = drawWidth || width;
+        for(var x = 0; x < dw; x = x + dw/numCircles) {
             for(var y = 0; y < height; y = y + height/numCircles) {
-                var px = x + Math.random()*width/numCircles;
+                var px = x + Math.random()*dw/numCircles;
                 var py = y + Math.random()*height/numCircles;
                 var p = {x: px, originX: px, y: py, originY: py };
                 points.push(p);
@@ -98,8 +109,10 @@
             }
             p1.closest = closest;
         }
+        var mobileBanner = isBanner && width <= 768;
         for(var i in points) {
-            var c = new Circle(points[i], 4+Math.random()*3, 'rgba(0,220,255,0.3)');
+            var rad = mobileBanner ? 2 + Math.random()*1.5 : 4 + Math.random()*3;
+            var c = new Circle(points[i], rad, 'rgba(' + graphColor + ',0.3)');
             points[i].circle = c;
         }
     }
@@ -138,8 +151,20 @@
         width = window.innerWidth;
 
         if (isBanner) {
-            canvas.width = width;
-            target.x = width * 0.7;
+            if (width > 768) {
+                drawWidth = width;
+                canvas.style.left = '0';
+                canvas.style.width = '100%';
+                canvas.style.maskImage = '';
+                target.x = width * 0.75;
+            } else {
+                drawWidth = Math.round(width * 0.55);
+                canvas.style.left = '45%';
+                canvas.style.width = '55%';
+                canvas.style.maskImage = 'linear-gradient(to right, transparent, black 25%)';
+                target.x = drawWidth * 0.6;
+            }
+            canvas.width = drawWidth;
         } else {
             largeHeader.style.height = 'auto';
 
@@ -165,19 +190,20 @@
 
     function animate() {
         if(animateHeader) {
-            ctx.clearRect(0,0,width,height);
+            ctx.clearRect(0,0,drawWidth || width,height);
+            var mobileBanner = isBanner && width <= 768;
             var dm = isBanner ? 4 : 1;
             for(var i in points) {
                 // detect points in range
                 if(Math.abs(getDistance(target, points[i])) < 4000 * dm) {
-                    points[i].active = isBanner ? 0.8 : 0.5;
-                    points[i].circle.active = isBanner ? 2.0 : 1.6;
+                    points[i].active = mobileBanner ? 0.4 : isBanner ? 0.8 : 0.5;
+                    points[i].circle.active = mobileBanner ? 0.5 : isBanner ? 2.0 : 1.6;
                 } else if(Math.abs(getDistance(target, points[i])) < 20000 * dm) {
-                    points[i].active = isBanner ? 0.3 : 0.1;
-                    points[i].circle.active = isBanner ? 0.7 : 0.3;
+                    points[i].active = mobileBanner ? 0.15 : isBanner ? 0.3 : 0.1;
+                    points[i].circle.active = mobileBanner ? 0.25 : isBanner ? 0.7 : 0.3;
                 } else if(Math.abs(getDistance(target, points[i])) < 40000 * dm) {
-                    points[i].active = isBanner ? 0.05 : 0.02;
-                    points[i].circle.active = isBanner ? 0.15 : 0.1;
+                    points[i].active = mobileBanner ? 0.03 : isBanner ? 0.05 : 0.02;
+                    points[i].circle.active = mobileBanner ? 0.07 : isBanner ? 0.15 : 0.1;
                 } else {
                     points[i].active = 0;
                     points[i].circle.active = 0;
@@ -206,7 +232,7 @@
             ctx.beginPath();
             ctx.moveTo(p.x, p.y);
             ctx.lineTo(p.closest[i].x, p.closest[i].y);
-            ctx.strokeStyle = 'rgba(0,220,255,'+ p.active+')';
+            ctx.strokeStyle = 'rgba(' + graphColor + ','+ p.active+')';
             ctx.lineWidth = 1.5;
             ctx.stroke();
         }
@@ -224,7 +250,7 @@
             if(!_this.active) return;
             ctx.beginPath();
             ctx.arc(_this.pos.x, _this.pos.y, _this.radius, 0, 2 * Math.PI, false);
-            ctx.fillStyle = 'rgba(0,220,255,'+ _this.active+')';
+            ctx.fillStyle = 'rgba(' + graphColor + ','+ _this.active+')';
             ctx.fill();
         };
     }
