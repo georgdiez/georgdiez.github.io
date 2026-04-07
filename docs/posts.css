@@ -245,7 +245,7 @@
     color: #6b7280;
     font-size: 0.875rem;
     margin-bottom: 0.5rem;
-    font-family: "Open Sans", sans-serif;
+    font-family: "Outfit", sans-serif;
 }
 
 .post-title {
@@ -254,7 +254,7 @@
     color: #1f2937;
     margin-bottom: 1rem;
     line-height: 1.4;
-    font-family: "Open Sans", sans-serif;
+    font-family: "Outfit", sans-serif;
 }
 
 .post-card.expanded .post-title {
@@ -269,7 +269,7 @@
     flex: 1;
     overflow: hidden;
     position: relative;
-    font-family: "Open Sans", sans-serif;
+    font-family: "Outfit", sans-serif;
 }
 
 .post-excerpt::after {
@@ -294,7 +294,7 @@
     color: #374151;
     line-height: 1.7;
     font-size: 1.1rem;
-    font-family: "Open Sans", sans-serif;
+    font-family: "Outfit", sans-serif;
 }
 
 .post-card.expanded .post-full-content {
