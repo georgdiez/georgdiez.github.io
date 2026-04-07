@@ -120,10 +120,10 @@
                     imageX: 50,
                     imageY: 50,
                     alt: "HP35 folding kinetic network",
-                    date: "February 24, 2026",
+                    date: "April 2, 2026",
                     readTime: "5 min read",
                     title: "A simple preprocessing step that changes what you see",
-                    excerpt: `Standard dimensionality reduction can erase conformational states before you even start analyzing them.
+                    excerpt: `Our paper is out in JPCL! Standard dimensionality reduction can erase conformational states before you even start analyzing them.
                     We show that a simple Gaussian filter applied to the input coordinates — before any clustering — recovers
                     states that are genuinely there but cannot be resolved by conventional pipelines.`,
                     isPortrait: true,
@@ -160,7 +160,8 @@
 
                         <p><strong>Find more information here:</strong></p>
                         <ul>
-                            <li><a href="https://arxiv.org/abs/2602.21006" class="text-blue-700 hover:text-blue-300">Preprint: Lost in Projection? Gaussian Filtering Recovers Hidden Conformational States</a></li>
+                            <li><a href="https://pubs.acs.org/doi/10.1021/acs.jpclett.6c00341" class="text-blue-700 hover:text-blue-300">Paper: Lost in Projection? Gaussian Filtering Recovers Hidden Conformational States</a></li>
+                            <li><a href="https://arxiv.org/abs/2602.21006" class="text-blue-700 hover:text-blue-300">arXiv preprint</a></li>
                         </ul>
                         `
                 },
@@ -458,6 +459,12 @@
             const imageY = post.imageY !== undefined ? post.imageY : 50; // Default to center (50%)
             const objectPosition = `${imageX}% ${imageY}%`;
             
+            // Extract plain text preview from fullContent
+            const tempDiv = document.createElement('div');
+            tempDiv.innerHTML = post.fullContent;
+            const plainText = tempDiv.textContent || tempDiv.innerText || '';
+            const preview = plainText.trim().replace(/\s+/g, ' ').substring(0, 300);
+
             article.innerHTML = `
                 <div class="post-image-wrapper">
                     <img src="${post.image}"
@@ -471,7 +478,7 @@
                         <div class="post-meta">${post.date} • ${post.readTime}</div>
                         <h2 class="post-title">${post.title}</h2>
                         <div class="post-excerpt">
-                            <p>${post.excerpt}</p>
+                            <p>${preview}</p>
                         </div>
                     </div>
                     <div class="post-card-footer">
