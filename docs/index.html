@@ -55,6 +55,23 @@
         body.hero-nav .cd-nav-trigger {
             top: calc(100vh - 80px) !important;
         }
+        /* White button with dark icon lines on the hero; fades to normal blue on scroll */
+        .cd-nav-trigger::before {
+            transition: background-color 0.4s ease !important;
+        }
+        .cd-nav-trigger .cd-icon,
+        .cd-nav-trigger .cd-icon::before,
+        .cd-nav-trigger .cd-icon::after {
+            transition: background-color 0.4s ease !important;
+        }
+        body.hero-nav .cd-nav-trigger::before {
+            background-color: rgba(255, 255, 255, 0.9) !important;
+        }
+        body.hero-nav .cd-nav-trigger .cd-icon,
+        body.hero-nav .cd-nav-trigger .cd-icon::before,
+        body.hero-nav .cd-nav-trigger .cd-icon::after {
+            background-color: #093c8f !important;
+        }
     </style>
 </head>
 
