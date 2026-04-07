@@ -41,6 +41,8 @@
             .two-col { grid-template-columns: 1fr 1fr; gap: 3rem; }
         }
         .two-col > * { min-width: 0; flex: none; }
+        .chip-row { display: flex; flex-wrap: wrap; row-gap: 0.5rem; }
+        .chip-row > * { margin-right: 0.5rem; }
     </style>
 </head>
 
@@ -120,8 +122,8 @@
             <div class="two-col">
                 <!-- Interests -->
                 <div class="bg-white p-6 md:p-8 rounded-lg shadow-lg" style="grid-column: 1;">
-                    <h2 class="text-3xl md:text-4xl font-serif font-semibold text-gray-800 mb-6 border-b-2 border-blue-200 pb-2">Research Interests</h2>
-                    <div class="flex flex-wrap gap-2 font-sans">
+                    <h2 class="text-3xl md:text-4xl font-sans font-semibold text-gray-800 mb-6 border-b-2 border-blue-200 pb-2">Research Interests</h2>
+                    <div class="chip-row font-sans">
                         <span class="bg-blue-50 text-blue-700 border border-blue-200 rounded-full px-4 py-1.5 text-sm font-medium">Generative Modeling</span>
                         <span class="bg-blue-50 text-blue-700 border border-blue-200 rounded-full px-4 py-1.5 text-sm font-medium">Unsupervised Learning</span>
                         <span class="bg-blue-50 text-blue-700 border border-blue-200 rounded-full px-4 py-1.5 text-sm font-medium">Dimensionality Reduction</span>
@@ -132,7 +134,7 @@
                 </div>
                 <!-- Education -->
                 <div class="bg-white p-6 md:p-8 rounded-lg shadow-lg" style="grid-column: 2;">
-                    <h2 class="text-3xl md:text-4xl font-serif font-semibold text-gray-800 mb-6 border-b-2 border-blue-200 pb-2">Education</h2>
+                    <h2 class="text-3xl md:text-4xl font-sans font-semibold text-gray-800 mb-6 border-b-2 border-blue-200 pb-2">Education</h2>
                     <div class="space-y-0 font-sans">
                         <div class="flex gap-4">
                             <div class="flex flex-col items-center">
@@ -179,7 +181,7 @@
 
             <!-- Skills — same width as the two cards combined -->
             <div class="bg-white p-6 md:p-8 rounded-lg shadow-lg" style="margin-top: 2rem;">
-                <h2 class="text-3xl font-serif font-semibold text-gray-800 mb-6 border-b-2 border-blue-200 pb-2">Tools &amp; Technologies</h2>
+                <h2 class="text-3xl font-sans font-semibold text-gray-800 mb-6 border-b-2 border-blue-200 pb-2">Tools &amp; Technologies</h2>
                 <div class="flex flex-wrap gap-3 font-sans">
                     <a href="https://www.python.org/" target="_blank" rel="noopener" class="bg-gray-100 text-gray-700 rounded-lg px-4 py-2 text-sm font-medium hover:bg-gray-200 transition-colors">Python</a>
                     <a href="https://pytorch.org/" target="_blank" rel="noopener" class="bg-gray-100 text-gray-700 rounded-lg px-4 py-2 text-sm font-medium hover:bg-gray-200 transition-colors">PyTorch</a>
