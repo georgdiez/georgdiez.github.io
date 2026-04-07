@@ -56,21 +56,24 @@
             top: calc(100vh - 80px) !important;
         }
         /* White button with dark icon lines on the hero; fades to normal blue on scroll */
-        .cd-nav-trigger::before {
-            transition: background-color 0.4s ease !important;
-        }
-        .cd-nav-trigger .cd-icon,
-        .cd-nav-trigger .cd-icon::before,
-        .cd-nav-trigger .cd-icon::after {
-            transition: background-color 0.4s ease !important;
-        }
         body.hero-nav .cd-nav-trigger::before {
             background-color: rgba(255, 255, 255, 0.9) !important;
+            transition: background-color 0.4s ease !important;
         }
         body.hero-nav .cd-nav-trigger .cd-icon,
         body.hero-nav .cd-nav-trigger .cd-icon::before,
         body.hero-nav .cd-nav-trigger .cd-icon::after {
             background-color: #093c8f !important;
+            transition: background-color 0.4s ease !important;
+        }
+        /* Middle line must go transparent even in hero mode when nav opens */
+        body.hero-nav .cd-nav-trigger.close-nav .cd-icon {
+            background-color: rgba(255, 255, 255, 0) !important;
+        }
+        /* Shift overlay animation origin to bottom-right when button is in hero position */
+        body.hero-nav .cd-overlay-nav,
+        body.hero-nav .cd-overlay-content {
+            top: calc(100vh - 80px) !important;
         }
     </style>
 </head>
@@ -142,7 +145,7 @@
     <div class="min-h-screen w-full bg-gray-100 p-4 md:p-24">
         <div class="max-w-6xl mx-auto">
             <!-- About divider -->
-            <div class="flex items-center gap-6 pt-12 pb-8">
+            <div class="flex items-center gap-6 pt-4 pb-8">
                 <hr class="flex-1 border-gray-300">
                 <h2 class="text-3xl md:text-4xl font-serif text-gray-500 whitespace-nowrap">About</h2>
                 <hr class="flex-1 border-gray-300">
