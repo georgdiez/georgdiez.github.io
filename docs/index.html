@@ -47,6 +47,14 @@
         .two-col > * { min-width: 0; flex: none; }
         .chip-row { display: flex; flex-wrap: wrap; row-gap: 0.5rem; }
         .chip-row > * { margin-right: 0.5rem; }
+
+        /* Nav trigger: start at bottom-right of hero, slide to top-right on scroll */
+        .cd-nav-trigger {
+            transition: top 0.45s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        }
+        body.hero-nav .cd-nav-trigger {
+            top: calc(100vh - 80px) !important;
+        }
     </style>
 </head>
 
@@ -204,26 +212,32 @@
     <!-- Copyright Footer -->
     <div id="copyright-footer"></div>
 
-    <!--Load navigation bar and make it sticky/Load footer-->
+    <!--Load navigation bar and Load footer-->
     <script>
         $(function(){
             $("#nav-placeholder").load("./nav.html");
             $("#footer").load("./footer.html");
             $("#copyright-footer").load("./copyright-footer.html");
-            var header = document.getElementById("nav-placeholder");
-            header.classList.remove("cd-primary-nav")
-            window.onscroll = function() {dynamicNav()};
-            dynamicNav();
         });
-        var header = document.getElementById("nav-placeholder");
-        var sticky = header.offsetTop - header.offsetTop / 2;
-        function dynamicNav() {
-          if (window.pageYOffset < sticky) {
-            header.classList.add("cd-primary-nav");
-          } else {
-            header.classList.remove("cd-primary-nav");
-          }
-        }
+    </script>
+    <script>
+        (function() {
+            var hero = document.getElementById('dynamicgraph');
+
+            function updateNavPos() {
+                var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                var heroH = hero.offsetHeight;
+                if (scrollTop < heroH - 100) {
+                    document.body.classList.add('hero-nav');
+                } else {
+                    document.body.classList.remove('hero-nav');
+                }
+            }
+
+            // Initialize immediately so the button starts at the bottom
+            updateNavPos();
+            window.addEventListener('scroll', updateNavPos, { passive: true });
+        })();
     </script>
     <script src="./scripts/graph.js?v=3"></script>
     <script>
