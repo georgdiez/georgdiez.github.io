@@ -234,8 +234,19 @@
 
     <!--Load navigation bar and Load footer-->
     <script>
+        function highlightActiveNav() {
+            var path = window.location.pathname;
+            document.querySelectorAll('.cd-primary-nav a').forEach(function(link) {
+                var href = link.getAttribute('href');
+                if (!href || href.indexOf('http') !== -1) return;
+                var page = href.replace('./', '');
+                var isActive = path.endsWith('/' + page) ||
+                    (page === 'index.html' && (path === '/' || path.endsWith('/')));
+                if (isActive) link.parentElement.classList.add('active');
+            });
+        }
         $(function(){
-            $("#nav-placeholder").load("./nav.html");
+            $("#nav-placeholder").load("./nav.html", function() { highlightActiveNav(); });
             $("#footer").load("./footer.html");
             $("#copyright-footer").load("./copyright-footer.html");
         });

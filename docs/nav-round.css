@@ -250,6 +250,11 @@ Primary style
   .no-touch .cd-primary-nav a:hover {
     color: #ffffff;
   }
+  .cd-primary-nav li.active > a {
+    color: #ffffff;
+    border-bottom: 2px solid #009dff;
+    padding-bottom: 3px;
+  }
   .cd-primary-nav.fade-in {
     /* navigation visible at the end of the circle animation */
     visibility: visible;
