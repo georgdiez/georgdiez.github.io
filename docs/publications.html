@@ -92,9 +92,24 @@
         .pub-type-article { background: #dbeafe; color: #1e40af; }
         .pub-type-thesis  { background: #fef3c7; color: #92400e; }
         @media (max-width: 640px) {
-            .pub-year-group { grid-template-columns: 3.5rem 1fr; gap: 0 0.75rem; }
             .pub-timeline::before { left: 1.75rem; }
+            .pub-year-group {
+                grid-template-columns: 3.5rem 1fr;
+                gap: 0 0.75rem;
+                margin-bottom: 1.5rem;
+            }
             .pub-year-badge { font-size: 0.65rem; padding: 3px 7px; }
+            .pub-entries { gap: 0.75rem; }
+            /* tighter card padding */
+            .pub-entries .bg-white { padding: 0.85rem !important; }
+            /* truncate abstracts to 3 lines */
+            .pub-entries .text-sm.leading-relaxed {
+                display: -webkit-box;
+                -webkit-line-clamp: 3;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+                margin-bottom: 0.75rem;
+            }
         }
         .cd-nav-trigger.over-banner {
             border-radius: 50%;
