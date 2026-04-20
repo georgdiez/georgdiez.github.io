@@ -176,11 +176,13 @@
             position: absolute;
             z-index: 10;
             left: 2rem;
+            right: 4.75rem; /* reserve space for the fixed nav trigger */
             top: 50%;
             transform: translateY(-50%);
             display: flex;
             flex-direction: column;
             gap: 6px;
+            min-width: 0;
         }
         .banner-name a {
             color: white;
@@ -189,6 +191,7 @@
             font-weight: 500;
             letter-spacing: 0.08em;
             text-decoration: none;
+            white-space: nowrap;
         }
         .banner-subtitle {
             color: rgba(200, 235, 255, 0.7);
@@ -196,6 +199,19 @@
             font-size: 0.65rem;
             letter-spacing: 0.22em;
             text-transform: uppercase;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        @media (max-width: 639px) {
+            .banner-name a {
+                font-size: 1.05rem;
+                letter-spacing: 0.05em;
+            }
+            .banner-subtitle {
+                font-size: 0.55rem;
+                letter-spacing: 0.12em;
+            }
         }
         @media (min-width: 768px) {
             .banner-name { left: 3rem; }
