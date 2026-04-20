@@ -95,7 +95,7 @@
         @media (max-width: 640px) {
             /* tighter container padding */
             .w-full.bg-gray-100 { padding: 0.5rem !important; }
-            .max-w-6xl { padding: 0 0.5rem 1rem !important; }
+            .max-w-6xl { padding: 0 1.5rem 1rem !important; }
             .pub-timeline::before { left: 1.25rem; bottom: 0; }
             .pub-year-group {
                 grid-template-columns: 2.5rem 1fr;
@@ -165,7 +165,10 @@
             text-shadow: 0 1px 6px rgba(0,0,0,0.9);
         }
         @media (min-width: 768px) {
-            .banner-name { left: 7rem; }
+            .banner-name { left: 3rem; }
+        }
+        @media (min-width: 1024px) {
+            .banner-name { left: 4rem; }
         }
     </style>
   </head>
@@ -183,7 +186,7 @@
     </div>
 
     <div class="w-full bg-gray-100 p-4 md:p-8">
-      <div class="max-w-6xl mx-auto px-4 pb-12">
+      <div class="max-w-6xl mx-auto px-4 pb-12" style="max-width: 1400px;">
         <div class="mb-12">
           <h1 class="text-5xl md:text-7xl font-serif text-gray-800 mb-4">Publications</h1>
           <p class="text-xl text-gray-600 max-w-3xl">
