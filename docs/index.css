@@ -1,3 +1,4 @@
+@import url(https://fonts.googleapis.com/css?family=Josefin+Sans:300,400);
 :root {
     --darkgray: #212329;
     --brightgray: #828387;
@@ -42,6 +43,7 @@
 .mt-1\.5 { margin-top: 0.375rem; }
 .py-1\.5 { padding-top: 0.375rem; padding-bottom: 0.375rem; }
 .w-0\.5 { width: 0.125rem; }
+.min-w-full { min-width: 100%; }
 
 /* Home hero: keep the graph behind the text */
 #dynamicgraph:not(.page-header) #dynamicgraph-canvas { opacity: 0.6; }
@@ -145,7 +147,6 @@ body {
   }
 }
 
-@import url(https://fonts.googleapis.com/css?family=Josefin+Sans:300,400);
 section::after {
   position: absolute;
   bottom: 0;

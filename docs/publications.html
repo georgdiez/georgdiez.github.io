@@ -4,16 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script
-      src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"
-      integrity="sha256-iaFenEC8axSAnyNu6M0+0epCOTwfbKVceFXNd5s/ki4="
+      src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
       crossorigin="anonymous">
     </script>
     <link rel="stylesheet" href="./styles.css">
-    <link rel="stylesheet" href="./index.css?v=4">
+    <link rel="stylesheet" href="./index.css?v=5">
     <link rel="stylesheet" href="./nav-round.css?v=2">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap">
     <link rel="icon" type="image/svg+xml" href="img/favicon.svg">
-    <title>Georg Diez - Publications</title>
+    <title>Publications — Georg Diez, PhD</title>
     <meta name="description" content="Publications by Georg Diez, PhD — journal articles, preprints, and doctoral thesis on protein dynamics and machine learning.">
     <meta property="og:title" content="Publications — Georg Diez, PhD">
     <meta property="og:description" content="Journal articles, preprints, and doctoral thesis on protein dynamics and machine learning.">
@@ -38,7 +38,7 @@
             top: 8px;
             bottom: 0;
             width: 2px;
-            background: linear-gradient(to bottom, #bfdbfe, #dbeafe 40%, #dbeafe);
+            background: linear-gradient(to bottom, #c9d3e3, #e3e8f0 40%, #e3e8f0);
         }
         .pub-timeline::after { display: none; }
         .pub-year-group {
@@ -59,7 +59,7 @@
             min-width: 0;
         }
         .pub-year-badge {
-            background: #1d4ed8;
+            background: var(--navy-800);
             color: white;
             font-size: 0.75rem;
             font-weight: 700;
@@ -88,7 +88,7 @@
             margin-bottom: 0.6rem;
             font-family: "Outfit", sans-serif;
         }
-        .pub-type-article { background: #dbeafe; color: #1e40af; }
+        .pub-type-article { background: #e3e8f0; color: var(--navy-800); }
         .pub-type-thesis  { background: #fef3c7; color: #92400e; }
         @media (max-width: 640px) {
             /* tighter container padding */
@@ -132,14 +132,10 @@
                 text-underline-offset: 2px;
             }
         }
-        .cd-nav-trigger.over-banner {
-            border-radius: 50%;
-            box-shadow: 0 0 8px 3px rgba(255, 255, 255, 0.75);
-        }
     </style>
   </head>
 
-  <body class="antialiased min-w-screen overflow-x-hidden">
+  <body class="antialiased min-w-full overflow-x-hidden">
     <div id="nav-placeholder"></div>
 
     <header id="dynamicgraph" data-banner class="page-header">
@@ -396,7 +392,7 @@
                      class="btn-ink px-6 py-2 rounded font-medium">Article</a>
                   <a href="https://www.biorxiv.org/content/10.1101/2021.11.17.468836v2.full"
                      target="_blank" rel="noopener"
-                     class="text-blue-600 hover:text-blue-800 font-medium py-2">biorXiv</a>
+                     class="text-blue-600 hover:text-blue-800 font-medium py-2">bioRxiv</a>
                 </div>
               </div>
             </div>
@@ -424,17 +420,6 @@
       $(function(){
         $("#nav-placeholder").load("./nav.html?v=3", function() {
             highlightActiveNav();
-            function updateNavBorder() {
-                var trigger = document.querySelector('.cd-nav-trigger');
-                if (!trigger) return;
-                if ((window.pageYOffset || 0) < 150) {
-                    trigger.classList.add('over-banner');
-                } else {
-                    trigger.classList.remove('over-banner');
-                }
-            }
-            window.addEventListener('scroll', updateNavBorder);
-            updateNavBorder();
         });
         $("#copyright-footer").load("./copyright-footer.html");
       });

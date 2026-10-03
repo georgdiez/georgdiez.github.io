@@ -16,15 +16,15 @@
 
     <!--Load scripts-->
     <script
-        src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"
-        integrity="sha256-iaFenEC8axSAnyNu6M0+0epCOTwfbKVceFXNd5s/ki4="
+        src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
         crossorigin="anonymous">
     </script>
     <script src="scripts/ownscripts.js?v=2"></script>
 
     <!--Load css-->
     <link rel="stylesheet" href="./styles.css">
-    <link rel="stylesheet" href="./index.css?v=4">
+    <link rel="stylesheet" href="./index.css?v=5">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap">
 
     <style>
@@ -115,12 +115,12 @@
     </style>
 </head>
 
-<body class="antialiased min-w-screen overflow-x-hidden w-screen">
+<body class="antialiased min-w-full overflow-x-hidden w-full">
     
     <!-- <div id="footer" class="fixed top-4 right-4 z-50 md:top-10 md:pr-4 mb-2"></div> -->
     <div id="footer" class="fixed top-4 right-4 z-50 md:top-10 md:pr-4 transition-opacity duration-500"></div>
 
-    <div class="min-h-screen w-screen flex flex-col md:px-10 relative pb-24" id="dynamicgraph">
+    <div class="min-h-screen w-full flex flex-col md:px-10 relative pb-24" id="dynamicgraph">
         <canvas class="absolute z-0 inset-0" id="dynamicgraph-canvas"></canvas>
         
         <div class="hero-row w-full flex flex-col md:flex-row pt-16 md:pt-20 order-1 md:order-2 relative z-10">
@@ -205,7 +205,7 @@
                             </div>
                             <div class="pb-6">
                                 <h3 class="text-xl font-semibold text-gray-800 mb-1">Consultant</h3>
-                                <p class="font-medium"><a class="text-blue-600 hover:text-blue-800 hover:underline" target="_blank" href="https://www.d-fine.com/">d-fine</a></p>
+                                <p class="font-medium"><a class="text-blue-600 hover:text-blue-800 hover:underline" target="_blank" rel="noopener" href="https://www.d-fine.com/">d-fine</a></p>
                                 <p class="text-gray-500 text-sm">Since 2026</p>
                             </div>
                         </div>
@@ -256,19 +256,19 @@
             <div class="bg-white p-6 md:p-8 rounded-lg shadow-lg" style="margin-top: 2rem;">
                 <h2 class="text-3xl font-sans font-semibold text-gray-800 mb-6 border-b-2 border-blue-200 pb-2">Tools &amp; Technologies</h2>
                 <div class="flex flex-wrap gap-3 font-sans">
-                    <a href="https://www.python.org/" target="_blank" rel="noopener" class="bg-gray-100 text-gray-700 rounded-lg px-4 py-2 text-sm font-medium hover:bg-gray-200 transition-colors">Python</a>
-                    <a href="https://dev.java/" target="_blank" rel="noopener" class="bg-gray-100 text-gray-700 rounded-lg px-4 py-2 text-sm font-medium hover:bg-gray-200 transition-colors">Java</a>
-                    <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank" rel="noopener" class="bg-gray-100 text-gray-700 rounded-lg px-4 py-2 text-sm font-medium hover:bg-gray-200 transition-colors">JavaScript</a>
-                    <a href="https://pytorch.org/" target="_blank" rel="noopener" class="bg-gray-100 text-gray-700 rounded-lg px-4 py-2 text-sm font-medium hover:bg-gray-200 transition-colors">PyTorch</a>
-                    <a href="https://numpy.org/" target="_blank" rel="noopener" class="bg-gray-100 text-gray-700 rounded-lg px-4 py-2 text-sm font-medium hover:bg-gray-200 transition-colors">NumPy</a>
-                    <a href="https://scipy.org/" target="_blank" rel="noopener" class="bg-gray-100 text-gray-700 rounded-lg px-4 py-2 text-sm font-medium hover:bg-gray-200 transition-colors">SciPy</a>
-                    <a href="https://scikit-learn.org/" target="_blank" rel="noopener" class="bg-gray-100 text-gray-700 rounded-lg px-4 py-2 text-sm font-medium hover:bg-gray-200 transition-colors">scikit-learn</a>
-                    <a href="https://pandas.pydata.org/" target="_blank" rel="noopener" class="bg-gray-100 text-gray-700 rounded-lg px-4 py-2 text-sm font-medium hover:bg-gray-200 transition-colors">Pandas</a>
-                    <a href="https://matplotlib.org/" target="_blank" rel="noopener" class="bg-gray-100 text-gray-700 rounded-lg px-4 py-2 text-sm font-medium hover:bg-gray-200 transition-colors">Matplotlib</a>
-                    <a href="https://react.dev/" target="_blank" rel="noopener" class="bg-gray-100 text-gray-700 rounded-lg px-4 py-2 text-sm font-medium hover:bg-gray-200 transition-colors">React</a>
-                    <a href="https://spring.io/projects/spring-boot" target="_blank" rel="noopener" class="bg-gray-100 text-gray-700 rounded-lg px-4 py-2 text-sm font-medium hover:bg-gray-200 transition-colors">Spring Boot</a>
-                    <a href="https://git-scm.com/" target="_blank" rel="noopener" class="bg-gray-100 text-gray-700 rounded-lg px-4 py-2 text-sm font-medium hover:bg-gray-200 transition-colors">Git</a>
-                    <a href="https://www.linux.org/" target="_blank" rel="noopener" class="bg-gray-100 text-gray-700 rounded-lg px-4 py-2 text-sm font-medium hover:bg-gray-200 transition-colors">Linux</a>
+                    <span class="bg-gray-100 text-gray-700 rounded-lg px-4 py-2 text-sm font-medium">Python</span>
+                    <span class="bg-gray-100 text-gray-700 rounded-lg px-4 py-2 text-sm font-medium">Java</span>
+                    <span class="bg-gray-100 text-gray-700 rounded-lg px-4 py-2 text-sm font-medium">JavaScript</span>
+                    <span class="bg-gray-100 text-gray-700 rounded-lg px-4 py-2 text-sm font-medium">PyTorch</span>
+                    <span class="bg-gray-100 text-gray-700 rounded-lg px-4 py-2 text-sm font-medium">NumPy</span>
+                    <span class="bg-gray-100 text-gray-700 rounded-lg px-4 py-2 text-sm font-medium">SciPy</span>
+                    <span class="bg-gray-100 text-gray-700 rounded-lg px-4 py-2 text-sm font-medium">scikit-learn</span>
+                    <span class="bg-gray-100 text-gray-700 rounded-lg px-4 py-2 text-sm font-medium">Pandas</span>
+                    <span class="bg-gray-100 text-gray-700 rounded-lg px-4 py-2 text-sm font-medium">Matplotlib</span>
+                    <span class="bg-gray-100 text-gray-700 rounded-lg px-4 py-2 text-sm font-medium">React</span>
+                    <span class="bg-gray-100 text-gray-700 rounded-lg px-4 py-2 text-sm font-medium">Spring Boot</span>
+                    <span class="bg-gray-100 text-gray-700 rounded-lg px-4 py-2 text-sm font-medium">Git</span>
+                    <span class="bg-gray-100 text-gray-700 rounded-lg px-4 py-2 text-sm font-medium">Linux</span>
                 </div>
             </div>
         </div>
