@@ -46,6 +46,51 @@
         .chip-row { display: flex; flex-wrap: wrap; row-gap: 0.5rem; }
         .chip-row > * { margin-right: 0.5rem; }
 
+        /* Tools & Technologies: one labelled row per group */
+        .tool-group {
+            display: grid;
+            grid-template-columns: 9.5rem 1fr;
+            column-gap: 1rem;
+            align-items: start;
+            padding: 0.75rem 0;
+        }
+        /* nav-round.css gives every element an empty ::before/::after, which would become grid/flex items here */
+        .tool-group::before, .tool-group::after,
+        .tool-chips::before, .tool-chips::after { content: none; }
+        .tool-group + .tool-group { border-top: 1px solid #f0f2f5; }
+        .tool-label {
+            padding-top: 0.55rem;
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: #6b7280;
+        }
+        .tool-chips { display: flex; flex-wrap: wrap; row-gap: 0.5rem; }
+        .tool-chips > * { margin-right: 0.5rem; }
+        .tool-link {
+            display: inline-flex;
+            align-items: center;
+            background: #e3e8f0;
+            color: var(--navy-800);
+            transition: background-color 0.2s ease;
+        }
+        .tool-link:hover { background: #cfd8e6; }
+        .tool-arrow {
+            width: 0.8em;
+            height: 0.8em;
+            margin-left: 0.35em;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 1.6;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+        @media (max-width: 640px) {
+            .tool-group { grid-template-columns: 1fr; row-gap: 0.5rem; }
+            .tool-label { padding-top: 0; }
+        }
+
         /* Nav trigger: start at bottom-right of hero, slide to top-right on scroll */
         .cd-nav-trigger {
             transition: top 0.45s cubic-bezier(0.4, 0, 0.2, 1) !important;
@@ -255,20 +300,50 @@
             <!-- Skills — same width as the two cards combined -->
             <div class="bg-white p-6 md:p-8 rounded-lg shadow-lg" style="margin-top: 2rem;">
                 <h2 class="text-3xl font-sans font-semibold text-gray-800 mb-6 border-b-2 border-blue-200 pb-2">Tools &amp; Technologies</h2>
-                <div class="flex flex-wrap gap-3 font-sans">
-                    <span class="bg-gray-100 text-gray-700 rounded-lg px-4 py-2 text-sm font-medium">Python</span>
-                    <span class="bg-gray-100 text-gray-700 rounded-lg px-4 py-2 text-sm font-medium">Java</span>
-                    <span class="bg-gray-100 text-gray-700 rounded-lg px-4 py-2 text-sm font-medium">JavaScript</span>
-                    <span class="bg-gray-100 text-gray-700 rounded-lg px-4 py-2 text-sm font-medium">PyTorch</span>
-                    <span class="bg-gray-100 text-gray-700 rounded-lg px-4 py-2 text-sm font-medium">NumPy</span>
-                    <span class="bg-gray-100 text-gray-700 rounded-lg px-4 py-2 text-sm font-medium">SciPy</span>
-                    <span class="bg-gray-100 text-gray-700 rounded-lg px-4 py-2 text-sm font-medium">scikit-learn</span>
-                    <span class="bg-gray-100 text-gray-700 rounded-lg px-4 py-2 text-sm font-medium">Pandas</span>
-                    <span class="bg-gray-100 text-gray-700 rounded-lg px-4 py-2 text-sm font-medium">Matplotlib</span>
-                    <span class="bg-gray-100 text-gray-700 rounded-lg px-4 py-2 text-sm font-medium">React</span>
-                    <span class="bg-gray-100 text-gray-700 rounded-lg px-4 py-2 text-sm font-medium">Spring Boot</span>
-                    <span class="bg-gray-100 text-gray-700 rounded-lg px-4 py-2 text-sm font-medium">Git</span>
-                    <span class="bg-gray-100 text-gray-700 rounded-lg px-4 py-2 text-sm font-medium">Linux</span>
+                <div class="tool-groups font-sans">
+                    <div class="tool-group">
+                        <span class="tool-label">Languages</span>
+                        <div class="tool-chips">
+                            <span class="bg-gray-100 text-gray-700 rounded-lg px-4 py-2 text-sm font-medium">Python</span>
+                            <span class="bg-gray-100 text-gray-700 rounded-lg px-4 py-2 text-sm font-medium">Java</span>
+                            <span class="bg-gray-100 text-gray-700 rounded-lg px-4 py-2 text-sm font-medium">JavaScript</span>
+                            <span class="bg-gray-100 text-gray-700 rounded-lg px-4 py-2 text-sm font-medium">TypeScript</span>
+                        </div>
+                    </div>
+                    <div class="tool-group">
+                        <span class="tool-label">ML &amp; Data</span>
+                        <div class="tool-chips">
+                            <span class="bg-gray-100 text-gray-700 rounded-lg px-4 py-2 text-sm font-medium">PyTorch</span>
+                            <span class="bg-gray-100 text-gray-700 rounded-lg px-4 py-2 text-sm font-medium">scikit-learn</span>
+                            <span class="bg-gray-100 text-gray-700 rounded-lg px-4 py-2 text-sm font-medium">NumPy</span>
+                            <span class="bg-gray-100 text-gray-700 rounded-lg px-4 py-2 text-sm font-medium">SciPy</span>
+                            <span class="bg-gray-100 text-gray-700 rounded-lg px-4 py-2 text-sm font-medium">Pandas</span>
+                            <span class="bg-gray-100 text-gray-700 rounded-lg px-4 py-2 text-sm font-medium">Matplotlib</span>
+                            <span class="bg-gray-100 text-gray-700 rounded-lg px-4 py-2 text-sm font-medium">Databricks</span>
+                        </div>
+                    </div>
+                    <div class="tool-group">
+                        <span class="tool-label">Web &amp; Backend</span>
+                        <div class="tool-chips">
+                            <span class="bg-gray-100 text-gray-700 rounded-lg px-4 py-2 text-sm font-medium">Spring Boot</span>
+                            <span class="bg-gray-100 text-gray-700 rounded-lg px-4 py-2 text-sm font-medium">React</span>
+                        </div>
+                    </div>
+                    <div class="tool-group">
+                        <span class="tool-label">Tools</span>
+                        <div class="tool-chips">
+                            <span class="bg-gray-100 text-gray-700 rounded-lg px-4 py-2 text-sm font-medium">Git</span>
+                            <span class="bg-gray-100 text-gray-700 rounded-lg px-4 py-2 text-sm font-medium">Linux</span>
+                            <span class="bg-gray-100 text-gray-700 rounded-lg px-4 py-2 text-sm font-medium">Docker</span>
+                        </div>
+                    </div>
+                    <div class="tool-group">
+                        <span class="tool-label">Open source</span>
+                        <div class="tool-chips">
+                            <a class="tool-link rounded-lg px-4 py-2 text-sm font-medium" href="https://github.com/moldyn/MoSAIC" target="_blank" rel="noopener">MoSAIC <svg class="tool-arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5"/></svg></a>
+                            <a class="tool-link rounded-lg px-4 py-2 text-sm font-medium" href="https://github.com/moldyn/GP-TEMPEST" target="_blank" rel="noopener">GP-TEMPEST <svg class="tool-arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5"/></svg></a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
