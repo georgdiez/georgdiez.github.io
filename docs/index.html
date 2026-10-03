@@ -24,7 +24,7 @@
 
     <!--Load css-->
     <link rel="stylesheet" href="./styles.css">
-    <link rel="stylesheet" href="./index.css?v=6">
+    <link rel="stylesheet" href="./index.css?v=8">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap">
 
     <style>
@@ -221,27 +221,27 @@
             <!-- About divider -->
             <div class="flex items-center gap-6 pt-4 pb-8">
                 <hr class="flex-1 border-gray-300">
-                <h2 class="text-3xl md:text-4xl font-serif text-gray-500 whitespace-nowrap">About</h2>
+                <h2 class="section-label">About</h2>
                 <hr class="flex-1 border-gray-300">
             </div>
-            <!-- Two column cards -->
-            <div class="two-col">
-                <!-- Interests -->
-                <div class="bg-white p-6 md:p-8 rounded-lg shadow-lg">
-                    <h2 class="text-3xl md:text-4xl font-sans font-semibold text-gray-800 mb-6 border-b-2 border-blue-200 pb-2">Expertise</h2>
-                    <div class="chip-row font-sans">
-                        <span class="bg-blue-50 text-blue-700 border border-blue-200 rounded-full px-4 py-1.5 text-sm font-medium">Generative Modeling</span>
-                        <span class="bg-blue-50 text-blue-700 border border-blue-200 rounded-full px-4 py-1.5 text-sm font-medium">Unsupervised Learning</span>
-                        <span class="bg-blue-50 text-blue-700 border border-blue-200 rounded-full px-4 py-1.5 text-sm font-medium">Statistical Modeling</span>
-                        <span class="bg-blue-50 text-blue-700 border border-blue-200 rounded-full px-4 py-1.5 text-sm font-medium">Dimensionality Reduction</span>
-                        <span class="bg-blue-50 text-blue-700 border border-blue-200 rounded-full px-4 py-1.5 text-sm font-medium">Time Series &amp; Dynamical Systems</span>
-                        <span class="bg-blue-50 text-blue-700 border border-blue-200 rounded-full px-4 py-1.5 text-sm font-medium">Scientific Machine Learning</span>
-                        <span class="bg-blue-50 text-blue-700 border border-blue-200 rounded-full px-4 py-1.5 text-sm font-medium">Protein Dynamics</span>
-                    </div>
+            <!-- Expertise: full width -->
+            <div class="bg-white p-6 md:p-8 rounded-lg shadow-lg">
+                <h2 class="card-title">Expertise</h2>
+                <div class="chip-row font-sans">
+                    <span class="bg-blue-50 text-blue-700 border border-blue-200 rounded-full px-4 py-1.5 text-sm font-medium">Generative Modeling</span>
+                    <span class="bg-blue-50 text-blue-700 border border-blue-200 rounded-full px-4 py-1.5 text-sm font-medium">Unsupervised Learning</span>
+                    <span class="bg-blue-50 text-blue-700 border border-blue-200 rounded-full px-4 py-1.5 text-sm font-medium">Statistical Modeling</span>
+                    <span class="bg-blue-50 text-blue-700 border border-blue-200 rounded-full px-4 py-1.5 text-sm font-medium">Dimensionality Reduction</span>
+                    <span class="bg-blue-50 text-blue-700 border border-blue-200 rounded-full px-4 py-1.5 text-sm font-medium">Time Series &amp; Dynamical Systems</span>
+                    <span class="bg-blue-50 text-blue-700 border border-blue-200 rounded-full px-4 py-1.5 text-sm font-medium">Scientific Machine Learning</span>
+                    <span class="bg-blue-50 text-blue-700 border border-blue-200 rounded-full px-4 py-1.5 text-sm font-medium">Protein Dynamics</span>
                 </div>
+            </div>
+            <!-- Experience & Education next to Tools & Technologies (similar heights) -->
+            <div class="two-col" style="margin-top: 2rem;">
                 <!-- Education -->
                 <div class="bg-white p-6 md:p-8 rounded-lg shadow-lg">
-                    <h2 class="text-3xl md:text-4xl font-sans font-semibold text-gray-800 mb-6 border-b-2 border-blue-200 pb-2">Experience &amp; Education</h2>
+                    <h2 class="card-title">Experience &amp; Education</h2>
                     <div class="space-y-0 font-sans">
                         <div class="flex gap-4">
                             <div class="flex flex-col items-center">
@@ -295,53 +295,52 @@
                         </div>
                     </div>
                 </div>
-            </div>
-
-            <!-- Skills — same width as the two cards combined -->
-            <div class="bg-white p-6 md:p-8 rounded-lg shadow-lg" style="margin-top: 2rem;">
-                <h2 class="text-3xl font-sans font-semibold text-gray-800 mb-6 border-b-2 border-blue-200 pb-2">Tools &amp; Technologies</h2>
-                <div class="tool-groups font-sans">
-                    <div class="tool-group">
-                        <span class="tool-label">Languages</span>
-                        <div class="tool-chips">
-                            <span class="bg-gray-100 text-gray-700 rounded-lg px-4 py-2 text-sm font-medium">Python</span>
-                            <span class="bg-gray-100 text-gray-700 rounded-lg px-4 py-2 text-sm font-medium">Java</span>
-                            <span class="bg-gray-100 text-gray-700 rounded-lg px-4 py-2 text-sm font-medium">JavaScript</span>
-                            <span class="bg-gray-100 text-gray-700 rounded-lg px-4 py-2 text-sm font-medium">TypeScript</span>
+                <!-- Skills -->
+                <div class="bg-white p-6 md:p-8 rounded-lg shadow-lg">
+                    <h2 class="card-title">Tools &amp; Technologies</h2>
+                    <div class="tool-groups font-sans">
+                        <div class="tool-group">
+                            <span class="tool-label">Languages</span>
+                            <div class="tool-chips">
+                                <span class="bg-gray-100 text-gray-700 rounded-lg px-4 py-2 text-sm font-medium">Python</span>
+                                <span class="bg-gray-100 text-gray-700 rounded-lg px-4 py-2 text-sm font-medium">Java</span>
+                                <span class="bg-gray-100 text-gray-700 rounded-lg px-4 py-2 text-sm font-medium">JavaScript</span>
+                                <span class="bg-gray-100 text-gray-700 rounded-lg px-4 py-2 text-sm font-medium">TypeScript</span>
+                            </div>
                         </div>
-                    </div>
-                    <div class="tool-group">
-                        <span class="tool-label">ML &amp; Data</span>
-                        <div class="tool-chips">
-                            <span class="bg-gray-100 text-gray-700 rounded-lg px-4 py-2 text-sm font-medium">PyTorch</span>
-                            <span class="bg-gray-100 text-gray-700 rounded-lg px-4 py-2 text-sm font-medium">scikit-learn</span>
-                            <span class="bg-gray-100 text-gray-700 rounded-lg px-4 py-2 text-sm font-medium">NumPy</span>
-                            <span class="bg-gray-100 text-gray-700 rounded-lg px-4 py-2 text-sm font-medium">SciPy</span>
-                            <span class="bg-gray-100 text-gray-700 rounded-lg px-4 py-2 text-sm font-medium">Pandas</span>
-                            <span class="bg-gray-100 text-gray-700 rounded-lg px-4 py-2 text-sm font-medium">Matplotlib</span>
-                            <span class="bg-gray-100 text-gray-700 rounded-lg px-4 py-2 text-sm font-medium">Databricks</span>
+                        <div class="tool-group">
+                            <span class="tool-label">ML &amp; Data</span>
+                            <div class="tool-chips">
+                                <span class="bg-gray-100 text-gray-700 rounded-lg px-4 py-2 text-sm font-medium">PyTorch</span>
+                                <span class="bg-gray-100 text-gray-700 rounded-lg px-4 py-2 text-sm font-medium">scikit-learn</span>
+                                <span class="bg-gray-100 text-gray-700 rounded-lg px-4 py-2 text-sm font-medium">NumPy</span>
+                                <span class="bg-gray-100 text-gray-700 rounded-lg px-4 py-2 text-sm font-medium">SciPy</span>
+                                <span class="bg-gray-100 text-gray-700 rounded-lg px-4 py-2 text-sm font-medium">Pandas</span>
+                                <span class="bg-gray-100 text-gray-700 rounded-lg px-4 py-2 text-sm font-medium">Matplotlib</span>
+                                <span class="bg-gray-100 text-gray-700 rounded-lg px-4 py-2 text-sm font-medium">Databricks</span>
+                            </div>
                         </div>
-                    </div>
-                    <div class="tool-group">
-                        <span class="tool-label">Web &amp; Backend</span>
-                        <div class="tool-chips">
-                            <span class="bg-gray-100 text-gray-700 rounded-lg px-4 py-2 text-sm font-medium">Spring Boot</span>
-                            <span class="bg-gray-100 text-gray-700 rounded-lg px-4 py-2 text-sm font-medium">React</span>
+                        <div class="tool-group">
+                            <span class="tool-label">Web &amp; Backend</span>
+                            <div class="tool-chips">
+                                <span class="bg-gray-100 text-gray-700 rounded-lg px-4 py-2 text-sm font-medium">Spring Boot</span>
+                                <span class="bg-gray-100 text-gray-700 rounded-lg px-4 py-2 text-sm font-medium">React</span>
+                            </div>
                         </div>
-                    </div>
-                    <div class="tool-group">
-                        <span class="tool-label">Tools</span>
-                        <div class="tool-chips">
-                            <span class="bg-gray-100 text-gray-700 rounded-lg px-4 py-2 text-sm font-medium">Git</span>
-                            <span class="bg-gray-100 text-gray-700 rounded-lg px-4 py-2 text-sm font-medium">Linux</span>
-                            <span class="bg-gray-100 text-gray-700 rounded-lg px-4 py-2 text-sm font-medium">Docker</span>
+                        <div class="tool-group">
+                            <span class="tool-label">Tools</span>
+                            <div class="tool-chips">
+                                <span class="bg-gray-100 text-gray-700 rounded-lg px-4 py-2 text-sm font-medium">Git</span>
+                                <span class="bg-gray-100 text-gray-700 rounded-lg px-4 py-2 text-sm font-medium">Linux</span>
+                                <span class="bg-gray-100 text-gray-700 rounded-lg px-4 py-2 text-sm font-medium">Docker</span>
+                            </div>
                         </div>
-                    </div>
-                    <div class="tool-group">
-                        <span class="tool-label">Open source</span>
-                        <div class="tool-chips">
-                            <a class="tool-link rounded-lg px-4 py-2 text-sm font-medium" href="https://github.com/moldyn/MoSAIC" target="_blank" rel="noopener">MoSAIC <svg class="tool-arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5"/></svg></a>
-                            <a class="tool-link rounded-lg px-4 py-2 text-sm font-medium" href="https://github.com/moldyn/GP-TEMPEST" target="_blank" rel="noopener">GP-TEMPEST <svg class="tool-arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5"/></svg></a>
+                        <div class="tool-group">
+                            <span class="tool-label">Open source</span>
+                            <div class="tool-chips">
+                                <a class="tool-link rounded-lg px-4 py-2 text-sm font-medium" href="https://github.com/moldyn/MoSAIC" target="_blank" rel="noopener">MoSAIC <svg class="tool-arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5"/></svg></a>
+                                <a class="tool-link rounded-lg px-4 py-2 text-sm font-medium" href="https://github.com/moldyn/GP-TEMPEST" target="_blank" rel="noopener">GP-TEMPEST <svg class="tool-arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5"/></svg></a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -366,9 +365,9 @@
             });
         }
         $(function(){
-            $("#nav-placeholder").load("./nav.html?v=3", function() { highlightActiveNav(); });
+            $("#nav-placeholder").load("./nav.html?v=4", function() { highlightActiveNav(); });
             $("#footer").load("./footer.html?v=2");
-            $("#copyright-footer").load("./copyright-footer.html?v=2");
+            $("#copyright-footer").load("./copyright-footer.html?v=3");
         });
     </script>
     <script>

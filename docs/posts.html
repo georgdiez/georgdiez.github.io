@@ -9,9 +9,9 @@
         crossorigin="anonymous">
     </script>
     <link rel="stylesheet" href="./styles.css">
-    <link rel="stylesheet" href="./index.css?v=6">
-    <link rel="stylesheet" href="./nav-round.css?v=2">
-    <link rel="stylesheet" href="./posts.css?v=5">
+    <link rel="stylesheet" href="./index.css?v=8">
+    <link rel="stylesheet" href="./nav-round.css?v=3">
+    <link rel="stylesheet" href="./posts.css?v=6">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap">
     <link rel="icon" type="image/svg+xml" href="img/favicon.svg">
     <title>Posts — Georg Diez, PhD</title>
@@ -63,7 +63,7 @@
             });
         }
         $(function(){
-            $("#nav-placeholder").load("./nav.html?v=3", function() {
+            $("#nav-placeholder").load("./nav.html?v=4", function() {
                 highlightActiveNav();
             });
             // White menu button while it sits over the dark header (see index.css)
@@ -73,7 +73,7 @@
             }
             window.addEventListener('scroll', updateMenuButton, { passive: true });
             updateMenuButton();
-            $("#copyright-footer").load("./copyright-footer.html?v=2");
+            $("#copyright-footer").load("./copyright-footer.html?v=3");
 
             
             // Create dynamic grid based on screen width
@@ -421,7 +421,6 @@
             const article = document.createElement('article');
             article.className = 'post-card';
             article.setAttribute('data-post', post.id);
-            article.style.height = '510px';
             
             // Set object-position based on imageX and imageY parameters
             const imageX = post.imageX !== undefined ? post.imageX : 50; // Default to center (50%)

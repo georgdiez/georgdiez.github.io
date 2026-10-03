@@ -9,8 +9,8 @@
       crossorigin="anonymous">
     </script>
     <link rel="stylesheet" href="./styles.css">
-    <link rel="stylesheet" href="./index.css?v=6">
-    <link rel="stylesheet" href="./nav-round.css?v=2">
+    <link rel="stylesheet" href="./index.css?v=8">
+    <link rel="stylesheet" href="./nav-round.css?v=3">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap">
     <link rel="icon" type="image/svg+xml" href="img/favicon.svg">
     <title>Publications — Georg Diez, PhD</title>
@@ -72,6 +72,10 @@
             height: fit-content;
             font-family: "Outfit", sans-serif;
         }
+        /* Year badges: newest darkest, lighter towards older years (by position, so new years slot in automatically) */
+        .pub-timeline > .pub-year-group:nth-child(2) .pub-year-badge { background: #24467f; }
+        .pub-timeline > .pub-year-group:nth-child(3) .pub-year-badge { background: #3a5f9c; }
+        .pub-timeline > .pub-year-group:nth-child(n+4) .pub-year-badge { background: #5276b0; }
         .pub-entries {
             display: flex;
             flex-direction: column;
@@ -418,7 +422,7 @@
           });
       }
       $(function(){
-        $("#nav-placeholder").load("./nav.html?v=3", function() {
+        $("#nav-placeholder").load("./nav.html?v=4", function() {
             highlightActiveNav();
         });
         // White menu button while it sits over the dark header (see index.css)
@@ -428,7 +432,7 @@
         }
         window.addEventListener('scroll', updateMenuButton, { passive: true });
         updateMenuButton();
-        $("#copyright-footer").load("./copyright-footer.html?v=2");
+        $("#copyright-footer").load("./copyright-footer.html?v=3");
       });
     </script>
     <script src="./scripts/graph.js?v=6"></script>

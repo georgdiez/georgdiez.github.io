@@ -7,9 +7,17 @@
     overflow: hidden;
     transition: all 0.3s ease;
     cursor: pointer;
-    height: 650px;
+    /* Height follows the content; cards in the same grid row stretch to equal height */
     display: flex;
     flex-direction: column;
+}
+
+/* Collapsed cards: preview limited to 4 lines so all cards look uniform */
+.post-card:not(.expanded) .post-excerpt p {
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 
 .post-card:hover {
