@@ -247,6 +247,19 @@ Primary style
     -moz-transition: color 0.2s;
     transition: color 0.2s;
   }
+  /* External-link arrow: drawn as SVG because iOS renders the ↗ character as an emoji */
+  .cd-primary-nav .ext-arrow {
+    display: inline-block;
+    width: 0.8em;
+    height: 0.8em;
+    margin-left: 0.1em;
+    vertical-align: -0.05em;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
   .no-touch .cd-primary-nav a:hover {
     color: #ffffff;
   }
