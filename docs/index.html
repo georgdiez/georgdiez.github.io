@@ -50,8 +50,14 @@
         .cd-nav-trigger {
             transition: top 0.45s cubic-bezier(0.4, 0, 0.2, 1) !important;
         }
+        /* svh = visible screen height on iPhone Safari (100vh ignores its toolbars) */
+        #dynamicgraph.min-h-screen {
+            min-height: 100vh;
+            min-height: 100svh;
+        }
         body.hero-nav .cd-nav-trigger {
             top: calc(100vh - 80px) !important;
+            top: calc(100svh - 80px) !important;
         }
         /* White button with dark icon lines on the hero; fades to normal blue on scroll */
         body.hero-nav .cd-nav-trigger::before {
@@ -68,10 +74,31 @@
         body.hero-nav .cd-nav-trigger.close-nav .cd-icon {
             background-color: rgba(255, 255, 255, 0) !important;
         }
+        /* Desktop hero: centre the content vertically and give the text column one left edge */
+        @media (min-width: 768px) {
+            #dynamicgraph .hero-row {
+                flex: 1;
+                align-items: center;
+                padding-top: 7rem;
+            }
+            #dynamicgraph .hero-name { text-align: left; }
+            #dynamicgraph .hero-text > p { max-width: 34rem; line-height: 1.6; }
+        }
+        /* Mobile hero: centre the content in the screen instead of packing it at the top */
+        @media (max-width: 767px) {
+            #dynamicgraph .hero-row {
+                flex: 1;
+                justify-content: center;
+                padding-top: 4.5rem;
+                padding-bottom: 2rem;
+            }
+            #dynamicgraph .hero-text > p { font-size: 1rem; line-height: 1.6; }
+        }
         /* Shift overlay animation origin to bottom-right when button is in hero position */
         body.hero-nav .cd-overlay-nav,
         body.hero-nav .cd-overlay-content {
             top: calc(100vh - 80px) !important;
+            top: calc(100svh - 80px) !important;
         }
     </style>
 </head>
@@ -84,17 +111,18 @@
     <div class="min-h-screen w-screen flex flex-col md:px-10 relative pb-24" id="dynamicgraph">
         <canvas class="absolute z-0 inset-0" id="dynamicgraph-canvas"></canvas>
         
-        <div class="w-full flex flex-col md:flex-row pt-16 md:pt-20 order-1 md:order-2 relative z-10">
+        <div class="hero-row w-full flex flex-col md:flex-row pt-16 md:pt-20 order-1 md:order-2 relative z-10">
             <!-- MOBILE ONLY: circle + name in a row -->
             <div class="md:hidden flex flex-row items-center px-4 mb-4">
                 <img
                     src="img/cv_img.jpg"
                     alt="Georg Diez"
                     class="hero-portrait rounded-full object-cover flex-shrink-0"
+                    data-graph-anchor
                 />
                 <div class="flex-1 text-right pl-4">
                     <p class="text-3xl font-serif text-white">Dr. Georg Diez</p>
-                    <p class="text-sm font-sans text-blue-200 mt-1">Consultant &middot; Data Scientist &amp; Computational Physicist</p>
+                    <p class="text-sm font-sans text-blue-200 mt-1">Consultant &middot; Quantitative &amp; Technology</p>
                 </div>
             </div>
             <!-- DESKTOP ONLY: large circle in left half -->
@@ -103,26 +131,26 @@
                     src="img/cv_img.jpg"
                     alt="Georg Diez"
                     class="w-64 h-64 rounded-full object-cover"
+                    data-graph-anchor
                 />
             </div>
             <!-- BOTH: bio text. On mobile: full width below. On desktop: right half -->
-            <div class="flex flex-col px-4 md:w-1/2">
-                <div class="hidden md:block text-right pb-6">
+            <div class="hero-text flex flex-col px-4 md:w-1/2">
+                <div class="hero-name hidden md:block text-right pb-6">
                     <p class="text-7xl font-serif text-white">Dr. Georg Diez</p>
-                    <p class="text-xl font-sans text-blue-200 mt-2">Consultant &middot; Data Scientist &amp; Computational Physicist</p>
+                    <p class="text-xl font-sans text-blue-200 mt-2">Consultant &middot; Quantitative &amp; Technology</p>
                 </div>
-                <p class="font-sans font-light text-sm md:text-2xl text-blue-100 text-left [text-shadow:0_1px_4px_rgba(0,0,0,0.8)]">
-                    Data scientist and computational physicist. I build predictive models and develop data-driven methods to understand complex, high-dimensional systems.
+                <p class="font-sans font-light text-sm md:text-xl text-blue-100 text-left">
+                    I'm a consultant at
+                    <a class="font-medium text-blue-200 hover:text-blue-300" target="_blank" rel="noopener" href="https://www.d-fine.com/">d-fine</a>,
+                    working on quantitative and technology projects for clients.
+                </p>
+                <p class="font-sans font-light text-sm md:text-xl text-blue-100 text-left mt-4 md:mt-6">
+                    My background is in machine learning and statistics: I did my PhD in theoretical physics at the
+                    <a class="font-medium text-blue-200 hover:text-blue-300" target="_blank" rel="noopener" style="white-space: nowrap" href="https://uni-freiburg.de/">University of Freiburg</a>,
+                    developing methods for noisy, high-dimensional data.
                 </p>
             </div>
-        </div>
-
-
-        <div class="flex flex-col-reverse md:flex-row order-2 md:order-1 relative z-10">
-            <div class="hidden md:block w-full md:w-1/2 font-sans font-light text-md md:text-xl text-blue-100 text-left mt-8 md:mt-32 px-4 [text-shadow:0_1px_4px_rgba(0,0,0,0.8)]">
-                My expertise lies in turning complex, high-dimensional data into actionable insights&mdash;uncovering hidden patterns and enabling more informed decision-making.
-            </div>
-            <div class="md:w-1/2"></div>
         </div>
         
         <section id="scrolldown" class="scrolldown absolute bottom-4 left-1/2 transform -translate-x-1/2 z-20 mb-12 md:mb-4">
@@ -274,7 +302,7 @@
             window.addEventListener('scroll', updateNavPos, { passive: true });
         })();
     </script>
-    <script src="./scripts/graph.js?v=4"></script>
+    <script src="./scripts/graph.js?v=5"></script>
     <script>
         document.querySelector('#scrolldown a').addEventListener('click', function(e) {
             e.preventDefault();

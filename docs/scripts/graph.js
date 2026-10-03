@@ -7,7 +7,19 @@
   var ctx = canvas.getContext('2d');
   var isBanner = host.hasAttribute('data-banner');
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var w, h, pts, target, color, raf, visible = true;
+  var w, h, pts, target, goal, color, raf, visible = true, pointerInside = false;
+  // The highlight rests on an element marked data-graph-anchor (the portrait on the home page),
+  // eases towards the mouse while it is over the graph, and glides back when it leaves.
+  var anchors = host.querySelectorAll('[data-graph-anchor]');
+
+  function home() {
+    var c = canvas.getBoundingClientRect();
+    for (var i = 0; i < anchors.length; i++) {
+      var r = anchors[i].getBoundingClientRect();
+      if (r.width && r.height) return { x: r.left + r.width / 2 - c.left, y: r.top + r.height / 2 - c.top };
+    }
+    return { x: w * (isBanner ? 0.75 : 0.72), y: h * 0.5 };
+  }
 
   function setup() {
     var r = host.getBoundingClientRect(), dpr = window.devicePixelRatio || 1;
@@ -31,7 +43,7 @@
         .sort(function (a, b) { return d2(a, p, true) - d2(b, p, true); })
         .slice(0, 4);
     });
-    if (!target) target = { x: w * (isBanner ? 0.75 : 0.72), y: h * 0.5 };
+    if (!target) target = home();
   }
 
   function d2(a, b, origin) {
@@ -41,6 +53,9 @@
 
   function frame() {
     ctx.clearRect(0, 0, w, h);
+    if (!pointerInside) goal = home();
+    target.x += (goal.x - target.x) * 0.08;
+    target.y += (goal.y - target.y) * 0.08;
     var s = isBanner ? 3 : 1;
     for (var i = 0; i < pts.length; i++) {
       var p = pts[i];
@@ -73,8 +88,10 @@
   if (!('ontouchstart' in window)) {
     host.addEventListener('mousemove', function (e) {
       var r = canvas.getBoundingClientRect();
-      target = { x: e.clientX - r.left, y: e.clientY - r.top };
+      goal = { x: e.clientX - r.left, y: e.clientY - r.top };
+      pointerInside = true;
     });
+    host.addEventListener('mouseleave', function () { pointerInside = false; });
   }
   if ('IntersectionObserver' in window) {
     new IntersectionObserver(function (es) {
