@@ -7,7 +7,7 @@
   var ctx = canvas.getContext('2d');
   var isBanner = host.hasAttribute('data-banner');
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var w, h, pts, target, goal, color, raf, visible = true, pointerInside = false;
+  var w, h, pts, target, goal, lastRest, color, raf, visible = true, pointerInside = false;
   // The highlight rests on an element marked data-graph-anchor (the portrait on the home page),
   // eases towards the mouse while it is over the graph, and glides back when it leaves.
   var anchors = host.querySelectorAll('[data-graph-anchor]');
@@ -53,7 +53,14 @@
 
   function frame() {
     ctx.clearRect(0, 0, w, h);
-    if (!pointerInside) goal = home();
+    var rest = home();
+    // Expose the anchor position so CSS can mask the graph around it (used on mobile)
+    if (!lastRest || Math.abs(rest.x - lastRest.x) > 1 || Math.abs(rest.y - lastRest.y) > 1) {
+      canvas.style.setProperty('--gx', Math.round(rest.x) + 'px');
+      canvas.style.setProperty('--gy', Math.round(rest.y) + 'px');
+      lastRest = rest;
+    }
+    if (!pointerInside) goal = rest;
     target.x += (goal.x - target.x) * 0.08;
     target.y += (goal.y - target.y) * 0.08;
     var s = isBanner ? 3 : 1;

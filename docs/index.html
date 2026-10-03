@@ -24,7 +24,7 @@
 
     <!--Load css-->
     <link rel="stylesheet" href="./styles.css">
-    <link rel="stylesheet" href="./index.css?v=3">
+    <link rel="stylesheet" href="./index.css?v=4">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap">
 
     <style>
@@ -88,7 +88,7 @@
         @media (max-width: 767px) {
             #dynamicgraph .hero-row {
                 flex: 1;
-                padding-top: 5.5rem;
+                padding-top: 9.5rem;
                 padding-bottom: 1rem;
             }
             #dynamicgraph .hero-text {
@@ -101,6 +101,7 @@
                 line-height: 1.65;
             }
             #dynamicgraph .hero-text > p + p { margin-top: 1.25rem; }
+            #dynamicgraph .hero-mobile-name { font-size: 2.25rem; line-height: 1.1; }
         }
         /* Social icons (loaded from footer.html): keep them big, but quieter than the name */
         #footer a { color: rgba(220, 236, 255, 0.8); transition: color 0.2s ease; }
@@ -132,7 +133,7 @@
                     data-graph-anchor
                 />
                 <div class="flex-1 text-left pl-4">
-                    <p class="text-3xl font-serif text-white">Dr. Georg Diez</p>
+                    <p class="hero-mobile-name text-3xl font-serif text-white">Dr. Georg Diez</p>
                     <p class="text-sm font-sans text-blue-200 mt-1">Consultant<br>Quantitative &amp; Technology</p>
                 </div>
             </div>
@@ -154,7 +155,7 @@
                 <p class="font-sans font-light text-sm md:text-xl text-blue-100 text-left">
                     I'm a consultant at
                     <a class="font-medium text-blue-200 hover:text-blue-300" target="_blank" rel="noopener" href="https://www.d-fine.com/">d-fine</a>,
-                    working on quantitative and technology projects for clients.
+                    where I really enjoy working on quantitative and technical projects.
                 </p>
                 <p class="font-sans font-light text-sm md:text-xl text-blue-100 text-left mt-4 md:mt-6">
                     My background is in machine learning and statistics: I did my PhD in theoretical physics at the
@@ -182,10 +183,11 @@
             <div class="two-col">
                 <!-- Interests -->
                 <div class="bg-white p-6 md:p-8 rounded-lg shadow-lg">
-                    <h2 class="text-3xl md:text-4xl font-sans font-semibold text-gray-800 mb-6 border-b-2 border-blue-200 pb-2">Research Interests</h2>
+                    <h2 class="text-3xl md:text-4xl font-sans font-semibold text-gray-800 mb-6 border-b-2 border-blue-200 pb-2">Expertise</h2>
                     <div class="chip-row font-sans">
                         <span class="bg-blue-50 text-blue-700 border border-blue-200 rounded-full px-4 py-1.5 text-sm font-medium">Generative Modeling</span>
                         <span class="bg-blue-50 text-blue-700 border border-blue-200 rounded-full px-4 py-1.5 text-sm font-medium">Unsupervised Learning</span>
+                        <span class="bg-blue-50 text-blue-700 border border-blue-200 rounded-full px-4 py-1.5 text-sm font-medium">Statistical Modeling</span>
                         <span class="bg-blue-50 text-blue-700 border border-blue-200 rounded-full px-4 py-1.5 text-sm font-medium">Dimensionality Reduction</span>
                         <span class="bg-blue-50 text-blue-700 border border-blue-200 rounded-full px-4 py-1.5 text-sm font-medium">Time Series &amp; Dynamical Systems</span>
                         <span class="bg-blue-50 text-blue-700 border border-blue-200 rounded-full px-4 py-1.5 text-sm font-medium">Scientific Machine Learning</span>
@@ -313,7 +315,7 @@
             window.addEventListener('scroll', updateNavPos, { passive: true });
         })();
     </script>
-    <script src="./scripts/graph.js?v=5"></script>
+    <script src="./scripts/graph.js?v=6"></script>
     <script>
         document.querySelector('#scrolldown a').addEventListener('click', function(e) {
             e.preventDefault();

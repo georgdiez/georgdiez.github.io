@@ -46,8 +46,13 @@
 /* Home hero: keep the graph behind the text */
 #dynamicgraph:not(.page-header) #dynamicgraph-canvas { opacity: 0.6; }
 @media (max-width: 767px) {
-    /* Quieter graph on phones */
-    #dynamicgraph:not(.page-header) #dynamicgraph-canvas { opacity: 0.35; }
+    /* Quieter graph on phones, kept to the area around the portrait so it doesn't run behind the text.
+       --gx/--gy are the portrait centre, set by graph.js. */
+    #dynamicgraph:not(.page-header) #dynamicgraph-canvas {
+        opacity: 0.35;
+        -webkit-mask-image: radial-gradient(circle at var(--gx, 25%) var(--gy, 20%), #000 0, #000 140px, transparent 240px);
+        mask-image: radial-gradient(circle at var(--gx, 25%) var(--gy, 20%), #000 0, #000 140px, transparent 240px);
+    }
     header.page-header canvas { opacity: 0.4; }
 }
 
