@@ -45,6 +45,11 @@
 
 /* Home hero: keep the graph behind the text */
 #dynamicgraph:not(.page-header) #dynamicgraph-canvas { opacity: 0.6; }
+@media (max-width: 767px) {
+    /* Quieter graph on phones */
+    #dynamicgraph:not(.page-header) #dynamicgraph-canvas { opacity: 0.35; }
+    header.page-header canvas { opacity: 0.4; }
+}
 
 /* Sub-page header (publications / posts): title + intro over the graph */
 .page-header {

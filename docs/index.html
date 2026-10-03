@@ -24,7 +24,7 @@
 
     <!--Load css-->
     <link rel="stylesheet" href="./styles.css">
-    <link rel="stylesheet" href="./index.css?v=2">
+    <link rel="stylesheet" href="./index.css?v=3">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap">
 
     <style>
@@ -84,16 +84,27 @@
             #dynamicgraph .hero-name { text-align: left; }
             #dynamicgraph .hero-text > p { max-width: 34rem; line-height: 1.6; }
         }
-        /* Mobile hero: centre the content in the screen instead of packing it at the top */
+        /* Mobile hero: photo + name at the top, the two paragraphs spread over the rest of the screen */
         @media (max-width: 767px) {
             #dynamicgraph .hero-row {
                 flex: 1;
-                justify-content: center;
-                padding-top: 4.5rem;
-                padding-bottom: 2rem;
+                padding-top: 5.5rem;
+                padding-bottom: 1rem;
             }
-            #dynamicgraph .hero-text > p { font-size: 1rem; line-height: 1.6; }
+            #dynamicgraph .hero-text {
+                flex: 1;
+                justify-content: center;
+            }
+            #dynamicgraph .hero-text > p {
+                margin-top: 0;
+                font-size: 1.0625rem;
+                line-height: 1.65;
+            }
+            #dynamicgraph .hero-text > p + p { margin-top: 1.25rem; }
         }
+        /* Social icons (loaded from footer.html): keep them big, but quieter than the name */
+        #footer a { color: rgba(220, 236, 255, 0.8); transition: color 0.2s ease; }
+        #footer a:hover { color: #ffffff; }
         /* Shift overlay animation origin to bottom-right when button is in hero position */
         body.hero-nav .cd-overlay-nav,
         body.hero-nav .cd-overlay-content {
@@ -120,9 +131,9 @@
                     class="hero-portrait rounded-full object-cover flex-shrink-0"
                     data-graph-anchor
                 />
-                <div class="flex-1 text-right pl-4">
+                <div class="flex-1 text-left pl-4">
                     <p class="text-3xl font-serif text-white">Dr. Georg Diez</p>
-                    <p class="text-sm font-sans text-blue-200 mt-1">Consultant &middot; Quantitative &amp; Technology</p>
+                    <p class="text-sm font-sans text-blue-200 mt-1">Consultant<br>Quantitative &amp; Technology</p>
                 </div>
             </div>
             <!-- DESKTOP ONLY: large circle in left half -->
