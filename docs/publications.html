@@ -9,7 +9,7 @@
       crossorigin="anonymous">
     </script>
     <link rel="stylesheet" href="./styles.css">
-    <link rel="stylesheet" href="./index.css?v=5">
+    <link rel="stylesheet" href="./index.css?v=6">
     <link rel="stylesheet" href="./nav-round.css?v=2">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap">
     <link rel="icon" type="image/svg+xml" href="img/favicon.svg">
@@ -216,7 +216,7 @@
                 <p class="text-gray-800 mb-4 text-sm leading-relaxed">
                   Proteins are molecular machines that constantly shift shape — and these shape changes determine how they function.
                   Capturing this motion produces enormous, high-dimensional datasets that are hard to interpret directly.
-                  In my PhD thesis, I designed machine learning methods that encode physical knowledge to extract clear, interpretable models of protein behaviour.
+                  In my PhD thesis, I designed machine learning methods that encode physical knowledge to extract clear, interpretable models of protein behavior.
                 </p>
                 <div class="flex gap-4">
                   <a href="https://freidok.uni-freiburg.de/data/271694"
@@ -278,13 +278,13 @@
               <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
                 <span class="pub-type-badge pub-type-article">Journal Article</span>
                 <h3 class="text-xl font-semibold text-gray-800 mb-2">
-                  Accurate estimation of the normalized mutual information of multidimensional data
+                  Accurate Estimation of the Normalized Mutual Information of Multidimensional Data
                 </h3>
                 <p class="text-gray-600 mb-3">
                   <span class="font-medium">Daniel Nagel, Georg Diez, Gerhard Stock</span>
                 </p>
                 <p class="text-gray-700 mb-4">
-                  <em>Journal of Chemical Physics</em> 161, 054108 (2024)
+                  <em>The Journal of Chemical Physics</em>, 161, 054108 (2024)
                 </p>
                 <p class="text-gray-800 mb-4 text-sm leading-relaxed">
                   The standard way to measure whether two variables are related
@@ -292,12 +292,12 @@
                   data is often messier: variables can be multidimensional and
                   their dependencies nonlinear. Mutual information is a more
                   general, model-free alternative, but it comes with a catch:
-                  without normalisation, its values have no natural scale —
+                  without normalization, its values have no natural scale —
                   they are hard to interpret and impossible to compare across
                   datasets.
                   This paper introduces a nonparametric estimator based on
-                  local k-nearest-neighbour statistics that fixes this by
-                  normalising the result in a principled way, so comparisons
+                  local k-nearest-neighbor statistics that fixes this by
+                  normalizing the result in a principled way, so comparisons
                   are meaningful regardless of the data's shape or
                   dimensionality.
                 </p>
@@ -331,12 +331,12 @@
                   <span class="font-medium">Georg Diez, Daniel Nagel, Gerhard Stock</span>
                 </p>
                 <p class="text-gray-700 mb-4">
-                  <em>Journal of Chemical Theory and Computation</em>, 18(8), 5079-5088 (2022)
+                  <em>Journal of Chemical Theory and Computation</em>, 18(8), 5079–5088 (2022)
                 </p>
                 <p class="text-gray-800 mb-4 text-sm leading-relaxed">
                   When a dataset has thousands of variables, most of them capture
                   noise rather than the phenomenon of interest. Before any
-                  modelling can begin, you need to know which variables actually
+                  modeling can begin, you need to know which variables actually
                   matter — a problem known as feature selection. Here, we
                   introduce MoSAIC, a method that solves this automatically: it
                   measures pairwise correlations across all variables, then uses a
@@ -421,7 +421,14 @@
         $("#nav-placeholder").load("./nav.html?v=3", function() {
             highlightActiveNav();
         });
-        $("#copyright-footer").load("./copyright-footer.html");
+        // White menu button while it sits over the dark header (see index.css)
+        function updateMenuButton() {
+            var header = document.getElementById('dynamicgraph');
+            document.body.classList.toggle('over-dark-header', !!header && header.getBoundingClientRect().bottom > 70);
+        }
+        window.addEventListener('scroll', updateMenuButton, { passive: true });
+        updateMenuButton();
+        $("#copyright-footer").load("./copyright-footer.html?v=2");
       });
     </script>
     <script src="./scripts/graph.js?v=6"></script>

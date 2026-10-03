@@ -58,6 +58,17 @@
     header.page-header canvas { opacity: 0.4; }
 }
 
+/* Menu button over the dark sub-page header: white with navy lines, like on the home hero.
+   body.over-dark-header is toggled by a small scroll script on publications/posts. */
+body.over-dark-header .cd-nav-trigger::before {
+    background-color: rgba(255, 255, 255, 0.9);
+}
+body.over-dark-header .cd-nav-trigger:not(.close-nav) .cd-icon,
+body.over-dark-header .cd-nav-trigger:not(.close-nav) .cd-icon::before,
+body.over-dark-header .cd-nav-trigger:not(.close-nav) .cd-icon::after {
+    background-color: var(--navy-800);
+}
+
 /* Sub-page header (publications / posts): title + intro over the graph */
 .page-header {
     position: relative;

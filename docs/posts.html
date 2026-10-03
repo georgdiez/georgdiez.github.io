@@ -9,7 +9,7 @@
         crossorigin="anonymous">
     </script>
     <link rel="stylesheet" href="./styles.css">
-    <link rel="stylesheet" href="./index.css?v=5">
+    <link rel="stylesheet" href="./index.css?v=6">
     <link rel="stylesheet" href="./nav-round.css?v=2">
     <link rel="stylesheet" href="./posts.css?v=5">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap">
@@ -66,7 +66,14 @@
             $("#nav-placeholder").load("./nav.html?v=3", function() {
                 highlightActiveNav();
             });
-            $("#copyright-footer").load("./copyright-footer.html");
+            // White menu button while it sits over the dark header (see index.css)
+            function updateMenuButton() {
+                var header = document.getElementById('dynamicgraph');
+                document.body.classList.toggle('over-dark-header', !!header && header.getBoundingClientRect().bottom > 70);
+            }
+            window.addEventListener('scroll', updateMenuButton, { passive: true });
+            updateMenuButton();
+            $("#copyright-footer").load("./copyright-footer.html?v=2");
 
             
             // Create dynamic grid based on screen width
@@ -98,7 +105,7 @@
                             information you're looking for. 
                             That is, important states that genuinely exist in the original high-dimensional input data
                             can be blurred with other states and therefore disappear as distinct functional (intermediate)
-                            coformations of the protein.
+                            conformations of the protein.
                             You end up confidently finding the states that survived projection — with no indication that others ever existed.</p>
 
                         <p><strong>What we tried</strong></p>
@@ -110,7 +117,7 @@
                         methods can actually find.</p>
 
                         <p>The key advantage over existing approaches is that filtering acts <em>before</em> state definition. 
-                            Other methods, like coring, can only refine the states you already found---they can't recover states 
+                            Other methods, like coring, can only refine the states you already found — they can't recover states 
                             that were erased by projection.</p>
 
                         <p><strong>What we found</strong></p>
@@ -269,7 +276,7 @@
                     genuine collective motions from irrelevant fluctuations.`,
                     isPortrait: true,
                     fullContent: `<p>A typical protein simulation generates data for thousands of atomic coordinates. Most of them are
-                        functually irrelevant — thermal noise, local fluctuations that don't tell you anything about how the protein
+                        functionally irrelevant — thermal noise, local fluctuations that don't tell you anything about how the protein
                         actually functions. If you feed all of that into a standard analysis, the noise drowns out the signal.</p>
 
                         <p>The usual fix is to manually pick which coordinates to look at. But that requires <em>a priori</em> knowledge of what matters
@@ -318,7 +325,7 @@
                     isPortrait: true,
                     fullContent: `<p>T4 lysozyme is one of the most studied proteins in structural biology.
                         Just like a Pac-Man, the two domains of the enzyme hinge relative to each other
-                        and perform the open ↔ closed motion of the protein, which is essential to the 
+                        and perform the open ↔ closed motion of the protein, which is essential to
                         its function.
                         However, the structural mechanism behind the transition had remained surprisingly unclear. 
                         How does a local motion at the hinge propagate all the way to
@@ -425,7 +432,12 @@
             const tempDiv = document.createElement('div');
             tempDiv.innerHTML = post.fullContent;
             const plainText = tempDiv.textContent || tempDiv.innerText || '';
-            const preview = plainText.trim().replace(/\s+/g, ' ').substring(0, 300);
+            const fullText = plainText.trim().replace(/\s+/g, ' ');
+            let preview = fullText;
+            if (fullText.length > 300) {
+                // Cut at the last word boundary before 300 characters, drop trailing punctuation, add an ellipsis
+                preview = fullText.substring(0, 300).replace(/\s+\S*$/, '').replace(/[\s,;:—–-]+$/, '') + '…';
+            }
 
             article.innerHTML = `
                 <div class="post-image-wrapper">
