@@ -8,8 +8,6 @@
       integrity="sha256-iaFenEC8axSAnyNu6M0+0epCOTwfbKVceFXNd5s/ki4="
       crossorigin="anonymous">
     </script>
-    <script src="scripts/EasePack.min.js"></script>
-    <script src="scripts/TweenLite.min.js"></script>
     <link rel="stylesheet" href="./styles.css">
     <link rel="stylesheet" href="./index.css">
     <link rel="stylesheet" href="./nav-round.css">
@@ -124,7 +122,7 @@
                 display: inline-block;
                 background: none;
                 border: none;
-                color: #2563eb;
+                color: #102e5c;
                 font-size: 0.78rem;
                 font-family: "Outfit", sans-serif;
                 cursor: pointer;
@@ -138,110 +136,22 @@
             border-radius: 50%;
             box-shadow: 0 0 8px 3px rgba(255, 255, 255, 0.75);
         }
-        .site-banner {
-            height: 96px;
-            position: relative;
-            background: linear-gradient(135deg, #0a1f3d 0%, #102e5c 60%, #0c2750 100%);
-            overflow: hidden;
-        }
-        .site-banner canvas {
-            position: absolute; top: 0; left: 0;
-            width: 100%; height: 100%;
-            z-index: 1;
-            opacity: 0.55;
-            -webkit-mask-image: linear-gradient(to right, transparent 0%, transparent 22%, black 55%);
-            mask-image: linear-gradient(to right, transparent 0%, transparent 22%, black 55%);
-        }
-        .site-banner .banner-fade {
-            position: absolute; inset: 0;
-            background: linear-gradient(to right,
-                rgba(10, 31, 61, 1) 0%,
-                rgba(10, 31, 61, 0.75) 18%,
-                rgba(10, 31, 61, 0) 50%);
-            z-index: 2;
-            pointer-events: none;
-        }
-        .site-banner::after {
-            content: '';
-            position: absolute;
-            left: 0; right: 0; bottom: 0;
-            height: 1px;
-            background: linear-gradient(to right,
-                rgba(135, 221, 255, 0) 0%,
-                rgba(135, 221, 255, 0.35) 50%,
-                rgba(135, 221, 255, 0) 100%);
-            z-index: 3;
-        }
-        .banner-name {
-            position: absolute;
-            z-index: 10;
-            left: 2rem;
-            right: 4.75rem; /* reserve space for the fixed nav trigger */
-            top: 50%;
-            transform: translateY(-50%);
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-            min-width: 0;
-        }
-        .banner-name a {
-            color: white;
-            font-family: "Outfit", sans-serif;
-            font-size: 1.3rem;
-            font-weight: 500;
-            letter-spacing: 0.08em;
-            text-decoration: none;
-            white-space: nowrap;
-        }
-        .banner-subtitle {
-            color: rgba(200, 235, 255, 0.7);
-            font-family: "Outfit", sans-serif;
-            font-size: 0.65rem;
-            letter-spacing: 0.22em;
-            text-transform: uppercase;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-        @media (max-width: 639px) {
-            .banner-name a {
-                font-size: 1.05rem;
-                letter-spacing: 0.05em;
-            }
-            .banner-subtitle {
-                font-size: 0.55rem;
-                letter-spacing: 0.12em;
-            }
-        }
-        @media (min-width: 768px) {
-            .banner-name { left: 3rem; }
-        }
-        @media (min-width: 1024px) {
-            .banner-name { left: 4rem; }
-        }
     </style>
   </head>
 
   <body class="antialiased min-w-screen overflow-x-hidden">
     <div id="nav-placeholder"></div>
 
-    <div id="dynamicgraph" data-banner class="site-banner">
+    <header id="dynamicgraph" data-banner class="page-header">
         <canvas id="dynamicgraph-canvas"></canvas>
-        <div class="banner-fade"></div>
-        <div class="banner-name">
-            <a href="./index.html">Georg Diez</a>
-            <span class="banner-subtitle">Data Scientist &nbsp;·&nbsp; Computational Physicist</span>
+        <div class="page-header__inner">
+            <h1>Publications</h1>
+            <p>Relevant publications that I have authored or co-authored during my PhD.</p>
         </div>
-    </div>
+    </header>
 
     <div class="w-full bg-gray-100 p-4 md:p-8">
       <div class="max-w-6xl mx-auto px-4 pb-12" style="max-width: 1400px;">
-        <div class="mb-12">
-          <h1 class="text-5xl md:text-7xl font-serif text-gray-800 mb-4">Publications</h1>
-          <p class="text-xl text-gray-600 max-w-3xl">
-            Relevant publications that I have authored or co-authored during my PhD.
-          </p>
-        </div>
 
         <div class="pub-timeline">
 
@@ -281,7 +191,7 @@
                 <div class="flex gap-4">
                   <a href="https://pubs.acs.org/doi/10.1021/acs.jpclett.6c00341"
                      target="_blank" rel="noopener"
-                     class="text-white px-6 py-2 bg-blue-600 rounded hover:bg-blue-700 transition-colors font-medium">Article</a>
+                     class="btn-ink px-6 py-2 rounded font-medium">Article</a>
                   <a href="https://arxiv.org/abs/2602.21006"
                      target="_blank" rel="noopener"
                      class="text-blue-600 hover:text-blue-800 font-medium py-2">arXiv</a>
@@ -315,7 +225,7 @@
                 <div class="flex gap-4">
                   <a href="https://freidok.uni-freiburg.de/data/271694"
                      target="_blank" rel="noopener"
-                     class="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition-colors">View Thesis</a>
+                     class="btn-ink px-6 py-2 rounded">View Thesis</a>
                 </div>
               </div>
 
@@ -351,7 +261,7 @@
                 <div class="flex gap-4">
                   <a href="https://doi.org/10.1063/5.0282147"
                      target="_blank" rel="noopener"
-                     class="text-white px-6 py-2 bg-blue-600 rounded hover:bg-blue-700 transition-colors font-medium">Article</a>
+                     class="btn-ink px-6 py-2 rounded font-medium">Article</a>
                   <a href="https://github.com/moldyn/GP-TEMPEST"
                      target="_blank" rel="noopener"
                      class="text-blue-600 hover:text-blue-800 font-medium py-2">Software</a>
@@ -398,7 +308,7 @@
                 <div class="flex gap-4">
                   <a href="https://doi.org/10.1063/5.0217960"
                      target="_blank" rel="noopener"
-                     class="text-white px-6 py-2 bg-blue-600 rounded hover:bg-blue-700 transition-colors font-medium">Article</a>
+                     class="btn-ink px-6 py-2 rounded font-medium">Article</a>
                   <a href="https://github.com/moldyn/normi"
                      target="_blank" rel="noopener"
                      class="text-blue-600 hover:text-blue-800 font-medium py-2">Software</a>
@@ -446,7 +356,7 @@
                 <div class="flex gap-4">
                   <a href="https://doi.org/10.1021/acs.jctc.2c00337"
                      target="_blank" rel="noopener"
-                     class="text-white px-6 py-2 bg-blue-600 rounded hover:bg-blue-700 transition-colors font-medium">Article</a>
+                     class="btn-ink px-6 py-2 rounded font-medium">Article</a>
                   <a href="https://github.com/moldyn/MoSAIC"
                      target="_blank" rel="noopener"
                      class="text-blue-600 hover:text-blue-800 font-medium py-2">Software</a>
@@ -483,7 +393,7 @@
                 <div class="flex gap-4">
                   <a href="https://doi.org/10.1016/j.jmb.2022.167679"
                      target="_blank" rel="noopener"
-                     class="text-white px-6 py-2 bg-blue-600 rounded hover:bg-blue-700 transition-colors font-medium">Article</a>
+                     class="btn-ink px-6 py-2 rounded font-medium">Article</a>
                   <a href="https://www.biorxiv.org/content/10.1101/2021.11.17.468836v2.full"
                      target="_blank" rel="noopener"
                      class="text-blue-600 hover:text-blue-800 font-medium py-2">biorXiv</a>
@@ -529,7 +439,7 @@
         $("#copyright-footer").load("./copyright-footer.html");
       });
     </script>
-    <script src="./scripts/graph.js?v=3"></script>
+    <script src="./scripts/graph.js?v=4"></script>
     <script>
       (function() {
         function initToggles() {

@@ -1,13 +1,92 @@
 :root {
     --darkgray: #212329;
     --brightgray: #828387;
+
+    /* Navy + cyan palette */
+    --navy-900: #0a1f3d;   /* gradient start, darkest */
+    --navy-800: #102e5c;   /* gradient mid, solid fills, links on light */
+    --navy-700: #0c2750;   /* gradient end */
+    --cyan-sub: #7fd4ff;   /* subtitle / accent text on dark */
+    --text-on-dark: #dcecff; /* body text on dark */
 }
+
+/* Tailwind-utility overrides mapped to the navy + cyan palette.
+   Dark-background hero usages: text-blue-100/200/300 (+ their hovers).
+   Light-section link usages: text-blue-600 / hover:text-blue-800. */
+.text-blue-100 { color: var(--text-on-dark) !important; }
+.text-blue-200 { color: var(--cyan-sub) !important; }
+.text-blue-300 { color: var(--cyan-sub) !important; }
+.hover\:text-blue-200:hover { color: #ffffff !important; }
+.hover\:text-blue-300:hover { color: #ffffff !important; }
+.text-blue-600 { color: var(--navy-800) !important; }
+.hover\:text-blue-800:hover { color: var(--navy-900) !important; }
+
+/* Reusable button for publications/action links on light sections */
+.btn-ink {
+    background-color: var(--navy-800);
+    color: #ffffff;
+    transition: background-color 0.2s ease;
+}
+.btn-ink:hover {
+    background-color: var(--navy-900);
+    color: #ffffff;
+}
+
+/* Links on dark backgrounds (e.g. the copyright footer) */
+.link-on-dark { color: var(--cyan-sub); transition: color 0.2s ease; }
+.link-on-dark:hover { color: #ffffff; }
+
+/* Home hero: keep the graph behind the text */
+#dynamicgraph:not(.page-header) #dynamicgraph-canvas { opacity: 0.6; }
+
+/* Sub-page header (publications / posts): title + intro over the graph */
+.page-header {
+    position: relative;
+    z-index: 0; /* stay below the round menu overlay (nav-round.css gives every <header> z-index 30) */
+    overflow: hidden;
+    color: #ffffff;
+    background: linear-gradient(135deg, #0a1f3d 0%, #102e5c 60%, #0c2750 100%);
+}
+.page-header canvas {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    opacity: 0.6;
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, transparent 25%, #000 60%);
+    mask-image: linear-gradient(to right, transparent 0%, transparent 25%, #000 60%);
+}
+.page-header__inner {
+    position: relative;
+    z-index: 1;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 128px 2rem 56px;
+}
+.page-header h1 {
+    font-family: "Playfair Display", serif;
+    font-weight: 400;
+    font-size: clamp(2.75rem, 6vw, 4.5rem);
+    line-height: 1.05;
+    margin: 0 0 0.75rem;
+}
+.page-header p {
+    font-family: "Outfit", sans-serif;
+    font-size: 1.15rem;
+    line-height: 1.5;
+    color: var(--text-on-dark);
+    margin: 0;
+    max-width: 40rem;
+}
+@media (max-width: 640px) {
+    .page-header__inner { padding: 104px 1.25rem 40px; }
+}
+
 body {
   background-image: linear-gradient(
-    30deg, 
-    #070255, 
-    rgb(0, 1, 82),
-    rgb(15, 0, 218)
+    30deg,
+    #0a1f3d 0%,
+    #102e5c 55%,
+    #0c2750 100%
   ) !important;
   background-size: 280% 280% !important;
   background-clip: content-box !important;
@@ -27,10 +106,10 @@ body {
 @media screen and (max-width: 768px) {
     body {
       background-image: linear-gradient(
-        20deg, 
-        rgb(5, 0, 75), 
-        rgb(0, 18, 122),
-        rgb(17, 5, 196)
+        20deg,
+        #0a1f3d 0%,
+        #102e5c 55%,
+        #0c2750 100%
       ) !important;
       background-size: 400% 400% !important;
       background-clip: content-box !important;

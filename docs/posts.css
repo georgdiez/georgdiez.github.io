@@ -321,20 +321,20 @@
 
 .read-more {
     display: inline-block;
-    color: #3b82f6;
+    color: #102e5c;
     font-weight: 500;
     font-size: 0.875rem;
     text-decoration: none;
-    border: 1.5px solid #93c5fd;
+    border: 1.5px solid #7fd4ff;
     border-radius: 999px;
     padding: 0.3rem 0.9rem;
     transition: background 0.2s, color 0.2s, border-color 0.2s;
 }
 
 .read-more:hover {
-    background: #3b82f6;
+    background: #0a1f3d;
     color: white;
-    border-color: #3b82f6;
+    border-color: #0a1f3d;
 }
 
 .post-card.expanded .read-more {

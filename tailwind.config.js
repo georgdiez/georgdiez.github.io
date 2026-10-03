@@ -8,6 +8,13 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
+      colors: {
+        'navy-900': '#0a1f3d',
+        'navy-800': '#102e5c',
+        'navy-700': '#0c2750',
+        'cyan-sub': '#7fd4ff',
+        'text-on-dark': '#dcecff',
+      },
       fontFamily: {
         sans: ['"Open Sans"'],
         serif: ['"Playfair Display"'],

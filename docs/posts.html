@@ -8,8 +8,6 @@
         integrity="sha256-iaFenEC8axSAnyNu6M0+0epCOTwfbKVceFXNd5s/ki4="
         crossorigin="anonymous">
     </script>
-    <script src="scripts/EasePack.min.js"></script>
-    <script src="scripts/TweenLite.min.js"></script>
     <link rel="stylesheet" href="./styles.css">
     <link rel="stylesheet" href="./index.css">
     <link rel="stylesheet" href="./nav-round.css">
@@ -31,112 +29,24 @@
             border-radius: 50%;
             box-shadow: 0 0 8px 3px rgba(255, 255, 255, 0.75);
         }
-        .site-banner {
-            height: 96px;
-            position: relative;
-            background: linear-gradient(135deg, #0a1f3d 0%, #102e5c 60%, #0c2750 100%);
-            overflow: hidden;
-        }
-        .site-banner canvas {
-            position: absolute; top: 0; left: 0;
-            width: 100%; height: 100%;
-            z-index: 1;
-            opacity: 0.55;
-            -webkit-mask-image: linear-gradient(to right, transparent 0%, transparent 22%, black 55%);
-            mask-image: linear-gradient(to right, transparent 0%, transparent 22%, black 55%);
-        }
-        .site-banner .banner-fade {
-            position: absolute; inset: 0;
-            background: linear-gradient(to right,
-                rgba(10, 31, 61, 1) 0%,
-                rgba(10, 31, 61, 0.75) 18%,
-                rgba(10, 31, 61, 0) 50%);
-            z-index: 2;
-            pointer-events: none;
-        }
-        .site-banner::after {
-            content: '';
-            position: absolute;
-            left: 0; right: 0; bottom: 0;
-            height: 1px;
-            background: linear-gradient(to right,
-                rgba(135, 221, 255, 0) 0%,
-                rgba(135, 221, 255, 0.35) 50%,
-                rgba(135, 221, 255, 0) 100%);
-            z-index: 3;
-        }
-        .banner-name {
-            position: absolute;
-            z-index: 10;
-            left: 2rem;
-            right: 4.75rem; /* reserve space for the fixed nav trigger */
-            top: 50%;
-            transform: translateY(-50%);
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-            min-width: 0;
-        }
-        .banner-name a {
-            color: white;
-            font-family: "Outfit", sans-serif;
-            font-size: 1.3rem;
-            font-weight: 500;
-            letter-spacing: 0.08em;
-            text-decoration: none;
-            white-space: nowrap;
-        }
-        .banner-subtitle {
-            color: rgba(200, 235, 255, 0.7);
-            font-family: "Outfit", sans-serif;
-            font-size: 0.65rem;
-            letter-spacing: 0.22em;
-            text-transform: uppercase;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-        @media (max-width: 639px) {
-            .banner-name a {
-                font-size: 1.05rem;
-                letter-spacing: 0.05em;
-            }
-            .banner-subtitle {
-                font-size: 0.55rem;
-                letter-spacing: 0.12em;
-            }
-        }
-        @media (min-width: 768px) {
-            .banner-name { left: 3rem; }
-        }
-        @media (min-width: 1024px) {
-            .banner-name { left: 4rem; }
-        }
     </style>
 </head>
 
 <body class="antialiased min-w-screen overflow-x-hidden">
     <div id="nav-placeholder"></div>
 
-    <div id="dynamicgraph" data-banner class="site-banner">
+    <header id="dynamicgraph" data-banner class="page-header">
         <canvas id="dynamicgraph-canvas"></canvas>
-        <div class="banner-fade"></div>
-        <div class="banner-name">
-            <a href="./index.html">Georg Diez</a>
-            <span class="banner-subtitle">Data Scientist &nbsp;·&nbsp; Computational Physicist</span>
+        <div class="page-header__inner">
+            <h1>Posts</h1>
+            <p>Notes on my research, for you :)</p>
         </div>
-    </div>
+    </header>
 
     <div class="overlay" id="overlay"></div>
 
     <div class="w-full bg-gray-100 p-4 md:p-8 lg:p-12">
         <div style="max-width: 1400px; margin: 0 auto; padding: 0 1rem;">
-            <div class="mb-12">
-                <h1 class="text-5xl md:text-7xl font-serif text-gray-800 mb-4">Posts</h1>
-                <p class="text-xl text-gray-600 max-w-3xl">
-                    The ideas behind the papers, simply explained.
-                </p>
-            </div>
             <div id="posts-container" style="margin: 0 auto;">
             </div>
         </div>
@@ -227,8 +137,8 @@
 
                         <p><strong>Find more information here:</strong></p>
                         <ul>
-                            <li><a href="https://pubs.acs.org/doi/10.1021/acs.jpclett.6c00341" class="text-blue-700 hover:text-blue-300">Paper: Lost in Projection? Gaussian Filtering Recovers Hidden Conformational States</a></li>
-                            <li><a href="https://arxiv.org/abs/2602.21006" class="text-blue-700 hover:text-blue-300">arXiv preprint</a></li>
+                            <li><a href="https://pubs.acs.org/doi/10.1021/acs.jpclett.6c00341" class="text-blue-600 hover:text-blue-800">Paper: Lost in Projection? Gaussian Filtering Recovers Hidden Conformational States</a></li>
+                            <li><a href="https://arxiv.org/abs/2602.21006" class="text-blue-600 hover:text-blue-800">arXiv preprint</a></li>
                         </ul>
                         `
                 },
@@ -276,8 +186,8 @@
 
                         <p><strong>Find more information here:</strong></p>
                         <ul>
-                            <li><a href="https://doi.org/10.1063/5.0282147" class="text-blue-700 hover:text-blue-300">Paper: Recovering Hidden Degrees of Freedom Using Gaussian Processes</a></li>
-                            <li><a href="https://github.com/moldyn/GP-TEMPEST" class="text-blue-700 hover:text-blue-300">Github Code</a></li>
+                            <li><a href="https://doi.org/10.1063/5.0282147" class="text-blue-600 hover:text-blue-800">Paper: Recovering Hidden Degrees of Freedom Using Gaussian Processes</a></li>
+                            <li><a href="https://github.com/moldyn/GP-TEMPEST" class="text-blue-600 hover:text-blue-800">Github Code</a></li>
                         </ul>
                         `
                 },
@@ -295,7 +205,7 @@
                     fullContent: `<p>After roughly four years of research and countless cups of coffee (classic PhD humor, I know), 
                         I'm thrilled to announce that I successfully defended my PhD thesis on September 9th, 2025!</p>
                         <p>My committee consisted of Prof. Gerhard Stock, Prof. Günter Reiter and Prof. Joachim Dzubiella.
-                        You can find my thesis <a href="https://freidok.uni-freiburg.de/data/271694" class="text-blue-700 hover:text-blue-300">here</a>.</p>
+                        You can find my thesis <a href="https://freidok.uni-freiburg.de/data/271694" class="text-blue-600 hover:text-blue-800">here</a>.</p>
                         <p>I am extremely grateful and happy for all the support I have received during this journey,
                         especially from my supervisor Gerhard, who somehow managed to keep me on track and had 
                         a lot of patience during my more ambitious research ideas,
@@ -355,8 +265,8 @@
 
                         <p><strong>Find more information and the code here:</strong></p>
                         <ul>
-                            <li><a href="https://doi.org/10.1063/5.0217960" class="text-blue-700 hover:text-blue-300">Paper: Accurate estimation of the normalized mutual information of multidimensional data</a></li>
-                            <li><a href="https://github.com/moldyn/normi" class="text-blue-700 hover:text-blue-300">Github Code</a></li>
+                            <li><a href="https://doi.org/10.1063/5.0217960" class="text-blue-600 hover:text-blue-800">Paper: Accurate estimation of the normalized mutual information of multidimensional data</a></li>
+                            <li><a href="https://github.com/moldyn/normi" class="text-blue-600 hover:text-blue-800">Github Code</a></li>
                         </ul>
                         `
                 },
@@ -403,8 +313,8 @@
 
                         <p><strong>Find more information here:</strong></p>
                         <ul>
-                            <li><a href="https://doi.org/10.1021/acs.jctc.2c00337" class="text-blue-700 hover:text-blue-300">Paper: Correlation-based feature selection to identify functional dynamics in proteins</a></li>
-                            <li><a href="https://github.com/moldyn/MoSAIC" class="text-blue-700 hover:text-blue-300">Github Code</a></li>
+                            <li><a href="https://doi.org/10.1021/acs.jctc.2c00337" class="text-blue-600 hover:text-blue-800">Paper: Correlation-based feature selection to identify functional dynamics in proteins</a></li>
+                            <li><a href="https://github.com/moldyn/MoSAIC" class="text-blue-600 hover:text-blue-800">Github Code</a></li>
                         </ul>
                         `
                 },
@@ -450,7 +360,7 @@
 
                         <p><strong>Find more information here:</strong></p>
                         <ul>
-                            <li><a href="https://doi.org/10.1016/j.jmb.2022.167679" class="text-blue-700 hover:text-blue-300">Paper: Cooperative Protein Allosteric Transition Mediated by a Fluctuating Transmission Network</a></li>
+                            <li><a href="https://doi.org/10.1016/j.jmb.2022.167679" class="text-blue-600 hover:text-blue-800">Paper: Cooperative Protein Allosteric Transition Mediated by a Fluctuating Transmission Network</a></li>
                         </ul>
                         `
                 },
@@ -630,6 +540,6 @@
             }
         });
     </script>
-    <script src="./scripts/graph.js?v=3"></script>
+    <script src="./scripts/graph.js?v=4"></script>
 </body>
 </html>
