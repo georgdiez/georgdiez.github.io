@@ -44,6 +44,15 @@
 .w-0\.5 { width: 0.125rem; }
 .min-w-full { min-width: 100%; }
 
+/* Greys tinted towards the navy palette (instead of Tailwind's neutral greys) */
+.bg-gray-100 { background-color: #f4f6fa !important; }
+.bg-gray-200 { background-color: #e2e7ef !important; }
+.border-gray-300 { border-color: #d5dbe5 !important; }
+.text-gray-800 { color: #1b2638 !important; }
+.text-gray-700 { color: #364152 !important; }
+.text-gray-600 { color: #4a5568 !important; }
+.text-gray-500 { color: #64708a !important; }
+
 /* Light sections in the navy palette (replace the old bright Tailwind blues) */
 .bg-blue-50 { background-color: #eef2f7 !important; }
 .text-blue-700 { color: var(--navy-800) !important; }
@@ -60,7 +69,7 @@
     font-size: 1.5rem;
     font-weight: 600;
     line-height: 1.25;
-    color: #1f2937;
+    color: #1b2638;
     margin-bottom: 1.5rem;
     padding-bottom: 0.75rem;
 }
@@ -85,7 +94,7 @@
     font-weight: 600;
     letter-spacing: 0.3em;
     text-transform: uppercase;
-    color: #6b7280;
+    color: #64708a;
     white-space: nowrap;
 }
 
@@ -95,13 +104,34 @@
     color: rgba(220, 236, 255, 0.7);
 }
 
+/* Home hero: soft cyan glow behind the portrait (--gx/--gy = portrait centre, set by graph.js) */
+#dynamicgraph:not(.page-header)::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background: radial-gradient(circle 260px at var(--gx, 25%) var(--gy, 40%),
+        rgba(127, 212, 255, 0.16) 0%,
+        rgba(127, 212, 255, 0.065) 45%,
+        rgba(127, 212, 255, 0) 100%);
+}
+@media (max-width: 767px) {
+    #dynamicgraph:not(.page-header)::before {
+        background: radial-gradient(circle 170px at var(--gx, 25%) var(--gy, 20%),
+            rgba(127, 212, 255, 0.16) 0%,
+            rgba(127, 212, 255, 0.065) 45%,
+            rgba(127, 212, 255, 0) 100%);
+    }
+}
+
 /* Home hero: keep the graph behind the text */
-#dynamicgraph:not(.page-header) #dynamicgraph-canvas { opacity: 0.6; }
+#dynamicgraph:not(.page-header) #dynamicgraph-canvas { opacity: 0.75; }
 @media (max-width: 767px) {
     /* Quieter graph on phones, kept to the area around the portrait so it doesn't run behind the text.
        --gx/--gy are the portrait centre, set by graph.js. */
     #dynamicgraph:not(.page-header) #dynamicgraph-canvas {
-        opacity: 0.35;
+        opacity: 0.55;
         -webkit-mask-image: radial-gradient(circle at var(--gx, 25%) var(--gy, 20%), #000 0, #000 140px, transparent 240px);
         mask-image: radial-gradient(circle at var(--gx, 25%) var(--gy, 20%), #000 0, #000 140px, transparent 240px);
     }
@@ -164,9 +194,10 @@ body.over-dark-header .cd-nav-trigger:not(.close-nav) .cd-icon::after {
 body {
   background-image: linear-gradient(
     30deg,
-    #0a1f3d 0%,
-    #102e5c 55%,
-    #0c2750 100%
+    #071629 0%,
+    #0c2448 40%,
+    #12305f 70%,
+    #0a1f40 100%
   ) !important;
   background-size: 280% 280% !important;
   background-clip: content-box !important;
@@ -187,9 +218,10 @@ body {
     body {
       background-image: linear-gradient(
         20deg,
-        #0a1f3d 0%,
-        #102e5c 55%,
-        #0c2750 100%
+        #071629 0%,
+        #0c2448 40%,
+        #12305f 70%,
+        #0a1f40 100%
       ) !important;
       background-size: 400% 400% !important;
       background-clip: content-box !important;

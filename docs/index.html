@@ -24,7 +24,7 @@
 
     <!--Load css-->
     <link rel="stylesheet" href="./styles.css">
-    <link rel="stylesheet" href="./index.css?v=8">
+    <link rel="stylesheet" href="./index.css?v=18">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap">
 
     <style>
@@ -57,14 +57,14 @@
         /* nav-round.css gives every element an empty ::before/::after, which would become grid/flex items here */
         .tool-group::before, .tool-group::after,
         .tool-chips::before, .tool-chips::after { content: none; }
-        .tool-group + .tool-group { border-top: 1px solid #f0f2f5; }
+        .tool-group + .tool-group { border-top: 1px solid #edf0f5; }
         .tool-label {
             padding-top: 0.55rem;
             font-size: 0.72rem;
             font-weight: 600;
             letter-spacing: 0.12em;
             text-transform: uppercase;
-            color: #6b7280;
+            color: #64708a;
         }
         .tool-chips { display: flex; flex-wrap: wrap; row-gap: 0.5rem; }
         .tool-chips > * { margin-right: 0.5rem; }
@@ -389,7 +389,7 @@
             window.addEventListener('scroll', updateNavPos, { passive: true });
         })();
     </script>
-    <script src="./scripts/graph.js?v=6"></script>
+    <script src="./scripts/graph.js?v=15"></script>
     <script>
         document.querySelector('#scrolldown a').addEventListener('click', function(e) {
             e.preventDefault();

@@ -81,7 +81,7 @@
     max-height: 50vh; /* Ensure it doesn't take more than half the viewport */
     width: 100%;
     object-fit: contain; /* Changed from cover to contain to show full image */
-    background: #f9fafb; /* Light background in case image doesn't fill space */
+    background: #f4f6fa; /* Light background in case image doesn't fill space */
     flex-shrink: 0; /* Prevent image from shrinking */
 }
 
@@ -250,7 +250,7 @@
 }
 
 .post-meta {
-    color: #6b7280;
+    color: #64708a;
     font-size: 0.875rem;
     margin-bottom: 0.5rem;
     font-family: "Outfit", sans-serif;
@@ -259,7 +259,7 @@
 .post-title {
     font-size: 1.5rem;
     font-weight: 600;
-    color: #1f2937;
+    color: #1b2638;
     margin-bottom: 1rem;
     line-height: 1.4;
     font-family: "Outfit", sans-serif;
@@ -271,7 +271,7 @@
 }
 
 .post-excerpt {
-    color: #4b5563;
+    color: #4a5568;
     line-height: 1.6;
     margin-bottom: 1rem;
     flex: 1;
@@ -299,7 +299,7 @@
 
 .post-full-content {
     display: none;
-    color: #374151;
+    color: #364152;
     line-height: 1.7;
     font-size: 1.1rem;
     font-family: "Outfit", sans-serif;
@@ -355,7 +355,7 @@
     top: 1rem;
     right: 1rem;
     background: #e5e7eb;
-    color: #374151;
+    color: #364152;
     border: 1.5px solid #d1d5db;
     border-radius: 50%;
     width: 36px;
@@ -477,7 +477,7 @@
 .post-full-content h3 {
     font-size: 1.3rem;
     font-weight: 600;
-    color: #1f2937;
+    color: #1b2638;
     margin-top: 2rem;
     margin-bottom: 1rem;
 }

@@ -6,7 +6,6 @@
   if (!host || !canvas) return;
   var ctx = canvas.getContext('2d');
   var isBanner = host.hasAttribute('data-banner');
-  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var w, h, pts, target, goal, lastRest, color, raf, visible = true, pointerInside = false;
   // The highlight rests on an element marked data-graph-anchor (the portrait on the home page),
   // eases towards the mouse while it is over the graph, and glides back when it leaves.
@@ -28,9 +27,10 @@
     canvas.width = w * dpr; canvas.height = h * dpr;
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     var mobile = w <= 768;
-    color = '0,220,255';
-    var cols = isBanner ? (mobile ? 6 : 14) : (mobile ? 5 : 9);
-    var rows = isBanner ? Math.max(2, Math.round(h / 70)) : cols;
+    color = '127,212,255'; // same soft cyan as the subtitle and links (#7fd4ff)
+    var cols = isBanner ? (mobile ? 6 : 14) : (mobile ? 6 : 9);
+    // Phones: denser grid (6x9), since only the area around the portrait is shown there
+    var rows = isBanner ? Math.max(2, Math.round(h / 70)) : (mobile ? 9 : cols);
     var jitter = 50;
     pts = [];
     for (var i = 0; i < cols; i++) for (var j = 0; j < rows; j++) {
@@ -58,12 +58,17 @@
     if (!lastRest || Math.abs(rest.x - lastRest.x) > 1 || Math.abs(rest.y - lastRest.y) > 1) {
       canvas.style.setProperty('--gx', Math.round(rest.x) + 'px');
       canvas.style.setProperty('--gy', Math.round(rest.y) + 'px');
+      // Same position on the host, for the glow behind the portrait (index.css)
+      host.style.setProperty('--gx', Math.round(rest.x) + 'px');
+      host.style.setProperty('--gy', Math.round(rest.y) + 'px');
       lastRest = rest;
     }
     if (!pointerInside) goal = rest;
     target.x += (goal.x - target.x) * 0.08;
     target.y += (goal.y - target.y) * 0.08;
-    var s = isBanner ? 3 : 1;
+    // Size of the bright zones around the target. On the hero the target rests on the portrait,
+    // which would hide most of the bright zone behind the photo, so the zones are wider there.
+    var s = isBanner ? 3 : (w <= 768 ? 0.78 : 1.225); // radius = 70% of the previous 1.6 / 2.5 (0.7² = 0.49)
     for (var i = 0; i < pts.length; i++) {
       var p = pts[i];
       if (Math.abs(p.x - p.tx) < 1 && Math.abs(p.y - p.ty) < 1) {
@@ -90,7 +95,7 @@
     }
   }
 
-  function loop() { frame(); raf = visible && !reduce ? requestAnimationFrame(loop) : null; }
+  function loop() { frame(); raf = visible ? requestAnimationFrame(loop) : null; }
 
   if (!('ontouchstart' in window)) {
     host.addEventListener('mousemove', function (e) {
@@ -103,7 +108,7 @@
   if ('IntersectionObserver' in window) {
     new IntersectionObserver(function (es) {
       visible = es[0].isIntersecting;
-      if (visible && !raf && !reduce) raf = requestAnimationFrame(loop);
+      if (visible && !raf) raf = requestAnimationFrame(loop);
     }).observe(host);
   }
   var rt;
